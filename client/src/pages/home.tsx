@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { FilterButton } from "@/components/FilterButton";
 import { localStorageService, calculateAge } from "@/lib/storage";
-import { ActivityFilters } from "@shared/schema";
+import { ActivityFilters, KidProfile } from "@shared/schema";
 import { useQuery } from "@tanstack/react-query";
 
 export default function HomePage() {
@@ -14,7 +14,7 @@ export default function HomePage() {
     allowRepeats: true
   });
 
-  const { data: profile } = useQuery({
+  const { data: profile } = useQuery<KidProfile | null>({
     queryKey: ['/api/profile'],
     enabled: true
   });
@@ -41,64 +41,72 @@ export default function HomePage() {
   const age = profile ? calculateAge(profile.birthMonth, profile.birthYear) : 5;
 
   return (
-    <div className="flex flex-col h-screen max-w-md mx-auto bg-white">
+    <div className="flex flex-col min-h-screen max-w-md mx-auto bg-gradient-to-b from-pink-50 to-purple-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-secondary p-6 text-white">
+      <div className="rainbow-gradient p-6 text-white">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold">Hey there! 👋</h1>
-            <p className="text-indigo-100">Ready for some fun, {displayName}?</p>
+            <h1 className="text-3xl font-bold bounce-gentle">Hey there! 👋</h1>
+            <p className="text-white/90 text-lg">Ready for some fun, {displayName}?</p>
           </div>
           <button
             onClick={() => navigate('/settings')}
-            className="p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors"
+            className="p-3 bg-white/20 rounded-2xl hover:bg-white/30 transition-all scale-on-hover"
           >
-            <Settings className="text-white" size={20} />
+            <Settings className="text-white" size={24} />
           </button>
         </div>
       </div>
 
       {/* Filters Section */}
-      <div className="flex-1 p-6 space-y-6 overflow-y-auto">
-        <div>
-          <h3 className="text-lg font-semibold text-neutral-900 mb-4">Let's find the perfect activity!</h3>
+      <div className="flex-1 p-6 space-y-8 overflow-y-auto">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-purple-800 mb-2 sparkle">Let's find the perfect activity!</h3>
+          <div className="w-16 h-1 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full mx-auto"></div>
         </div>
 
         {/* Who's Playing Filter */}
         <div>
-          <label className="block text-sm font-medium text-neutral-700 mb-3">Who's playing?</label>
-          <div className="grid grid-cols-2 gap-3">
+          <label className="block text-lg font-bold text-purple-800 mb-4 flex items-center">
+            <span className="text-2xl mr-2">👥</span>
+            Who's playing?
+          </label>
+          <div className="grid grid-cols-2 gap-4">
             <FilterButton
               isSelected={filters.whoPlaying === "alone"}
               onClick={() => updateFilter('whoPlaying', 'alone')}
-              className="p-4"
+              className="p-5 scale-on-hover"
             >
-              <i className="fas fa-child text-2xl mb-2 block"></i>
-              <span className="text-sm font-medium">Kid Alone</span>
+              <div className="text-3xl mb-2">🧒</div>
+              <span className="text-base font-bold">Kid Alone</span>
             </FilterButton>
             <FilterButton
               isSelected={filters.whoPlaying === "together"}
               onClick={() => updateFilter('whoPlaying', 'together')}
-              className="p-4"
+              className="p-5 scale-on-hover"
             >
-              <i className="fas fa-users text-2xl mb-2 block"></i>
-              <span className="text-sm font-medium">You + Kid</span>
+              <div className="text-3xl mb-2">👨‍👧‍👦</div>
+              <span className="text-base font-bold">You + Kid</span>
             </FilterButton>
           </div>
         </div>
 
         {/* Time Available Filter */}
         <div>
-          <label className="block text-sm font-medium text-neutral-700 mb-3">Time available?</label>
-          <div className="grid grid-cols-3 gap-3">
+          <label className="block text-lg font-bold text-purple-800 mb-4 flex items-center">
+            <span className="text-2xl mr-2">⏰</span>
+            How much time do you have?
+          </label>
+          <div className="grid grid-cols-3 gap-4">
             {['15', '30', '60'].map(time => (
               <FilterButton
                 key={time}
                 isSelected={filters.timeAvailable === time}
                 onClick={() => updateFilter('timeAvailable', time)}
+                className="p-4 scale-on-hover"
               >
-                <div className="text-lg font-bold">{time}</div>
-                <div className="text-xs">mins</div>
+                <div className="text-2xl font-bold text-orange-500">{time}</div>
+                <div className="text-sm font-semibold">mins</div>
               </FilterButton>
             ))}
           </div>
@@ -106,67 +114,80 @@ export default function HomePage() {
 
         {/* Energy Level Filter */}
         <div>
-          <label className="block text-sm font-medium text-neutral-700 mb-3">Energy level?</label>
-          <div className="grid grid-cols-2 gap-3">
+          <label className="block text-lg font-bold text-purple-800 mb-4 flex items-center">
+            <span className="text-2xl mr-2">⚡</span>
+            What's your energy like?
+          </label>
+          <div className="grid grid-cols-2 gap-4">
             <FilterButton
               isSelected={filters.energyLevel === "calm"}
               onClick={() => updateFilter('energyLevel', 'calm')}
+              className="p-4 scale-on-hover"
             >
-              <i className="fas fa-leaf text-xl mb-1 block"></i>
-              <span className="text-sm font-medium">Calm</span>
+              <div className="text-3xl mb-1">🧘</div>
+              <span className="text-base font-bold">Calm</span>
             </FilterButton>
             <FilterButton
               isSelected={filters.energyLevel === "focused"}
               onClick={() => updateFilter('energyLevel', 'focused')}
+              className="p-4 scale-on-hover"
             >
-              <i className="fas fa-brain text-xl mb-1 block"></i>
-              <span className="text-sm font-medium">Focused</span>
+              <div className="text-3xl mb-1">🧠</div>
+              <span className="text-base font-bold">Focused</span>
             </FilterButton>
             <FilterButton
               isSelected={filters.energyLevel === "active"}
               onClick={() => updateFilter('energyLevel', 'active')}
+              className="p-4 scale-on-hover"
             >
-              <i className="fas fa-running text-xl mb-1 block"></i>
-              <span className="text-sm font-medium">Active</span>
+              <div className="text-3xl mb-1">🏃</div>
+              <span className="text-base font-bold">Active</span>
             </FilterButton>
             <FilterButton
               isSelected={filters.energyLevel === "silly"}
               onClick={() => updateFilter('energyLevel', 'silly')}
+              className="p-4 scale-on-hover"
             >
-              <i className="fas fa-laugh text-xl mb-1 block"></i>
-              <span className="text-sm font-medium">Silly</span>
+              <div className="text-3xl mb-1">🤪</div>
+              <span className="text-base font-bold">Silly</span>
             </FilterButton>
           </div>
         </div>
 
         {/* Location Filter */}
         <div>
-          <label className="block text-sm font-medium text-neutral-700 mb-3">Where are you?</label>
-          <div className="grid grid-cols-2 gap-3">
+          <label className="block text-lg font-bold text-purple-800 mb-4 flex items-center">
+            <span className="text-2xl mr-2">📍</span>
+            Where are you playing?
+          </label>
+          <div className="grid grid-cols-2 gap-4">
             <FilterButton
               isSelected={filters.location === "indoor"}
               onClick={() => updateFilter('location', 'indoor')}
-              className="p-4"
+              className="p-5 scale-on-hover"
             >
-              <i className="fas fa-home text-2xl mb-2 block"></i>
-              <span className="text-sm font-medium">Indoor</span>
+              <div className="text-4xl mb-2">🏠</div>
+              <span className="text-base font-bold">Inside</span>
             </FilterButton>
             <FilterButton
               isSelected={filters.location === "outdoor"}
               onClick={() => updateFilter('location', 'outdoor')}
-              className="p-4"
+              className="p-5 scale-on-hover"
             >
-              <i className="fas fa-tree text-2xl mb-2 block"></i>
-              <span className="text-sm font-medium">Outdoor</span>
+              <div className="text-4xl mb-2">🌳</div>
+              <span className="text-base font-bold">Outside</span>
             </FilterButton>
           </div>
         </div>
 
         {/* Repeats Toggle */}
-        <div className="flex items-center justify-between p-4 bg-neutral-100 rounded-xl">
+        <div className="flex items-center justify-between p-5 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-2xl border-2 border-yellow-200">
           <div>
-            <div className="font-medium text-neutral-900">Include recent activities?</div>
-            <div className="text-sm text-neutral-500">Show activities we've done recently</div>
+            <div className="font-bold text-purple-800 flex items-center">
+              <span className="text-xl mr-2">🔄</span>
+              Include recent activities?
+            </div>
+            <div className="text-sm text-purple-600">Show activities we've done recently</div>
           </div>
           <Switch
             checked={filters.allowRepeats}
@@ -176,28 +197,29 @@ export default function HomePage() {
       </div>
 
       {/* Generate Button */}
-      <div className="p-6 bg-white border-t border-neutral-200">
+      <div className="p-6 bg-gradient-to-b from-pink-50 to-purple-50">
         <Button
           onClick={handleGenerateIdeas}
-          className="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-semibold text-lg shadow-lg flex items-center justify-center space-x-2"
+          className="w-full rainbow-gradient text-white py-5 rounded-2xl font-bold text-xl shadow-xl flex items-center justify-center space-x-3 wiggle"
         >
-          <Sparkles size={20} />
-          <span>✨ Spark Ideas</span>
+          <Sparkles size={24} className="sparkle" />
+          <span>✨ SPARK IDEAS! ✨</span>
+          <Sparkles size={24} className="sparkle" />
         </Button>
       </div>
 
       {/* Bottom Navigation */}
-      <div className="flex bg-white border-t border-neutral-200">
-        <button className="flex-1 p-4 text-center text-primary">
-          <Home className="text-xl mb-1 mx-auto" size={20} />
-          <span className="text-xs font-medium">Home</span>
+      <div className="flex bg-white border-t-4 border-purple-200 pb-safe">
+        <button className="flex-1 p-4 text-center text-purple-600 bg-purple-50">
+          <Home className="text-xl mb-1 mx-auto bounce-gentle" size={24} />
+          <span className="text-sm font-bold">Home</span>
         </button>
         <button 
           onClick={() => navigate('/saved')}
-          className="flex-1 p-4 text-center text-neutral-400 hover:text-primary transition-colors"
+          className="flex-1 p-4 text-center text-pink-400 hover:text-pink-600 transition-colors scale-on-hover"
         >
-          <Heart className="text-xl mb-1 mx-auto" size={20} />
-          <span className="text-xs font-medium">Saved</span>
+          <Heart className="text-xl mb-1 mx-auto" size={24} />
+          <span className="text-sm font-bold">Saved</span>
         </button>
       </div>
     </div>

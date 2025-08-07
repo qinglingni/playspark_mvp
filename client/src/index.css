@@ -12,11 +12,11 @@
   --card-foreground: hsl(210 25% 7.8431%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(210 25% 7.8431%);
-  --primary: hsl(245.1 58.3% 59.4%);
+  --primary: hsl(280 100% 70%);
   --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(35.5 91.7% 48.0%);
+  --secondary: hsl(45 100% 60%);
   --secondary-foreground: hsl(0 0% 100%);
-  --accent: hsl(158.1 64.4% 51.6%);
+  --accent: hsl(340 100% 65%);
   --accent-foreground: hsl(0 0% 100%);
   --muted: hsl(240 1.9608% 90%);
   --muted-foreground: hsl(210 25% 7.8431%);
@@ -41,7 +41,7 @@
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
-  --radius: 1.3rem;
+  --radius: 2rem;
   --neutral-50: hsl(210 17% 98%);
   --neutral-100: hsl(210 17% 95%);
   --neutral-200: hsl(214 13% 91%);
@@ -87,6 +87,28 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    /* iOS Safari safe area support */
+    padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+  }
+  
+  /* Mobile viewport fixes */
+  html, body, #root {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Safe area utilities */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 1rem);
+  }
+  
+  /* Prevent zoom on inputs on iOS */
+  input, select, textarea {
+    font-size: 16px;
   }
   
   .neutral-50 {
@@ -185,5 +207,73 @@
   
   .bg-accent\/10 {
     background-color: hsl(from var(--accent) h s l / 0.1);
+  }
+  
+  /* Kid-friendly animations */
+  .bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+  
+  .wiggle {
+    animation: wiggle 0.8s ease-in-out infinite;
+  }
+  
+  .sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+  
+  .scale-on-hover {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .scale-on-hover:hover {
+    transform: scale(1.05);
+  }
+  
+  .rainbow-gradient {
+    background: linear-gradient(45deg, 
+      hsl(280 100% 70%) 0%, 
+      hsl(340 100% 65%) 25%, 
+      hsl(45 100% 60%) 50%, 
+      hsl(280 100% 70%) 75%, 
+      hsl(340 100% 65%) 100%);
+    background-size: 300% 300%;
+    animation: rainbow 3s ease infinite;
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

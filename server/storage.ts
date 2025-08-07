@@ -59,7 +59,14 @@ export class MemStorage implements IStorage {
 
   async createKidProfile(profile: InsertKidProfile, userId?: string): Promise<KidProfile> {
     const id = randomUUID();
-    const kidProfile: KidProfile = { ...profile, id, userId: userId || null };
+    const kidProfile: KidProfile = { 
+      id, 
+      name: profile.name || null,
+      birthMonth: profile.birthMonth,
+      birthYear: profile.birthYear,
+      interests: profile.interests || [],
+      userId: userId || null 
+    };
     this.kidProfiles.set(id, kidProfile);
     return kidProfile;
   }
@@ -68,7 +75,13 @@ export class MemStorage implements IStorage {
     const existing = this.kidProfiles.get(id);
     if (!existing) return undefined;
     
-    const updated = { ...existing, ...profile };
+    const updated: KidProfile = { 
+      ...existing, 
+      name: profile.name !== undefined ? profile.name : existing.name,
+      birthMonth: profile.birthMonth || existing.birthMonth,
+      birthYear: profile.birthYear || existing.birthYear,
+      interests: profile.interests || existing.interests
+    };
     this.kidProfiles.set(id, updated);
     return updated;
   }

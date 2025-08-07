@@ -11,6 +11,7 @@ import { localStorageService, AppSettings } from "@/lib/storage";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { KidProfile } from "@shared/schema";
 
 export default function Settings() {
   const [, navigate] = useLocation();
@@ -29,7 +30,7 @@ export default function Settings() {
     quickMode: false
   });
 
-  const { data: profile } = useQuery({
+  const { data: profile } = useQuery<KidProfile | null>({
     queryKey: ['/api/profile']
   });
 

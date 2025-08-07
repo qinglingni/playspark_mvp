@@ -10,7 +10,7 @@ export default function Saved() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: savedActivities = [], isLoading } = useQuery({
+  const { data: savedActivities = [], isLoading } = useQuery<any[]>({
     queryKey: ['/api/saved-activities']
   });
 

@@ -76,13 +76,13 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 p-6 flex flex-col justify-center max-w-md mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-pink-100 to-purple-100 p-6 flex flex-col justify-center max-w-md mx-auto">
       <div className="text-center mb-8">
-        <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-3xl mx-auto mb-6 flex items-center justify-center">
-          <Star className="text-white text-3xl" size={48} />
+        <div className="w-32 h-32 rainbow-gradient rounded-full mx-auto mb-6 flex items-center justify-center bounce-gentle">
+          <Star className="text-white sparkle" size={56} />
         </div>
-        <h1 className="text-3xl font-bold text-neutral-900 mb-3">Welcome to PlaySpark!</h1>
-        <p className="text-neutral-500 text-lg">Let's create a profile for your little one to get personalized activity ideas</p>
+        <h1 className="text-4xl font-bold text-purple-800 mb-4 wiggle">Welcome to PlaySpark! ✨</h1>
+        <p className="text-purple-600 text-xl font-semibold">Let's create a magical profile for your little adventurer!</p>
       </div>
 
       <div className="space-y-6">
@@ -151,16 +151,16 @@ export default function Onboarding() {
         <Button
           onClick={handleSubmit}
           disabled={createProfileMutation.isPending}
-          className="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-semibold text-lg shadow-lg"
+          className="w-full rainbow-gradient text-white py-5 rounded-2xl font-bold text-xl shadow-xl wiggle"
         >
-          {createProfileMutation.isPending ? "Creating Profile..." : "Create Profile ✨"}
+          {createProfileMutation.isPending ? "Creating Magic Profile... ✨" : "🎉 CREATE MY PROFILE! 🎉"}
         </Button>
         <Button
           variant="ghost"
           onClick={handleSkip}
-          className="w-full text-neutral-500 py-3 font-medium"
+          className="w-full text-purple-600 py-4 font-semibold text-lg hover:text-purple-800 scale-on-hover"
         >
-          Skip for now
+          Maybe later 🤔
         </Button>
       </div>
     </div>

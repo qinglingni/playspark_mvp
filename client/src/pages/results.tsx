@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ActivityCard } from "@/components/ActivityCard";
 import { localStorageService, calculateAge } from "@/lib/storage";
 import { activitiesService } from "@/lib/activities";
-import { Activity } from "@shared/schema";
+import { Activity, KidProfile } from "@shared/schema";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 
@@ -15,11 +15,11 @@ export default function Results() {
   const queryClient = useQueryClient();
   const [activities, setActivities] = useState<Activity[]>([]);
 
-  const { data: profile } = useQuery({
+  const { data: profile } = useQuery<KidProfile | null>({
     queryKey: ['/api/profile']
   });
 
-  const { data: savedActivities } = useQuery({
+  const { data: savedActivities = [] } = useQuery<any[]>({
     queryKey: ['/api/saved-activities']
   });
 
