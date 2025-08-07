@@ -1,0 +1,90 @@
+# PlaySpark MVP PRD
+
+## 1. Overview
+PlaySpark is a lightweight, just-in-time idea generator for parents to quickly find engaging, age-appropriate activities for their child. The MVP focuses on quick inspiration, minimal setup, and tailored suggestions based on the child’s profile and situational filters.
+
+---
+
+## 2. MVP Goals
+- Reduce decision fatigue for parents by surfacing 3–5 tailored activity ideas within seconds.
+- Personalize suggestions using a simple kid profile (age, optional interests).
+- Maintain a frictionless, intuitive user experience with minimal input required.
+
+---
+
+## 3. Core MVP Features (Must-Have)
+
+### 3.1 Kid Profile Onboarding
+- One-time setup on first launch.
+- Fields:
+  - Name (optional, for personalization)
+  - Birth month & year (for age-based filtering)
+  - Optional: Interests (Arts & Crafts, Sports, Science, Music, etc.)
+- Option to skip for generic ideas.
+- Editable from Settings.
+
+### 3.2 Home / Prompt Screen
+- Prompts:
+  - Who’s playing? (Kid Alone / You + Kid)
+  - Time available? (15 / 30 / 60 mins)
+  - Energy level? (Calm / Focused / Active / Silly)
+  - Location? (Indoor / Outdoor)
+  - Repeats okay? (Yes / No)
+- “✨ Spark Ideas” button generates results based on profile + filters.
+
+### 3.3 Idea Results Screen
+- Displays 3–5 curated activity cards.
+- Card fields:
+  - Title
+  - Materials (icons/emojis + text)
+  - Steps (1–3 clear instructions)
+  - Age range (read-only badge based on profile)
+  - “Why it’s great” blurb
+- Actions:
+  - Shuffle single card
+  - Pin/Save to favorites
+  - Show More Ideas button
+
+### 3.4 Saved Ideas Screen
+- Local list of pinned/favorited activities.
+- Tap to expand full card.
+- Remove or mark as “used.”
+
+---
+
+## 4. Nice-to-Have MVP+ Enhancements (if time permits)
+- “I Need to Work” mode: Pre-filters for solo, low-supervision activities.
+- Static “My Stuff” inventory checklist to prioritize ideas with materials already at home.
+- Basic voice input for known filter phrases.
+
+---
+
+## 5. Out of Scope for MVP
+- Dynamic inventory matching & substitutions.
+- Adaptive personalization that learns from user behavior.
+- Cloud sync / multi-device support.
+- Full voice/image-based activity matching.
+- Social sharing & contributions.
+
+---
+
+## 6. User Flow Summary
+1. First Launch → Kid Profile Onboarding (or skip).
+2. Home / Prompt Screen → select situational filters.
+3. Spark Ideas → Idea Results Screen with tailored cards.
+4. Save, Shuffle, or Show More.
+5. Access Saved Ideas from menu.
+
+---
+
+## 7. Success Criteria
+- User can get from app launch to first tailored idea list in ≤15 seconds.
+- Activity ideas are age-appropriate and match at least one interest tag (if provided).
+- Minimal onboarding drop-off (target ≥80% completion).
+
+---
+
+## 8. Technical Considerations
+- Local storage for profile, saved ideas, and optional inventory.
+- Tag-based activity categorization for matching filters.
+- Simple ranking logic (exact match > partial match).
