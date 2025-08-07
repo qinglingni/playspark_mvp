@@ -71,22 +71,30 @@ export default function HomePage() {
             <span className="text-2xl mr-2">👥</span>
             Who's playing?
           </label>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-3">
             <FilterButton
               isSelected={filters.whoPlaying === "alone"}
               onClick={() => updateFilter('whoPlaying', 'alone')}
-              className="p-5 scale-on-hover"
+              className="p-4 scale-on-hover"
             >
-              <div className="text-3xl mb-2">🧒</div>
-              <span className="text-base font-bold">Kid Alone</span>
+              <div className="text-2xl mb-1">🧒</div>
+              <span className="text-sm font-bold">Kid Alone</span>
             </FilterButton>
             <FilterButton
               isSelected={filters.whoPlaying === "together"}
               onClick={() => updateFilter('whoPlaying', 'together')}
-              className="p-5 scale-on-hover"
+              className="p-4 scale-on-hover"
             >
-              <div className="text-3xl mb-2">👨‍👧‍👦</div>
-              <span className="text-base font-bold">You + Kid</span>
+              <div className="text-2xl mb-1">👨‍👧‍👦</div>
+              <span className="text-sm font-bold">You + Kid</span>
+            </FilterButton>
+            <FilterButton
+              isSelected={filters.whoPlaying === "group"}
+              onClick={() => updateFilter('whoPlaying', 'group')}
+              className="p-4 scale-on-hover"
+            >
+              <div className="text-2xl mb-1">👥</div>
+              <span className="text-sm font-bold">Group Fun</span>
             </FilterButton>
           </div>
         </div>
@@ -176,6 +184,74 @@ export default function HomePage() {
             >
               <div className="text-4xl mb-2">🌳</div>
               <span className="text-base font-bold">Outside</span>
+            </FilterButton>
+          </div>
+        </div>
+
+        {/* Mess Level Filter */}
+        <div>
+          <label className="block text-lg font-bold text-purple-800 mb-4 flex items-center">
+            <span className="text-2xl mr-2">🧽</span>
+            How messy is okay?
+          </label>
+          <div className="grid grid-cols-3 gap-3">
+            <FilterButton
+              isSelected={filters.messLevel === "no-mess"}
+              onClick={() => updateFilter('messLevel', 'no-mess')}
+              className="p-4 scale-on-hover"
+            >
+              <div className="text-2xl mb-1">✨</div>
+              <span className="text-sm font-bold">No Mess</span>
+            </FilterButton>
+            <FilterButton
+              isSelected={filters.messLevel === "little-mess"}
+              onClick={() => updateFilter('messLevel', 'little-mess')}
+              className="p-4 scale-on-hover"
+            >
+              <div className="text-2xl mb-1">🧻</div>
+              <span className="text-sm font-bold">Little Mess</span>
+            </FilterButton>
+            <FilterButton
+              isSelected={filters.messLevel === "messy"}
+              onClick={() => updateFilter('messLevel', 'messy')}
+              className="p-4 scale-on-hover"
+            >
+              <div className="text-2xl mb-1">🎨</div>
+              <span className="text-sm font-bold">Let's Get Messy!</span>
+            </FilterButton>
+          </div>
+        </div>
+
+        {/* Materials Available Filter */}
+        <div>
+          <label className="block text-lg font-bold text-purple-800 mb-4 flex items-center">
+            <span className="text-2xl mr-2">🎒</span>
+            What materials do you have?
+          </label>
+          <div className="grid grid-cols-3 gap-3">
+            <FilterButton
+              isSelected={filters.materialsNeeded === "none"}
+              onClick={() => updateFilter('materialsNeeded', 'none')}
+              className="p-4 scale-on-hover"
+            >
+              <div className="text-2xl mb-1">🙌</div>
+              <span className="text-sm font-bold">Just Us!</span>
+            </FilterButton>
+            <FilterButton
+              isSelected={filters.materialsNeeded === "basic"}
+              onClick={() => updateFilter('materialsNeeded', 'basic')}
+              className="p-4 scale-on-hover"
+            >
+              <div className="text-2xl mb-1">📎</div>
+              <span className="text-sm font-bold">Basic Stuff</span>
+            </FilterButton>
+            <FilterButton
+              isSelected={filters.materialsNeeded === "special"}
+              onClick={() => updateFilter('materialsNeeded', 'special')}
+              className="p-4 scale-on-hover"
+            >
+              <div className="text-2xl mb-1">🎨</div>
+              <span className="text-sm font-bold">Craft Supplies</span>
             </FilterButton>
           </div>
         </div>

@@ -116,6 +116,20 @@ export class MemStorage implements IStorage {
         return false;
       }
       
+      // Filter by mess level (activity tags contain mess level)
+      if (filters.messLevel) {
+        if (!activity.tags?.includes(filters.messLevel)) {
+          return false;
+        }
+      }
+      
+      // Filter by materials needed (activity tags contain material requirement)
+      if (filters.materialsNeeded) {
+        if (!activity.tags?.includes(filters.materialsNeeded)) {
+          return false;
+        }
+      }
+      
       return true;
     }).sort((a, b) => {
       // Prioritize activities that match interests
@@ -174,7 +188,7 @@ export class MemStorage implements IStorage {
         whyGreat: "Combines creativity with science! Kids learn about aerodynamics while expressing their artistic side.",
         ageRange: "4-8",
         duration: "30 min",
-        tags: ["creative", "educational", "indoor"],
+        tags: ["creative", "educational", "indoor", "little-mess", "basic"],
         energyLevel: "focused",
         location: "indoor",
         whoPlaying: "together",
@@ -196,7 +210,7 @@ export class MemStorage implements IStorage {
         whyGreat: "Develops problem-solving skills and keeps kids active indoors. Great for rainy days!",
         ageRange: "3-7",
         duration: "30 min",
-        tags: ["adventure", "problem-solving", "indoor"],
+        tags: ["adventure", "problem-solving", "indoor", "no-mess", "basic"],
         energyLevel: "active",
         location: "indoor",
         whoPlaying: "together",
@@ -217,7 +231,7 @@ export class MemStorage implements IStorage {
         whyGreat: "Burns energy, improves listening skills, and creates joyful bonding moments!",
         ageRange: "2-6",
         duration: "30 min",
-        tags: ["movement", "music", "silly"],
+        tags: ["movement", "music", "silly", "no-mess", "none"],
         energyLevel: "silly",
         location: "indoor",
         whoPlaying: "together",
@@ -239,7 +253,7 @@ export class MemStorage implements IStorage {
         whyGreat: "Encourages observation skills and outdoor exploration while learning about nature.",
         ageRange: "3-8",
         duration: "60 min",
-        tags: ["nature", "exploration", "educational"],
+        tags: ["nature", "exploration", "educational", "no-mess", "basic"],
         energyLevel: "active",
         location: "outdoor",
         whoPlaying: "together",
@@ -260,7 +274,7 @@ export class MemStorage implements IStorage {
         whyGreat: "Builds language skills, creativity, and turn-taking while having fun together.",
         ageRange: "3-7",
         duration: "15 min",
-        tags: ["language", "creative", "calm"],
+        tags: ["language", "creative", "calm", "no-mess", "none"],
         energyLevel: "calm",
         location: "indoor",
         whoPlaying: "together",
@@ -282,7 +296,7 @@ export class MemStorage implements IStorage {
         whyGreat: "Introduces basic chemistry concepts in a safe, hands-on way that kids love!",
         ageRange: "4-8",
         duration: "30 min",
-        tags: ["science", "messy", "educational"],
+        tags: ["science", "messy", "educational", "messy", "basic"],
         energyLevel: "focused",
         location: "indoor",
         whoPlaying: "together",
@@ -303,12 +317,119 @@ export class MemStorage implements IStorage {
         whyGreat: "Develops problem-solving skills, patience, and fine motor coordination.",
         ageRange: "2-8",
         duration: "30 min",
-        tags: ["problem-solving", "quiet", "focused"],
+        tags: ["problem-solving", "quiet", "focused", "no-mess", "basic"],
         energyLevel: "focused",
         location: "indoor",
         whoPlaying: "together",
         interests: ["puzzles"]
       },
+      {
+        id: "8",
+        title: "Card Memory Game",
+        materials: [
+          { emoji: "🃏", name: "Deck of cards" },
+          { emoji: "🧠", name: "Memory skills" }
+        ],
+        steps: [
+          "Lay out 6-12 cards face down in a grid",
+          "Take turns flipping two cards to find matches",
+          "Keep matches when you find pairs!"
+        ],
+        whyGreat: "Improves memory, concentration, and turn-taking skills in a classic game format.",
+        ageRange: "4-8",
+        duration: "15 min",
+        tags: ["games", "memory", "focused", "no-mess", "basic"],
+        energyLevel: "focused",
+        location: "indoor",
+        whoPlaying: "together",
+        interests: ["games"]
+      },
+      {
+        id: "9",
+        title: "Simple Board Game Fun",
+        materials: [
+          { emoji: "🎲", name: "Board game" },
+          { emoji: "⭐", name: "Game pieces" }
+        ],
+        steps: [
+          "Choose an age-appropriate board game",
+          "Take turns rolling dice and moving pieces",
+          "Celebrate wins and good sportsmanship!"
+        ],
+        whyGreat: "Teaches rules, strategy, patience, and social skills in a structured, fun way.",
+        ageRange: "3-8",
+        duration: "30 min",
+        tags: ["games", "strategy", "social", "no-mess", "basic"],
+        energyLevel: "focused",
+        location: "indoor",
+        whoPlaying: "group",
+        interests: ["games"]
+      },
+      {
+        id: "10",
+        title: "Messy Paint Creation",
+        materials: [
+          { emoji: "🎨", name: "Washable paints" },
+          { emoji: "📄", name: "Big paper" },
+          { emoji: "🖌️", name: "Brushes" }
+        ],
+        steps: [
+          "Set up a protected painting area",
+          "Let creativity flow with finger painting or brushes",
+          "Display the masterpiece when dry!"
+        ],
+        whyGreat: "Encourages self-expression, creativity, and sensory exploration through art.",
+        ageRange: "2-6",
+        duration: "45 min",
+        tags: ["arts", "creative", "sensory", "messy", "special"],
+        energyLevel: "focused",
+        location: "indoor",
+        whoPlaying: "together",
+        interests: ["arts", "creative"]
+      },
+      {
+        id: "11",
+        title: "Solo Reading Adventure",
+        materials: [
+          { emoji: "📖", name: "Picture books" },
+          { emoji: "🛋️", name: "Cozy spot" }
+        ],
+        steps: [
+          "Choose a few favorite books or discover new ones",
+          "Find a comfortable reading spot",
+          "Enjoy quiet story time at their own pace"
+        ],
+        whyGreat: "Builds independence, vocabulary, and imagination while enjoying peaceful quiet time.",
+        ageRange: "3-8",
+        duration: "30 min",
+        tags: ["reading", "quiet", "independent", "no-mess", "none"],
+        energyLevel: "calm",
+        location: "indoor",
+        whoPlaying: "alone",
+        interests: ["reading"]
+      },
+      {
+        id: "12",
+        title: "Outdoor Obstacle Course",
+        materials: [
+          { emoji: "🪣", name: "Cones or buckets" },
+          { emoji: "🪢", name: "Jump rope" },
+          { emoji: "⚽", name: "Ball" }
+        ],
+        steps: [
+          "Set up stations: jumping, crawling, ball toss",
+          "Demonstrate each station together",
+          "Time runs and cheer each other on!"
+        ],
+        whyGreat: "Builds gross motor skills, confidence, and provides great physical exercise.",
+        ageRange: "4-8",
+        duration: "45 min",
+        tags: ["physical", "active", "outdoor", "little-mess", "basic"],
+        energyLevel: "active",
+        location: "outdoor",
+        whoPlaying: "together",
+        interests: ["sports", "outdoor"]
+      }
       {
         id: "8",
         title: "Musical Instruments Making",

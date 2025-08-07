@@ -69,10 +69,12 @@ export const insertUserSchema = createInsertSchema(users).pick({
 });
 
 export const filterSchema = z.object({
-  whoPlaying: z.enum(["alone", "together"]).optional(),
+  whoPlaying: z.enum(["alone", "together", "group"]).optional(),
   timeAvailable: z.enum(["15", "30", "60"]).optional(),
   energyLevel: z.enum(["calm", "focused", "active", "silly"]).optional(),
   location: z.enum(["indoor", "outdoor"]).optional(),
+  messLevel: z.enum(["no-mess", "little-mess", "messy"]).optional(),
+  materialsNeeded: z.enum(["none", "basic", "special"]).optional(),
   allowRepeats: z.boolean().default(true),
 });
 
