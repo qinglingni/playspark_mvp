@@ -429,7 +429,7 @@ export class MemStorage implements IStorage {
         location: "outdoor",
         whoPlaying: "together",
         interests: ["sports", "outdoor"]
-      }
+      },
       {
         id: "8",
         title: "Musical Instruments Making",
