@@ -8,6 +8,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/profile", async (req, res) => {
     try {
       const profile = await storage.getKidProfile();
+      if (!profile) {
+        return res.json(null);
+      }
       res.json(profile);
     } catch (error) {
       res.status(500).json({ message: "Failed to get profile" });
@@ -47,18 +50,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const interests = req.body.interests || [];
       const age = req.body.age || 5;
       
-      console.log('Activity generation request:', { filters, interests, age });
-      
       const activities = await storage.getActivitiesByFilters(filters, interests, age);
-      
-      console.log(`Found ${activities.length} activities after filtering`);
       
       // Return top 3-5 activities
       const selectedActivities = activities.slice(0, Math.min(5, activities.length));
       
       res.json(selectedActivities);
     } catch (error) {
-      console.error('Error generating activities:', error);
       res.status(400).json({ message: "Invalid filter data" });
     }
   });
