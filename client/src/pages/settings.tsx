@@ -106,6 +106,11 @@ export default function Settings() {
     });
   };
 
+  const handleReset = () => {
+    localStorageService.clearAll();
+    window.location.reload();
+  };
+
   return (
     <div className="flex flex-col h-screen max-w-md mx-auto bg-white">
       {/* Header */}
@@ -241,6 +246,14 @@ export default function Settings() {
             <div className="flex items-center justify-between cursor-pointer hover:bg-neutral-50 p-2 rounded-lg">
               <span className="text-neutral-700">Terms of Service</span>
               <i className="fas fa-chevron-right text-neutral-400"></i>
+            </div>
+            <hr className="my-3 border-neutral-200" />
+            <div 
+              onClick={handleReset}
+              className="flex items-center justify-between cursor-pointer hover:bg-red-50 p-2 rounded-lg text-red-600"
+            >
+              <span className="font-medium">Start Over</span>
+              <span className="text-sm">Reset profile & return to setup</span>
             </div>
           </div>
         </div>
