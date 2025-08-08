@@ -57,6 +57,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(selectedActivities);
     } catch (error) {
+      console.error('Error generating activities:', error);
       res.status(400).json({ message: "Invalid filter data" });
     }
   });

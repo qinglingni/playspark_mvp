@@ -25,23 +25,16 @@ export default function Onboarding() {
 
   const createProfileMutation = useMutation({
     mutationFn: async (profileData: any) => {
-      console.log('Creating profile with data:', profileData);
       const response = await apiRequest('POST', '/api/profile', profileData);
-      const result = await response.json();
-      console.log('Profile creation response:', result);
-      return result;
+      return response.json();
     },
     onSuccess: (profile) => {
-      console.log('Profile creation success, setting localStorage and navigating');
       localStorageService.setKidProfile(profile);
       localStorageService.setOnboardingComplete(true);
       queryClient.invalidateQueries({ queryKey: ['/api/profile'] });
-      console.log('About to navigate to home page');
-      // Force a page reload to ensure the App router sees the new onboarding state
       window.location.href = '/';
     },
     onError: (error) => {
-      console.error('Profile creation error:', error);
       toast({
         title: "Error",
         description: "Failed to create profile. Please try again.",

@@ -123,10 +123,17 @@ export class MemStorage implements IStorage {
         }
       }
       
-      // Filter by materials needed (activity tags contain material requirement)
+      // Filter by materials needed - be more flexible with basic materials
       if (filters.materialsNeeded) {
-        if (!activity.tags?.includes(filters.materialsNeeded)) {
-          return false;
+        if (filters.materialsNeeded === 'basic') {
+          // "basic" should match activities tagged with "basic" or "none"
+          if (!activity.tags?.includes('basic') && !activity.tags?.includes('none')) {
+            return false;
+          }
+        } else {
+          if (!activity.tags?.includes(filters.materialsNeeded)) {
+            return false;
+          }
         }
       }
       
