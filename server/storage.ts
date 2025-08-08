@@ -64,7 +64,7 @@ export class MemStorage implements IStorage {
       name: profile.name || null,
       birthMonth: profile.birthMonth,
       birthYear: profile.birthYear,
-      interests: profile.interests || [],
+      interests: (profile.interests as string[]) || [],
       userId: userId || null 
     };
     this.kidProfiles.set(id, kidProfile);
@@ -80,7 +80,7 @@ export class MemStorage implements IStorage {
       name: profile.name !== undefined ? profile.name : existing.name,
       birthMonth: profile.birthMonth || existing.birthMonth,
       birthYear: profile.birthYear || existing.birthYear,
-      interests: profile.interests || existing.interests
+      interests: (profile.interests as string[]) || existing.interests
     };
     this.kidProfiles.set(id, updated);
     return updated;
