@@ -27,9 +27,10 @@ Preferred communication style: Simple, everyday language.
 
 ### Data Storage Solutions
 - **ORM**: Drizzle ORM with PostgreSQL dialect for type-safe database operations
-- **Database**: PostgreSQL (via Neon serverless) for persistent data storage
+- **Database**: PostgreSQL (via Neon serverless) for persistent data storage with DatabaseStorage implementation
 - **Local Storage**: Browser localStorage for client-side caching of user preferences and filters
-- **In-Memory Storage**: MemStorage class provides fallback storage implementation for development
+- **Migration Tool**: Database schema changes managed through `npm run db:push` command
+- **Data Seeding**: Automatic seeding of activity data on server startup to populate the database
 
 ### Database Schema Design
 - **Kid Profiles**: Stores child information (name, birth date, interests)
