@@ -37,7 +37,8 @@ export default function Onboarding() {
       localStorageService.setOnboardingComplete(true);
       queryClient.invalidateQueries({ queryKey: ['/api/profile'] });
       console.log('About to navigate to home page');
-      navigate('/');
+      // Force a page reload to ensure the App router sees the new onboarding state
+      window.location.href = '/';
     },
     onError: (error) => {
       console.error('Profile creation error:', error);
