@@ -11,28 +11,34 @@ interface FilterCombination {
   targetCount: number;
 }
 
-// Define the filter combinations we want to ensure coverage for
-const PRIORITY_COMBINATIONS: FilterCombination[] = [
-  // 5-6 age group - calm activities
-  { ageRange: "5-6", energyLevel: "calm", location: "indoor", whoPlaying: "together", targetCount: 3 },
-  { ageRange: "5-6", energyLevel: "calm", location: "indoor", whoPlaying: "alone", targetCount: 2 },
-  { ageRange: "5-6", energyLevel: "calm", location: "outdoor", whoPlaying: "together", targetCount: 2 },
+// Define all filter combinations we want to ensure coverage for
+function generateAllCombinations(): FilterCombination[] {
+  const combinations: FilterCombination[] = [];
+  const energyLevels = ["calm", "focused", "active", "silly"];
+  const locations = ["indoor", "outdoor"];
+  const whoPlayingOptions = ["alone", "together", "group"];
+  const ageRanges = ["5-6", "6-7", "7-8"];
   
-  // 5-6 age group - active activities
-  { ageRange: "5-6", energyLevel: "active", location: "indoor", whoPlaying: "together", targetCount: 3 },
-  { ageRange: "5-6", energyLevel: "active", location: "outdoor", whoPlaying: "together", targetCount: 2 },
-  { ageRange: "5-6", energyLevel: "active", location: "indoor", whoPlaying: "alone", targetCount: 2 },
+  for (const ageRange of ageRanges) {
+    for (const energyLevel of energyLevels) {
+      for (const location of locations) {
+        for (const whoPlaying of whoPlayingOptions) {
+          combinations.push({
+            ageRange,
+            energyLevel,
+            location,
+            whoPlaying,
+            targetCount: 2 // At least 2 activities per combination
+          });
+        }
+      }
+    }
+  }
   
-  // 6-7 age group - calm activities  
-  { ageRange: "6-7", energyLevel: "calm", location: "indoor", whoPlaying: "together", targetCount: 3 },
-  { ageRange: "6-7", energyLevel: "calm", location: "indoor", whoPlaying: "alone", targetCount: 2 },
-  { ageRange: "6-7", energyLevel: "calm", location: "outdoor", whoPlaying: "together", targetCount: 2 },
-  
-  // 6-7 age group - active activities
-  { ageRange: "6-7", energyLevel: "active", location: "indoor", whoPlaying: "together", targetCount: 3 },
-  { ageRange: "6-7", energyLevel: "active", location: "outdoor", whoPlaying: "together", targetCount: 2 },
-  { ageRange: "6-7", energyLevel: "active", location: "indoor", whoPlaying: "alone", targetCount: 2 },
-];
+  return combinations;
+}
+
+const PRIORITY_COMBINATIONS = generateAllCombinations();
 
 export async function analyzeActivityGaps() {
   console.log("Analyzing activity coverage gaps...");
