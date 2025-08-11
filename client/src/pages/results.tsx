@@ -54,6 +54,7 @@ export default function Results() {
       });
     },
     onSuccess: (newActivities) => {
+      console.log('Frontend received activities:', newActivities.length, newActivities.map(a => a.title));
       setActivities(newActivities);
     },
     onError: () => {

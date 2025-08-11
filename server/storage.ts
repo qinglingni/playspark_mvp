@@ -105,7 +105,6 @@ class DatabaseStorage implements IStorage {
 
   async getActivitiesByFilters(filters: any, interests: string[], age: number): Promise<Activity[]> {
     const allActivities = await db.select().from(activities);
-    console.log(`STORAGE: Filtering ${allActivities.length} activities for age ${age}`);
     
     const filtered = allActivities.filter(activity => {
       // Age filtering using minAge and maxAge from database
