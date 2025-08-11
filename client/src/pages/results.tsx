@@ -43,21 +43,32 @@ export default function Results() {
 
   const generateActivitiesMutation = useMutation({
     mutationFn: async () => {
-      const filters = localStorageService.getFilters();
-      const interests = profile?.interests || [];
-      const age = profile ? calculateAge(profile.birthMonth, profile.birthYear) : 5;
-      
-      return activitiesService.generateActivities({
-        filters,
-        interests,
-        age
-      });
+      try {
+        const filters = localStorageService.getFilters();
+        const interests = profile?.interests || [];
+        const age = profile ? calculateAge(profile.birthMonth, profile.birthYear) : 5;
+        
+        console.log('Frontend sending request:', { filters, interests, age });
+        
+        const result = await activitiesService.generateActivities({
+          filters,
+          interests,
+          age
+        });
+        
+        console.log('Frontend received raw result:', result);
+        return result;
+      } catch (error) {
+        console.error('Frontend error in mutation:', error);
+        throw error;
+      }
     },
     onSuccess: (newActivities) => {
       console.log('Frontend received activities:', newActivities.length, newActivities.map(a => a.title));
       setActivities(newActivities);
     },
-    onError: () => {
+    onError: (error) => {
+      console.error('Frontend mutation error:', error);
       toast({
         title: "Error",
         description: "Failed to generate activities.",

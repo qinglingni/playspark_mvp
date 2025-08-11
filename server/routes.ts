@@ -46,19 +46,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Activity Routes
   app.post("/api/activities/generate", async (req, res) => {
     try {
+      console.log('=== API REQUEST START ===');
+      console.log('Request body:', JSON.stringify(req.body, null, 2));
+      
       const filters = filterSchema.parse(req.body.filters || {});
+      console.log('Parsed filters:', filters);
+      
       const interests = req.body.interests || [];
       const age = req.body.age || 5;
+      
+      console.log('Processing with age:', age, 'interests:', interests);
       
       const activities = await storage.getActivitiesByFilters(filters, interests, age);
       
       // Return top 2 activities
       const selectedActivities = activities.slice(0, Math.min(2, activities.length));
       
+      console.log('=== API RESPONSE ===');
+      console.log('Returning activities count:', selectedActivities.length);
+      if (selectedActivities.length > 0) {
+        console.log('Activity titles:', selectedActivities.map(a => a.title));
+      }
+      console.log('=== END ===\n');
+      
       res.json(selectedActivities);
     } catch (error) {
       console.error('Error generating activities:', error);
-      res.status(400).json({ message: "Invalid filter data" });
+      res.status(500).json({ message: "Server error", error: error.message });
     }
   });
 
