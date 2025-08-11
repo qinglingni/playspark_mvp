@@ -46,14 +46,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Activity Routes
   app.post("/api/activities/generate", async (req, res) => {
     try {
+      console.log('=== FRONTEND REQUEST DEBUG ===');
+      console.log('Full request body:', JSON.stringify(req.body, null, 2));
+      
       const filters = filterSchema.parse(req.body.filters || {});
       const interests = req.body.interests || [];
       const age = req.body.age || 5;
       
+      console.log('Parsed - Age:', age, 'Interests:', interests, 'Filters:', filters);
+      
       const activities = await storage.getActivitiesByFilters(filters, interests, age);
+      
+      console.log(`Found ${activities.length} activities for age ${age}`);
       
       // Return top 2 activities
       const selectedActivities = activities.slice(0, Math.min(2, activities.length));
+      
+      console.log(`Returning ${selectedActivities.length} activities`);
+      console.log('=== END DEBUG ===\n');
       
       res.json(selectedActivities);
     } catch (error) {
