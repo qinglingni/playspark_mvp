@@ -90,7 +90,7 @@ export class DatabaseStorage implements IStorage {
   async getActivitiesByFilters(filters: any, interests: string[], age: number): Promise<Activity[]> {
     const allActivities = await db.select().from(activities);
     
-    return allActivities.filter(activity => {
+    const filtered = allActivities.filter(activity => {
       // Age filtering
       const ageRange = activity.ageRange.toLowerCase();
       if (ageRange.includes('-')) {
@@ -141,6 +141,18 @@ export class DatabaseStorage implements IStorage {
       const bMatches = b.interests?.some(interest => interests.includes(interest)) ? 1 : 0;
       return bMatches - aMatches;
     });
+    
+    // Shuffle the results to provide variety when "Show More Ideas" is clicked
+    return this.shuffleArray(filtered);
+  }
+
+  private shuffleArray<T>(array: T[]): T[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   }
 
   async getSavedActivities(userId?: string): Promise<SavedActivity[]> {
