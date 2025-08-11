@@ -42,8 +42,9 @@ export class DatabaseStorage implements IStorage {
 
   async getKidProfile(userId?: string): Promise<KidProfile | undefined> {
     if (!userId) {
-      const [profile] = await db.select().from(kidProfiles).limit(1);
-      return profile || undefined;
+      // Get the most recently created profile when no userId is provided
+      const profiles = await db.select().from(kidProfiles).orderBy(kidProfiles.id).limit(1);
+      return profiles[0] || undefined;
     }
     const [profile] = await db.select().from(kidProfiles).where(eq(kidProfiles.userId, userId));
     return profile || undefined;
