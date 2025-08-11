@@ -107,9 +107,12 @@ class DatabaseStorage implements IStorage {
     const allActivities = await db.select().from(activities);
     
     const filtered = allActivities.filter(activity => {
-      // Age filtering using minAge and maxAge from database
+      // Age filtering - more flexible approach
+      // Allow activities if the child's age overlaps with or is close to the activity's age range
       if (activity.minAge !== null && activity.maxAge !== null) {
-        if (age < activity.minAge || age > activity.maxAge) {
+        // Allow activities if child's age is within 1 year of the activity range
+        const ageBuffer = 1;
+        if (age < (activity.minAge - ageBuffer) || age > (activity.maxAge + ageBuffer)) {
           return false;
         }
       }
