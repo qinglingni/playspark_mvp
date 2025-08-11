@@ -22,11 +22,11 @@ export default function HomePage() {
   useEffect(() => {
     // Load saved filters or use good defaults
     const savedFilters = localStorageService.getFilters();
-    const defaultFilters = {
+    const defaultFilters: Partial<ActivityFilters> = {
       allowRepeats: true,
-      whoPlaying: "together",
-      energyLevel: "focused",
-      location: "indoor",
+      whoPlaying: "together" as const,
+      energyLevel: "focused" as const,
+      location: "indoor" as const,
       ...savedFilters // Keep any existing filters that work
     };
     setFilters(defaultFilters);

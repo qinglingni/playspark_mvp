@@ -93,9 +93,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           a.minAge !== null && a.maxAge !== null && age >= a.minAge && age <= a.maxAge
         );
         console.log(`Age ${age} compatible activities: ${ageCompatible.length}`);
-        console.log('Energy levels available:', [...new Set(ageCompatible.map(a => a.energyLevel))]);
-        console.log('Locations available:', [...new Set(ageCompatible.map(a => a.location))]);
-        console.log('whoPlaying options:', [...new Set(ageCompatible.map(a => a.whoPlaying))]);
+        console.log('Energy levels available:', Array.from(new Set(ageCompatible.map(a => a.energyLevel))));
+        console.log('Locations available:', Array.from(new Set(ageCompatible.map(a => a.location))));
+        console.log('whoPlaying options:', Array.from(new Set(ageCompatible.map(a => a.whoPlaying))));
       }
       
       // Return top 2 activities
