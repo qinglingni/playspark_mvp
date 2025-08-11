@@ -52,8 +52,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const activities = await storage.getActivitiesByFilters(filters, interests, age);
       
-      // Return top 3-5 activities
-      const selectedActivities = activities.slice(0, Math.min(5, activities.length));
+      // Return top 2 activities
+      const selectedActivities = activities.slice(0, Math.min(2, activities.length));
       
       res.json(selectedActivities);
     } catch (error) {
