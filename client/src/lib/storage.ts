@@ -73,18 +73,20 @@ export const localStorageService = {
 };
 
 export const calculateAge = (birthMonth: string, birthYear: number): number => {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth();
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth(); // 0-indexed (January = 0)
   
-  const months = [
-    'january', 'february', 'march', 'april', 'may', 'june',
-    'july', 'august', 'september', 'october', 'november', 'december'
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
   ];
   
-  const birthMonthIndex = months.indexOf(birthMonth.toLowerCase());
+  const birthMonthIndex = monthNames.indexOf(birthMonth);
+  
   let age = currentYear - birthYear;
   
+  // If birth month hasn't occurred this year yet, subtract 1
   if (currentMonth < birthMonthIndex) {
     age--;
   }

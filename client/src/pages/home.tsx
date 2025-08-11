@@ -20,13 +20,14 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    // Clear any problematic saved filters and use good defaults
-    localStorageService.clearAll();
+    // Load saved filters or use good defaults
+    const savedFilters = localStorageService.getFilters();
     const defaultFilters = {
       allowRepeats: true,
       whoPlaying: "together",
       energyLevel: "focused",
-      location: "indoor"
+      location: "indoor",
+      ...savedFilters // Keep any existing filters that work
     };
     setFilters(defaultFilters);
     localStorageService.setFilters(defaultFilters);
