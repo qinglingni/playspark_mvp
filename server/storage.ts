@@ -180,7 +180,7 @@ class DatabaseStorage implements IStorage {
 
   async removeSavedActivity(id: string): Promise<boolean> {
     const result = await db.delete(savedActivities).where(eq(savedActivities.id, id));
-    return result.count > 0;
+    return (result.rowCount || 0) > 0;
   }
 
   async markActivityAsUsed(id: string, isUsed: boolean): Promise<boolean> {
@@ -188,7 +188,7 @@ class DatabaseStorage implements IStorage {
       .update(savedActivities)
       .set({ isUsed })
       .where(eq(savedActivities.id, id));
-    return result.count > 0;
+    return (result.rowCount || 0) > 0;
   }
 }
 
