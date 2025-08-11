@@ -75,12 +75,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const filters = filterSchema.parse(req.body.filters || {});
       const interests = req.body.interests || [];
       const age = req.body.age || 5;
+      const page = req.body.page || 0; // Default to first page
+      const pageSize = 2; // Always return 2 activities per page
       
       // Debug logging
       console.log('🔍 Activity Generation Request:', {
         filters,
         interests,
         age,
+        page,
         requestBody: req.body
       });
       
@@ -99,16 +102,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log('whoPlaying options:', Array.from(new Set(ageCompatible.map(a => a.whoPlaying))));
       }
       
-      // Shuffle activities to provide variety on repeated requests
-      const shuffledActivities = [...activities].sort(() => Math.random() - 0.5);
+      // Shuffle activities for variety, but ensure consistent pagination within same session
+      const seed = `${JSON.stringify(filters)}-${age}-${interests.join(',')}`;
+      const shuffledActivities = [...activities].sort((a, b) => {
+        // Create a consistent but pseudo-random order based on activity ID and seed
+        const aHash = (a.id + seed).split('').reduce((hash, char) => hash + char.charCodeAt(0), 0);
+        const bHash = (b.id + seed).split('').reduce((hash, char) => hash + char.charCodeAt(0), 0);
+        return aHash - bHash;
+      });
       
-      // Return 3-5 activities for better variety
-      const activityCount = Math.min(Math.max(3, Math.floor(activities.length * 0.3)), 5);
-      const selectedActivities = shuffledActivities.slice(0, activityCount);
+      // Calculate pagination
+      const startIndex = page * pageSize;
+      const endIndex = startIndex + pageSize;
+      const selectedActivities = shuffledActivities.slice(startIndex, endIndex);
+      const hasMore = endIndex < shuffledActivities.length;
       
-      console.log(`🎲 Returning ${selectedActivities.length} activities out of ${activities.length} available`);
+      console.log(`🎲 Returning page ${page}: ${selectedActivities.length} activities (${startIndex + 1}-${Math.min(endIndex, shuffledActivities.length)} of ${shuffledActivities.length} available)`);
+      console.log(`📄 Pagination: page=${page}, pageSize=${pageSize}, total=${shuffledActivities.length}, hasMore=${hasMore}`);
       
-      res.json(selectedActivities);
+      res.json({
+        activities: selectedActivities,
+        pagination: {
+          page,
+          pageSize,
+          total: shuffledActivities.length,
+          hasMore
+        }
+      });
     } catch (error) {
       console.error('Error generating activities:', error);
       res.status(500).json({ message: "Server error", error: error instanceof Error ? error.message : 'Unknown error' });

@@ -14,6 +14,9 @@ export default function Results() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [activities, setActivities] = useState<Activity[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const [totalAvailable, setTotalAvailable] = useState(0);
 
   const { data: profile } = useQuery<KidProfile | null>({
     queryKey: ['/api/profile']
@@ -42,39 +45,51 @@ export default function Results() {
   });
 
   const generateActivitiesMutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: async (isLoadMore: boolean = false) => {
       try {
         const filters = localStorageService.getFilters();
         const interests = profile?.interests || [];
         const age = profile ? calculateAge(profile.birthMonth, profile.birthYear) : 5;
-        
+        const page = isLoadMore ? currentPage + 1 : 0;
 
-        
         console.log('Frontend sending filters:', filters);
         console.log('Profile interests:', interests);
         console.log('Child age:', age);
+        console.log('Page:', page);
         
         const result = await activitiesService.generateActivities({
           filters,
           interests,
-          age
+          age,
+          page
         });
         
-        console.log('Frontend received activities:', result.map(a => ({ 
+        console.log('Frontend received activities:', result.activities.map(a => ({ 
           title: a.title, 
           whoPlaying: a.whoPlaying, 
           energyLevel: a.energyLevel,
           location: a.location
         })));
+        console.log('Pagination:', result.pagination);
 
-        return result;
+        return { result, isLoadMore };
       } catch (error) {
         console.error('Frontend error in mutation:', error);
         throw error;
       }
     },
-    onSuccess: (newActivities) => {
-      setActivities(newActivities);
+    onSuccess: ({ result, isLoadMore }) => {
+      if (isLoadMore) {
+        // Append new activities to existing ones
+        setActivities(prev => [...prev, ...result.activities]);
+        setCurrentPage(result.pagination.page);
+      } else {
+        // Replace activities for new search
+        setActivities(result.activities);
+        setCurrentPage(0);
+      }
+      setHasMore(result.pagination.hasMore);
+      setTotalAvailable(result.pagination.total);
     },
     onError: (error) => {
       console.error('Frontend mutation error:', error);
@@ -87,7 +102,7 @@ export default function Results() {
   });
 
   useEffect(() => {
-    generateActivitiesMutation.mutate();
+    generateActivitiesMutation.mutate(false);
   }, []);
 
   const handleSaveActivity = (activityId: string) => {
@@ -105,7 +120,11 @@ export default function Results() {
   const handleShuffleCard = (index: number) => {
     // Generate a new activity for this position
     // For now, we'll just regenerate all activities
-    generateActivitiesMutation.mutate();
+    generateActivitiesMutation.mutate(false);
+  };
+
+  const handleLoadMore = () => {
+    generateActivitiesMutation.mutate(true);
   };
 
   const displayName = profile?.name || "you";
@@ -189,19 +208,36 @@ export default function Results() {
       {/* Action Buttons */}
       {activities.length > 0 && (
         <div className="p-6 bg-white border-t border-neutral-200 space-y-3">
+          {hasMore && (
+            <Button
+              onClick={handleLoadMore}
+              disabled={generateActivitiesMutation.isPending}
+              variant="outline"
+              className="w-full border-2 border-primary text-primary py-3 rounded-xl font-semibold hover:bg-primary/5"
+            >
+              {generateActivitiesMutation.isPending ? (
+                <>
+                  <RotateCcw className="mr-2 h-4 w-4 animate-spin" />
+                  Loading More...
+                </>
+              ) : (
+                `Show More Ideas (${activities.length}/${totalAvailable})`
+              )}
+            </Button>
+          )}
           <Button
-            onClick={() => generateActivitiesMutation.mutate()}
+            onClick={() => generateActivitiesMutation.mutate(false)}
             disabled={generateActivitiesMutation.isPending}
             variant="outline"
-            className="w-full border-2 border-primary text-primary py-3 rounded-xl font-semibold hover:bg-primary/5"
+            className="w-full border-2 border-secondary text-secondary py-3 rounded-xl font-semibold hover:bg-secondary/5"
           >
             {generateActivitiesMutation.isPending ? (
               <>
                 <RotateCcw className="mr-2 h-4 w-4 animate-spin" />
-                Generating...
+                Shuffling...
               </>
             ) : (
-              "Show More Ideas"
+              "🎲 Get Different Ideas"
             )}
           </Button>
           <Button

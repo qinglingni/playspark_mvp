@@ -5,10 +5,21 @@ export interface GenerateActivitiesRequest {
   filters: Partial<ActivityFilters>;
   interests: string[];
   age: number;
+  page?: number;
+}
+
+export interface GenerateActivitiesResponse {
+  activities: Activity[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    total: number;
+    hasMore: boolean;
+  };
 }
 
 export const activitiesService = {
-  async generateActivities(request: GenerateActivitiesRequest): Promise<Activity[]> {
+  async generateActivities(request: GenerateActivitiesRequest): Promise<GenerateActivitiesResponse> {
     const response = await apiRequest('POST', '/api/activities/generate', request);
     return response.json();
   },
