@@ -75,7 +75,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const interests = req.body.interests || [];
       const age = req.body.age || 5;
       
+      // Debug logging
+      console.log('🔍 Activity Generation Request:', {
+        filters,
+        interests,
+        age,
+        requestBody: req.body
+      });
+      
       const activities = await storage.getActivitiesByFilters(filters, interests, age);
+      
+      console.log(`📊 Found ${activities.length} matching activities for age ${age}`);
+      if (activities.length === 0) {
+        console.log('❌ No activities found - checking what activities exist for this age...');
+        const allActivities = await storage.getActivities();
+        const ageCompatible = allActivities.filter(a => 
+          a.minAge !== null && a.maxAge !== null && age >= a.minAge && age <= a.maxAge
+        );
+        console.log(`Age ${age} compatible activities: ${ageCompatible.length}`);
+        console.log('Energy levels available:', [...new Set(ageCompatible.map(a => a.energyLevel))]);
+        console.log('Locations available:', [...new Set(ageCompatible.map(a => a.location))]);
+        console.log('whoPlaying options:', [...new Set(ageCompatible.map(a => a.whoPlaying))]);
+      }
       
       // Return top 2 activities
       const selectedActivities = activities.slice(0, Math.min(2, activities.length));
