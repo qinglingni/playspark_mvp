@@ -105,33 +105,50 @@ class DatabaseStorage implements IStorage {
 
   async getActivitiesByFilters(filters: any, interests: string[], age: number): Promise<Activity[]> {
     const allActivities = await db.select().from(activities);
+    console.log(`DEBUG: Starting with ${allActivities.length} activities, filtering for age ${age}`);
+    console.log(`DEBUG: Filters:`, JSON.stringify(filters));
     
     const filtered = allActivities.filter(activity => {
+      console.log(`\n--- Checking: ${activity.title} ---`);
+      console.log(`Age: ${activity.minAge}-${activity.maxAge}, target: ${age}`);
+      console.log(`Location: ${activity.location}, filter: ${filters.location}`);
+      console.log(`Energy: ${activity.energyLevel}, filter: ${filters.energyLevel}`);
+      console.log(`WhoPlaying: ${activity.whoPlaying}, filter: ${filters.whoPlaying}`);
+      
       // Age filtering using minAge and maxAge from database
       if (activity.minAge !== null && activity.maxAge !== null) {
         if (age < activity.minAge || age > activity.maxAge) {
+          console.log(`❌ FILTERED OUT: Age mismatch`);
           return false;
         }
       }
+      console.log(`✅ Age check passed`);
       
       // Filter by who's playing
       if (filters.whoPlaying && activity.whoPlaying !== filters.whoPlaying) {
+        console.log(`❌ FILTERED OUT: whoPlaying mismatch`);
         return false;
       }
+      console.log(`✅ WhoPlaying check passed`);
       
       // Filter by energy level
       if (filters.energyLevel && activity.energyLevel !== filters.energyLevel) {
+        console.log(`❌ FILTERED OUT: energyLevel mismatch`);
         return false;
       }
+      console.log(`✅ Energy check passed`);
       
       // Filter by location
       if (filters.location && activity.location !== filters.location) {
+        console.log(`❌ FILTERED OUT: location mismatch`);
         return false;
       }
+      console.log(`✅ Location check passed`);
       
       // Filter by mess level (activity tags contain mess level)
       if (filters.messLevel) {
         if (!activity.tags?.includes(filters.messLevel)) {
+          console.log(`❌ FILTERED OUT: messLevel mismatch`);
           return false;
         }
       }
@@ -141,15 +158,18 @@ class DatabaseStorage implements IStorage {
         if (filters.materialsNeeded === 'basic') {
           // "basic" should match activities tagged with "basic" or "none"
           if (!activity.tags?.includes('basic') && !activity.tags?.includes('none')) {
+            console.log(`❌ FILTERED OUT: materialsNeeded mismatch`);
             return false;
           }
         } else {
           if (!activity.tags?.includes(filters.materialsNeeded)) {
+            console.log(`❌ FILTERED OUT: materialsNeeded mismatch`);
             return false;
           }
         }
       }
       
+      console.log(`✅ ACTIVITY PASSES ALL FILTERS: ${activity.title}`);
       return true;
     }).sort((a, b) => {
       // Prioritize activities that match interests
@@ -158,6 +178,7 @@ class DatabaseStorage implements IStorage {
       return bMatches - aMatches;
     });
 
+    console.log(`DEBUG: Final result: ${filtered.length} activities passed filters`);
     return filtered;
   }
 
