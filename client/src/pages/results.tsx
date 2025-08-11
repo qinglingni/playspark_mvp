@@ -50,12 +50,22 @@ export default function Results() {
         
 
         
+        console.log('Frontend sending filters:', filters);
+        console.log('Profile interests:', interests);
+        console.log('Child age:', age);
+        
         const result = await activitiesService.generateActivities({
           filters,
           interests,
           age
         });
         
+        console.log('Frontend received activities:', result.map(a => ({ 
+          title: a.title, 
+          whoPlaying: a.whoPlaying, 
+          energyLevel: a.energyLevel,
+          location: a.location
+        })));
 
         return result;
       } catch (error) {
