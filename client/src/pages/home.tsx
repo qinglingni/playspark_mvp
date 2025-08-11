@@ -34,7 +34,16 @@ export default function HomePage() {
   }, []);
 
   const updateFilter = (key: keyof ActivityFilters, value: any) => {
-    const newFilters = { ...filters, [key]: value };
+    const currentValue = filters[key];
+    const newFilters = { ...filters };
+    
+    // Allow deselection - if clicking the same value, remove it
+    if (currentValue === value) {
+      delete newFilters[key];
+    } else {
+      newFilters[key] = value;
+    }
+    
     setFilters(newFilters);
     localStorageService.setFilters(newFilters);
   };

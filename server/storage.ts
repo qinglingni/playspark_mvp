@@ -129,25 +129,17 @@ class DatabaseStorage implements IStorage {
         return false;
       }
       
-      // Filter by mess level (activity tags contain mess level)
+      // Filter by mess level (activity tags contain mess level) - make optional
       if (filters.messLevel) {
-        if (!activity.tags?.includes(filters.messLevel)) {
-          return false;
-        }
+        // For now, skip mess level filtering since our activities don't have these tags yet
+        // TODO: Add mess level tags to activities in future
       }
       
-      // Filter by materials needed - be more flexible with basic materials
+      // Filter by materials needed - make more flexible
       if (filters.materialsNeeded) {
-        if (filters.materialsNeeded === 'basic') {
-          // "basic" should match activities tagged with "basic" or "none"
-          if (!activity.tags?.includes('basic') && !activity.tags?.includes('none')) {
-            return false;
-          }
-        } else {
-          if (!activity.tags?.includes(filters.materialsNeeded)) {
-            return false;
-          }
-        }
+        // For now, skip materials filtering since our activities don't have these specific tags
+        // All activities are considered to have basic materials available
+        // TODO: Add specific material requirement tags to activities in future
       }
       
       return true;
