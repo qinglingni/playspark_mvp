@@ -99,8 +99,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log('whoPlaying options:', Array.from(new Set(ageCompatible.map(a => a.whoPlaying))));
       }
       
-      // Return top 2 activities
-      const selectedActivities = activities.slice(0, Math.min(2, activities.length));
+      // Shuffle activities to provide variety on repeated requests
+      const shuffledActivities = [...activities].sort(() => Math.random() - 0.5);
+      
+      // Return 3-5 activities for better variety
+      const activityCount = Math.min(Math.max(3, Math.floor(activities.length * 0.3)), 5);
+      const selectedActivities = shuffledActivities.slice(0, activityCount);
+      
+      console.log(`🎲 Returning ${selectedActivities.length} activities out of ${activities.length} available`);
       
       res.json(selectedActivities);
     } catch (error) {

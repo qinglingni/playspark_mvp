@@ -147,10 +147,16 @@ class DatabaseStorage implements IStorage {
       
       return true;
     }).sort((a, b) => {
-      // Prioritize activities that match interests
+      // Prioritize activities that match interests, but keep some randomness
       const aMatches = a.interests?.some(interest => interests.includes(interest)) ? 1 : 0;
       const bMatches = b.interests?.some(interest => interests.includes(interest)) ? 1 : 0;
-      return bMatches - aMatches;
+      
+      if (aMatches !== bMatches) {
+        return bMatches - aMatches; // Interest matches first
+      }
+      
+      // For activities with equal interest relevance, add some randomness
+      return Math.random() - 0.5;
     });
 
     return filtered;
