@@ -24,13 +24,22 @@ export const activities = pgTable("activities", {
   materials: jsonb("materials").$type<{emoji: string, name: string}[]>().notNull(),
   steps: jsonb("steps").$type<string[]>().notNull(),
   whyGreat: text("why_great").notNull(),
-  ageRange: text("age_range").notNull(),
+  ageRange: text("age_range").notNull(), // Keep for backwards compatibility
+  minAge: integer("min_age"), // New: minimum age in years
+  maxAge: integer("max_age"), // New: maximum age in years
+  developmentStage: text("development_stage"), // New: "toddler", "early-preschool", "late-preschool", "kindergarten", "early-elementary", "late-elementary"
   duration: text("duration").notNull(),
   tags: jsonb("tags").$type<string[]>().default([]),
   energyLevel: text("energy_level"),
   location: text("location"),
   whoPlaying: text("who_playing"),
   interests: jsonb("interests").$type<string[]>().default([]),
+  skillRequirements: jsonb("skill_requirements").$type<{
+    motor?: "basic" | "developing" | "advanced",
+    cognitive?: "simple" | "moderate" | "complex",
+    social?: "solo" | "parallel" | "cooperative",
+    attention?: "5min" | "15min" | "30min+"
+  }>(), // New: skill-based requirements
 });
 
 export const savedActivities = pgTable("saved_activities", {
