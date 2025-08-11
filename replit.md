@@ -4,6 +4,20 @@
 
 PlaySpark is a lightweight, just-in-time idea generator for parents to quickly find engaging, age-appropriate activities for their children. The application provides personalized activity suggestions based on child profiles (age, interests) and contextual filters (time available, energy level, location, etc.). The MVP focuses on reducing decision fatigue by surfacing 3-5 tailored activity ideas within seconds with minimal setup required.
 
+## Recent Changes (January 2025)
+
+### Database Expansion and Filter Issue Resolution
+- **Issue Identified**: Filter mismatch between frontend default filters and available activities in database
+- **Root Cause**: Frontend was sending `energyLevel: "calm"` while most 6-year-old activities had `energyLevel: "focused"`
+- **Database Expansion**: Added 9 new activities (60 → 69 total) specifically targeting missing filter combinations
+- **Coverage Improvements**: 
+  - Calm indoor activities: 1 → 6 activities
+  - Active indoor activities: 0 → 4 activities
+  - Better distribution across energy levels for ages 5-6 and 6-7
+- **Debugging Infrastructure**: Added comprehensive logging system to track filter matching and identify gaps
+- **Filter Reset**: Cleared problematic localStorage filters and set working defaults
+- **Status**: Database expanded, debugging system in place, some filtering issues may persist
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
