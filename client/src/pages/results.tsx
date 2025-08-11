@@ -48,7 +48,7 @@ export default function Results() {
         const interests = profile?.interests || [];
         const age = profile ? calculateAge(profile.birthMonth, profile.birthYear) : 5;
         
-        console.log('Frontend sending request:', { filters, interests, age });
+
         
         const result = await activitiesService.generateActivities({
           filters,
@@ -56,7 +56,7 @@ export default function Results() {
           age
         });
         
-        console.log('Frontend received raw result:', result);
+
         return result;
       } catch (error) {
         console.error('Frontend error in mutation:', error);
@@ -64,7 +64,6 @@ export default function Results() {
       }
     },
     onSuccess: (newActivities) => {
-      console.log('Frontend received activities:', newActivities.length, newActivities.map(a => a.title));
       setActivities(newActivities);
     },
     onError: (error) => {

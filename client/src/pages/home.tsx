@@ -20,9 +20,16 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    // Load saved filters from localStorage
-    const savedFilters = localStorageService.getFilters();
-    setFilters(prev => ({ ...prev, ...savedFilters }));
+    // Clear any problematic saved filters and use good defaults
+    localStorageService.clearAll();
+    const defaultFilters = {
+      allowRepeats: true,
+      whoPlaying: "together",
+      energyLevel: "focused",
+      location: "indoor"
+    };
+    setFilters(defaultFilters);
+    localStorageService.setFilters(defaultFilters);
   }, []);
 
   const updateFilter = (key: keyof ActivityFilters, value: any) => {
