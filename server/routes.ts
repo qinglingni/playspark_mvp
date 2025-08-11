@@ -43,7 +43,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Activity Routes
+  // Activity Generation Routes
+  app.post("/api/activities/analyze-gaps", async (req, res) => {
+    try {
+      const { analyzeActivityGaps } = await import("./activity-generator.js");
+      const gaps = await analyzeActivityGaps();
+      res.json(gaps);
+    } catch (error) {
+      console.error('Error analyzing gaps:', error);
+      res.status(500).json({ message: "Server error", error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  app.post("/api/activities/generate-missing", async (req, res) => {
+    try {
+      const { generateMissingActivities } = await import("./activity-generator.js");
+      const newActivities = await generateMissingActivities();
+      res.json({ 
+        message: `Generated ${newActivities.length} new activities`,
+        activities: newActivities 
+      });
+    } catch (error) {
+      console.error('Error generating missing activities:', error);
+      res.status(500).json({ message: "Server error", error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
   app.post("/api/activities/generate", async (req, res) => {
     try {
       const filters = filterSchema.parse(req.body.filters || {});
@@ -58,7 +83,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(selectedActivities);
     } catch (error) {
       console.error('Error generating activities:', error);
-      res.status(500).json({ message: "Server error", error: error.message });
+      res.status(500).json({ message: "Server error", error: error instanceof Error ? error.message : 'Unknown error' });
     }
   });
 

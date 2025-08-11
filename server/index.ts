@@ -1,6 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { registerClaudeRoutes } from "./claudeRoutes";
+
 import { setupVite, serveStatic, log } from "./vite";
 import { seedDatabase } from "./seed";
 
@@ -44,9 +44,8 @@ app.use((req, res, next) => {
   
   const server = await registerRoutes(app);
   
-  // Register Claude AI routes if API key is available
+  // Claude AI integration available via new routes in registerRoutes
   if (process.env.ANTHROPIC_API_KEY) {
-    registerClaudeRoutes(app);
     log("Claude AI integration enabled");
   } else {
     log("Claude AI integration disabled (no API key)");

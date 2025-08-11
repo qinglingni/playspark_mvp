@@ -1,94 +1,88 @@
 import Anthropic from '@anthropic-ai/sdk';
 
-// Initialize Claude client
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-export async function generateActivityIdeas(age: number, interests: string[], preferences: any) {
-  try {
-    const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 1000,
-      temperature: 0.7,
-      messages: [
-        {
-          role: 'user',
-          content: `Generate 3 creative activity ideas for a ${age}-year-old child who likes ${interests.join(', ')}. 
-          
-          Preferences: ${JSON.stringify(preferences)}
-          
-          Return as JSON array with this format:
-          [{
-            "title": "Activity Name",
-            "materials": [{"emoji": "🎨", "name": "item"}],
-            "steps": ["step1", "step2", "step3"],
-            "whyGreat": "Brief explanation",
-            "duration": "30 min",
-            "energyLevel": "active|calm|focused|silly"
-          }]`
-        }
-      ]
-    });
-
-    const content = message.content[0].type === 'text' ? message.content[0].text : '';
-    return JSON.parse(content);
-  } catch (error) {
-    console.error('Error calling Claude API:', error);
-    throw error;
-  }
+interface ActivityRequest {
+  ageRange: string;
+  energyLevel: string;
+  location: string;
+  whoPlaying: string;
+  interests: string[];
+  count: number;
 }
 
-export async function explainActivity(activity: any, childAge: number) {
-  try {
-    const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 500,
-      temperature: 0.5,
-      messages: [
-        {
-          role: 'user',
-          content: `Explain this activity in simple terms a parent can use with a ${childAge}-year-old:
-          
-          Activity: ${activity.title}
-          Steps: ${activity.steps.join(', ')}
-          
-          Provide a fun, engaging explanation that makes the child excited to try it.`
-        }
-      ]
-    });
+export async function generateActivitiesWithClaude(request: ActivityRequest) {
+  const prompt = `Generate ${request.count} age-appropriate activities for children aged ${request.ageRange} with the following requirements:
 
-    return message.content[0].type === 'text' ? message.content[0].text : '';
-  } catch (error) {
-    console.error('Error calling Claude API:', error);
-    throw error;
+- Energy level: ${request.energyLevel}
+- Location: ${request.location}
+- Who's playing: ${request.whoPlaying}
+- Interests: ${request.interests.join(', ')}
+
+For each activity, provide:
+1. Title (engaging and age-appropriate)
+2. Materials needed (3-4 items with emoji and name)
+3. Steps (3 clear, simple steps)
+4. Why it's great (educational benefit in one sentence)
+5. Duration (realistic time estimate)
+6. Tags (3-4 relevant tags)
+
+Format as valid JSON array with this exact structure:
+[
+  {
+    "title": "Activity Name",
+    "materials": [
+      {"emoji": "🎨", "name": "Item name"},
+      {"emoji": "📄", "name": "Another item"}
+    ],
+    "steps": [
+      "First step instruction",
+      "Second step instruction", 
+      "Third step instruction"
+    ],
+    "whyGreat": "Educational benefit explanation.",
+    "ageRange": "${request.ageRange}",
+    "minAge": ${request.ageRange.split('-')[0]},
+    "maxAge": ${request.ageRange.split('-')[1]},
+    "developmentStage": "${request.ageRange === '5-6' ? 'kindergarten' : 'early-elementary'}",
+    "duration": "XX min",
+    "tags": ["tag1", "tag2", "tag3", "${request.ageRange === '5-6' ? 'kindergarten' : 'early-elementary'}"],
+    "energyLevel": "${request.energyLevel}",
+    "location": "${request.location}",
+    "whoPlaying": "${request.whoPlaying}",
+    "interests": ${JSON.stringify(request.interests)},
+    "skillRequirements": null
   }
-}
+]
 
-export async function adaptActivityForAge(activity: any, newAge: number) {
+Make activities engaging, safe, and developmentally appropriate. Focus on activities that match the exact energy level requested.`;
+
   try {
-    const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 800,
-      temperature: 0.6,
+    const response = await anthropic.messages.create({
+      model: 'claude-3-sonnet-20240229',
+      max_tokens: 4000,
       messages: [
         {
           role: 'user',
-          content: `Adapt this activity for a ${newAge}-year-old child:
-          
-          Original activity: ${JSON.stringify(activity)}
-          
-          Modify the steps, materials, and complexity to be appropriate for a ${newAge}-year-old's developmental stage.
-          
-          Return as JSON with the same format as the original.`
+          content: prompt
         }
       ]
     });
 
-    const content = message.content[0].type === 'text' ? message.content[0].text : '';
-    return JSON.parse(content);
+    const content = response.content[0];
+    if (content.type === 'text') {
+      // Extract JSON from the response
+      const jsonMatch = content.text.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        return JSON.parse(jsonMatch[0]);
+      }
+    }
+    
+    throw new Error('Failed to extract valid JSON from Claude response');
   } catch (error) {
-    console.error('Error calling Claude API:', error);
+    console.error('Error generating activities with Claude:', error);
     throw error;
   }
 }
