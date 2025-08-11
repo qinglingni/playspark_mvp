@@ -8,14 +8,15 @@ const seedActivities = [
     materials: [
       { emoji: "📄", name: "Paper" },
       { emoji: "✏️", name: "Crayons" },
-      { emoji: "📏", name: "Ruler" }
+      { emoji: "📏", name: "Ruler" },
     ],
     steps: [
       "Fold different types of paper airplanes together",
-      "Decorate each plane with unique designs", 
-      "Test which plane flies the farthest!"
+      "Decorate each plane with unique designs",
+      "Test which plane flies the farthest!",
     ],
-    whyGreat: "Combines creativity with science! Kids learn about aerodynamics while expressing their artistic side.",
+    whyGreat:
+      "Combines creativity with science! Kids learn about aerodynamics while expressing their artistic side.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -26,24 +27,25 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Finger Paint Masterpiece",
     materials: [
       { emoji: "🎨", name: "Washable finger paints" },
       { emoji: "📄", name: "Large paper" },
-      { emoji: "🧽", name: "Wet wipes" }
+      { emoji: "🧽", name: "Wet wipes" },
     ],
     steps: [
       "Set up painting station with newspaper",
       "Let creativity flow with finger painting",
-      "Create abstract art or try handprint animals!"
+      "Create abstract art or try handprint animals!",
     ],
-    whyGreat: "Develops fine motor skills and creativity while providing sensory exploration.",
-    ageRange: "2-6",
+    whyGreat:
+      "Develops fine motor skills and creativity while providing sensory exploration.",
+    ageRange: "2-5",
     minAge: 2,
-    maxAge: 6,
+    maxAge: 5,
     developmentStage: "early-preschool",
     duration: "45 min",
     tags: ["arts", "creative", "sensory", "messy", "special"],
@@ -51,21 +53,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "DIY Playdough Sculptures",
     materials: [
       { emoji: "🧴", name: "Flour, salt, water" },
       { emoji: "🎨", name: "Food coloring" },
-      { emoji: "🔪", name: "Plastic tools" }
+      { emoji: "🔪", name: "Plastic tools" },
     ],
     steps: [
       "Make homemade playdough together",
       "Add different colors with food coloring",
-      "Sculpt animals, food, or imaginary creatures!"
+      "Sculpt animals, food, or imaginary creatures!",
     ],
-    whyGreat: "Combines cooking chemistry with artistic expression and fine motor development.",
+    whyGreat:
+      "Combines cooking chemistry with artistic expression and fine motor development.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -76,7 +79,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Collage Creation Station",
@@ -84,14 +87,15 @@ const seedActivities = [
       { emoji: "📰", name: "Old magazines" },
       { emoji: "✂️", name: "Safety scissors" },
       { emoji: "🖊️", name: "Glue stick" },
-      { emoji: "📄", name: "Construction paper" }
+      { emoji: "📄", name: "Construction paper" },
     ],
     steps: [
       "Cut out interesting pictures from magazines",
       "Arrange pictures to tell a story or create art",
-      "Glue everything down and add drawings!"
+      "Glue everything down and add drawings!",
     ],
-    whyGreat: "Develops cutting skills, creativity, and storytelling while recycling materials.",
+    whyGreat:
+      "Develops cutting skills, creativity, and storytelling while recycling materials.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -102,7 +106,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Nature Art Collection",
@@ -110,14 +114,15 @@ const seedActivities = [
       { emoji: "🍃", name: "Leaves and flowers" },
       { emoji: "🪨", name: "Smooth rocks" },
       { emoji: "🎨", name: "Washable markers" },
-      { emoji: "📄", name: "Contact paper" }
+      { emoji: "📄", name: "Contact paper" },
     ],
     steps: [
       "Collect beautiful natural items outdoors",
       "Create art by arranging or decorating them",
-      "Make nature suncatchers with contact paper!"
+      "Make nature suncatchers with contact paper!",
     ],
-    whyGreat: "Connects art with nature while developing observation and arrangement skills.",
+    whyGreat:
+      "Connects art with nature while developing observation and arrangement skills.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -128,7 +133,7 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["arts", "outdoor"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Drawing & Coloring Studio",
@@ -136,14 +141,15 @@ const seedActivities = [
       { emoji: "📄", name: "Paper" },
       { emoji: "🖍️", name: "Crayons or colored pencils" },
       { emoji: "📚", name: "Coloring books" },
-      { emoji: "📏", name: "Stencils" }
+      { emoji: "📏", name: "Stencils" },
     ],
     steps: [
       "Set up a quiet drawing space",
       "Choose between free drawing or coloring books",
-      "Create masterpieces while chatting quietly"
+      "Create masterpieces while chatting quietly",
     ],
-    whyGreat: "Develops fine motor skills, creativity, and provides peaceful, focused activity time.",
+    whyGreat:
+      "Develops fine motor skills, creativity, and provides peaceful, focused activity time.",
     ageRange: "2-8",
     minAge: 2,
     maxAge: 8,
@@ -154,7 +160,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Comic Strip Creator",
@@ -162,14 +168,15 @@ const seedActivities = [
       { emoji: "📄", name: "Paper" },
       { emoji: "✏️", name: "Pencils and crayons" },
       { emoji: "📏", name: "Ruler" },
-      { emoji: "💭", name: "Creative ideas" }
+      { emoji: "💭", name: "Creative ideas" },
     ],
     steps: [
       "Draw boxes to create comic panels",
       "Create characters and a simple story",
-      "Add speech bubbles and colorful illustrations!"
+      "Add speech bubbles and colorful illustrations!",
     ],
-    whyGreat: "Combines storytelling, art, and sequential thinking in a creative format kids love.",
+    whyGreat:
+      "Combines storytelling, art, and sequential thinking in a creative format kids love.",
     ageRange: "5-8",
     minAge: 5,
     maxAge: 8,
@@ -180,7 +187,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "reading"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Rock Painting Art",
@@ -188,14 +195,15 @@ const seedActivities = [
       { emoji: "🪨", name: "Smooth rocks" },
       { emoji: "🎨", name: "Acrylic paints" },
       { emoji: "🖌️", name: "Small brushes" },
-      { emoji: "✨", name: "Glitter (optional)" }
+      { emoji: "✨", name: "Glitter (optional)" },
     ],
     steps: [
       "Clean and dry smooth rocks",
       "Paint designs, animals, or patterns",
-      "Let dry and display your rock art!"
+      "Let dry and display your rock art!",
     ],
-    whyGreat: "Creates lasting art pieces while practicing fine motor skills and color mixing.",
+    whyGreat:
+      "Creates lasting art pieces while practicing fine motor skills and color mixing.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -206,7 +214,7 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["arts", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Paper Plate Masks",
@@ -214,14 +222,15 @@ const seedActivities = [
       { emoji: "🍽️", name: "Paper plates" },
       { emoji: "🎨", name: "Paints or markers" },
       { emoji: "✂️", name: "Safety scissors" },
-      { emoji: "🧵", name: "String or elastic" }
+      { emoji: "🧵", name: "String or elastic" },
     ],
     steps: [
       "Cut eye holes in paper plates",
       "Decorate to make animal or character faces",
-      "Attach string and wear your creations!"
+      "Attach string and wear your creations!",
     ],
-    whyGreat: "Encourages imaginative play while developing cutting and decorating skills.",
+    whyGreat:
+      "Encourages imaginative play while developing cutting and decorating skills.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -232,7 +241,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Handprint Art Gallery",
@@ -240,14 +249,15 @@ const seedActivities = [
       { emoji: "🎨", name: "Washable paint" },
       { emoji: "📄", name: "Large paper" },
       { emoji: "🖌️", name: "Brushes for details" },
-      { emoji: "🧽", name: "Cleanup supplies" }
+      { emoji: "🧽", name: "Cleanup supplies" },
     ],
     steps: [
       "Dip hands in paint and make prints on paper",
       "Turn handprints into animals, flowers, or trees",
-      "Add details with brushes to complete the art!"
+      "Add details with brushes to complete the art!",
     ],
-    whyGreat: "Creates meaningful keepsakes while exploring color mixing and creative transformation.",
+    whyGreat:
+      "Creates meaningful keepsakes while exploring color mixing and creative transformation.",
     ageRange: "2-6",
     minAge: 2,
     maxAge: 6,
@@ -258,7 +268,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Crayon Resist Art",
@@ -266,14 +276,15 @@ const seedActivities = [
       { emoji: "🖍️", name: "White or light crayons" },
       { emoji: "🎨", name: "Watercolor paints" },
       { emoji: "🖌️", name: "Paintbrushes" },
-      { emoji: "📄", name: "Paper" }
+      { emoji: "📄", name: "Paper" },
     ],
     steps: [
       "Draw with white crayon on white paper",
       "Paint over the entire paper with watercolors",
-      "Watch your hidden drawings magically appear!"
+      "Watch your hidden drawings magically appear!",
     ],
-    whyGreat: "Teaches about art techniques while creating magical reveal effects kids love.",
+    whyGreat:
+      "Teaches about art techniques while creating magical reveal effects kids love.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -284,7 +295,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Texture Rubbing Art",
@@ -292,14 +303,15 @@ const seedActivities = [
       { emoji: "📄", name: "Thin paper" },
       { emoji: "🖍️", name: "Crayons" },
       { emoji: "🍃", name: "Textured objects (leaves, coins)" },
-      { emoji: "📏", name: "Tape" }
+      { emoji: "📏", name: "Tape" },
     ],
     steps: [
       "Place textured objects under paper",
       "Rub over paper with crayons to reveal textures",
-      "Combine different textures to make art!"
+      "Combine different textures to make art!",
     ],
-    whyGreat: "Discovers hidden textures while practicing observation and art techniques.",
+    whyGreat:
+      "Discovers hidden textures while practicing observation and art techniques.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -310,7 +322,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["arts", "science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // ACTIVE & MOVEMENT ACTIVITIES (10 activities)
@@ -320,14 +332,15 @@ const seedActivities = [
       { emoji: "🪑", name: "Chairs" },
       { emoji: "🛏️", name: "Pillows" },
       { emoji: "📦", name: "Boxes" },
-      { emoji: "🧸", name: "Stuffed animals" }
+      { emoji: "🧸", name: "Stuffed animals" },
     ],
     steps: [
       "Set up obstacles using furniture and pillows",
       "Create challenges: crawl under, jump over, balance",
-      "Time runs and celebrate improvements!"
+      "Time runs and celebrate improvements!",
     ],
-    whyGreat: "Develops gross motor skills, problem-solving, and provides great energy release.",
+    whyGreat:
+      "Develops gross motor skills, problem-solving, and provides great energy release.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -338,20 +351,21 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["sports", "active"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Dance Party Freeze",
     materials: [
       { emoji: "🎵", name: "Music" },
-      { emoji: "📱", name: "Speaker or phone" }
+      { emoji: "📱", name: "Speaker or phone" },
     ],
     steps: [
       "Play upbeat music and dance together",
       "When music stops, everyone must freeze like statues",
-      "Make silly faces and poses while frozen!"
+      "Make silly faces and poses while frozen!",
     ],
-    whyGreat: "Gets energy out, improves listening skills, and provides great physical exercise in a fun way.",
+    whyGreat:
+      "Gets energy out, improves listening skills, and provides great physical exercise in a fun way.",
     ageRange: "2-6",
     minAge: 2,
     maxAge: 6,
@@ -362,20 +376,21 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["music", "movement"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Balloon Keep-Up Challenge",
     materials: [
       { emoji: "🎈", name: "Balloons" },
-      { emoji: "⏰", name: "Timer" }
+      { emoji: "⏰", name: "Timer" },
     ],
     steps: [
       "Blow up several balloons",
       "Challenge: keep all balloons in the air",
-      "Count how long you can keep them up!"
+      "Count how long you can keep them up!",
     ],
-    whyGreat: "Improves hand-eye coordination, teamwork, and provides gentle active play.",
+    whyGreat:
+      "Improves hand-eye coordination, teamwork, and provides gentle active play.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -386,21 +401,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["sports", "games"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Outdoor Treasure Hunt",
     materials: [
       { emoji: "🗺️", name: "Paper for clues" },
       { emoji: "🎁", name: "Small prize" },
-      { emoji: "✏️", name: "Pen" }
+      { emoji: "✏️", name: "Pen" },
     ],
     steps: [
       "Write simple clues that lead around the yard",
       "Hide clues in different outdoor spots",
-      "Guide your child as they solve each clue to find the treasure!"
+      "Guide your child as they solve each clue to find the treasure!",
     ],
-    whyGreat: "Builds problem-solving skills and reading comprehension while enjoying fresh air.",
+    whyGreat:
+      "Builds problem-solving skills and reading comprehension while enjoying fresh air.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -411,21 +427,22 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["adventure", "puzzles"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Nature Scavenger Hunt",
     materials: [
       { emoji: "📝", name: "List of items to find" },
       { emoji: "🧺", name: "Collection bag" },
-      { emoji: "📷", name: "Camera" }
+      { emoji: "📷", name: "Camera" },
     ],
     steps: [
       "Create a list of natural items to find (leaves, rocks, flowers)",
       "Explore outside together searching for each item",
-      "Discuss what you find and maybe take photos!"
+      "Discuss what you find and maybe take photos!",
     ],
-    whyGreat: "Encourages exploration, observation skills, and connection with nature while getting fresh air.",
+    whyGreat:
+      "Encourages exploration, observation skills, and connection with nature while getting fresh air.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -436,21 +453,22 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["science", "outdoor"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Simple Ball Games",
     materials: [
       { emoji: "⚽", name: "Various balls" },
       { emoji: "🥅", name: "Target (bucket or cone)" },
-      { emoji: "📏", name: "Measuring tape" }
+      { emoji: "📏", name: "Measuring tape" },
     ],
     steps: [
       "Practice throwing balls at targets",
       "Try rolling, bouncing, and catching games",
-      "Make up new ball game rules together!"
+      "Make up new ball game rules together!",
     ],
-    whyGreat: "Develops hand-eye coordination, gross motor skills, and provides great exercise.",
+    whyGreat:
+      "Develops hand-eye coordination, gross motor skills, and provides great exercise.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -461,21 +479,22 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["sports", "active"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Yoga Adventure Stories",
     materials: [
       { emoji: "🧘", name: "Yoga mat or soft surface" },
       { emoji: "📚", name: "Story book with animals" },
-      { emoji: "🎵", name: "Calm music" }
+      { emoji: "🎵", name: "Calm music" },
     ],
     steps: [
       "Read a story and act out animal poses",
       "Practice tree pose, downward dog, butterfly",
-      "End with quiet relaxation time"
+      "End with quiet relaxation time",
     ],
-    whyGreat: "Builds flexibility, body awareness, and calm focus through movement and storytelling.",
+    whyGreat:
+      "Builds flexibility, body awareness, and calm focus through movement and storytelling.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -486,21 +505,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["movement", "reading"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Hopscotch Variations",
     materials: [
       { emoji: "🎨", name: "Sidewalk chalk" },
       { emoji: "🪨", name: "Small rock or bean bag" },
-      { emoji: "📐", name: "Measuring space" }
+      { emoji: "📐", name: "Measuring space" },
     ],
     steps: [
       "Draw hopscotch grid with chalk",
       "Take turns hopping through the course",
-      "Try different variations and patterns!"
+      "Try different variations and patterns!",
     ],
-    whyGreat: "Develops balance, coordination, and number recognition in classic active play.",
+    whyGreat:
+      "Develops balance, coordination, and number recognition in classic active play.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -511,20 +531,21 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["sports", "math"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Follow the Leader Adventure",
     materials: [
       { emoji: "👥", name: "Space to move" },
-      { emoji: "🎵", name: "Music (optional)" }
+      { emoji: "🎵", name: "Music (optional)" },
     ],
     steps: [
       "Take turns being the leader",
       "Create silly walks, jumps, and movements",
-      "Others copy the leader's actions exactly!"
+      "Others copy the leader's actions exactly!",
     ],
-    whyGreat: "Develops leadership skills, body awareness, and creative movement expression.",
+    whyGreat:
+      "Develops leadership skills, body awareness, and creative movement expression.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -535,7 +556,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["movement", "games"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Backyard Olympics",
@@ -543,14 +564,15 @@ const seedActivities = [
       { emoji: "🏃", name: "Open space" },
       { emoji: "⏰", name: "Timer" },
       { emoji: "🏅", name: "Homemade medals" },
-      { emoji: "📏", name: "Measuring tape" }
+      { emoji: "📏", name: "Measuring tape" },
     ],
     steps: [
       "Set up different athletic challenges",
       "Try jumping, running, balancing events",
-      "Award medals for participation and effort!"
+      "Award medals for participation and effort!",
     ],
-    whyGreat: "Builds athletic skills, healthy competition, and celebrates effort over winning.",
+    whyGreat:
+      "Builds athletic skills, healthy competition, and celebrates effort over winning.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -561,7 +583,7 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["sports", "active"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // SCIENCE & LEARNING ACTIVITIES (8 activities)
@@ -570,14 +592,15 @@ const seedActivities = [
     materials: [
       { emoji: "🧪", name: "Baking soda" },
       { emoji: "🍋", name: "Vinegar" },
-      { emoji: "🎨", name: "Food coloring" }
+      { emoji: "🎨", name: "Food coloring" },
     ],
     steps: [
       "Mix baking soda and vinegar to create fizzing reactions",
       "Add food coloring for colorful eruptions",
-      "Discuss what's happening scientifically"
+      "Discuss what's happening scientifically",
     ],
-    whyGreat: "Introduces basic chemistry concepts in a safe, hands-on way that kids love!",
+    whyGreat:
+      "Introduces basic chemistry concepts in a safe, hands-on way that kids love!",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -588,7 +611,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Rainbow Water Experiment",
@@ -597,14 +620,15 @@ const seedActivities = [
       { emoji: "🍯", name: "Honey" },
       { emoji: "🧂", name: "Salt water" },
       { emoji: "🛢️", name: "Cooking oil" },
-      { emoji: "🎨", name: "Food coloring" }
+      { emoji: "🎨", name: "Food coloring" },
     ],
     steps: [
       "Layer different density liquids in a glass",
       "Add food coloring to make it colorful",
-      "Watch how they separate and discuss density!"
+      "Watch how they separate and discuss density!",
     ],
-    whyGreat: "Teaches density and layering while creating a beautiful visual experiment.",
+    whyGreat:
+      "Teaches density and layering while creating a beautiful visual experiment.",
     ageRange: "5-8",
     minAge: 5,
     maxAge: 8,
@@ -615,7 +639,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Plant Growing Investigation",
@@ -623,14 +647,15 @@ const seedActivities = [
       { emoji: "🌱", name: "Seeds (beans work great)" },
       { emoji: "🥛", name: "Clear containers" },
       { emoji: "💧", name: "Water" },
-      { emoji: "📝", name: "Growth chart" }
+      { emoji: "📝", name: "Growth chart" },
     ],
     steps: [
       "Plant seeds in different conditions (light/dark, water/no water)",
       "Make predictions about which will grow best",
-      "Track growth daily and discuss observations!"
+      "Track growth daily and discuss observations!",
     ],
-    whyGreat: "Teaches scientific method, patience, and plant biology through hands-on observation.",
+    whyGreat:
+      "Teaches scientific method, patience, and plant biology through hands-on observation.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -641,7 +666,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science", "nature"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Magnet Discovery Lab",
@@ -649,14 +674,15 @@ const seedActivities = [
       { emoji: "🧲", name: "Magnets" },
       { emoji: "📎", name: "Various small objects" },
       { emoji: "📝", name: "Chart paper" },
-      { emoji: "🔍", name: "Magnifying glass" }
+      { emoji: "🔍", name: "Magnifying glass" },
     ],
     steps: [
       "Gather objects from around the house",
       "Test which items are magnetic",
-      "Sort and chart your discoveries!"
+      "Sort and chart your discoveries!",
     ],
-    whyGreat: "Introduces physics concepts while encouraging hypothesis testing and classification.",
+    whyGreat:
+      "Introduces physics concepts while encouraging hypothesis testing and classification.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -667,7 +693,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Weather Scientist",
@@ -675,14 +701,15 @@ const seedActivities = [
       { emoji: "🌡️", name: "Thermometer" },
       { emoji: "📝", name: "Weather journal" },
       { emoji: "☔", name: "Rain gauge (cup)" },
-      { emoji: "🎏", name: "Wind sock or ribbon" }
+      { emoji: "🎏", name: "Wind sock or ribbon" },
     ],
     steps: [
       "Check temperature, wind, and precipitation daily",
       "Record observations in weather journal",
-      "Make predictions about tomorrow's weather!"
+      "Make predictions about tomorrow's weather!",
     ],
-    whyGreat: "Builds observation skills, data collection, and understanding of weather patterns.",
+    whyGreat:
+      "Builds observation skills, data collection, and understanding of weather patterns.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -693,7 +720,7 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["science", "nature"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Shadow Science Theater",
@@ -701,14 +728,15 @@ const seedActivities = [
       { emoji: "🔦", name: "Flashlight" },
       { emoji: "📄", name: "White wall or sheet" },
       { emoji: "✋", name: "Hands and objects" },
-      { emoji: "📏", name: "Measuring tape" }
+      { emoji: "📏", name: "Measuring tape" },
     ],
     steps: [
       "Use flashlight to create shadows on wall",
       "Experiment with distance to change shadow size",
-      "Create shadow puppet shows!"
+      "Create shadow puppet shows!",
     ],
-    whyGreat: "Teaches light, shadow, and distance concepts through playful experimentation.",
+    whyGreat:
+      "Teaches light, shadow, and distance concepts through playful experimentation.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -719,7 +747,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Float or Sink Lab",
@@ -727,14 +755,15 @@ const seedActivities = [
       { emoji: "🛁", name: "Large container of water" },
       { emoji: "📦", name: "Various objects to test" },
       { emoji: "📝", name: "Prediction chart" },
-      { emoji: "🧽", name: "Towels for cleanup" }
+      { emoji: "🧽", name: "Towels for cleanup" },
     ],
     steps: [
       "Collect objects from around the house",
       "Predict which will float or sink",
-      "Test each object and record results!"
+      "Test each object and record results!",
     ],
-    whyGreat: "Introduces density concepts while practicing prediction and data recording.",
+    whyGreat:
+      "Introduces density concepts while practicing prediction and data recording.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -745,7 +774,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Color Mixing Laboratory",
@@ -753,14 +782,15 @@ const seedActivities = [
       { emoji: "🎨", name: "Primary color paints" },
       { emoji: "🥛", name: "Clear containers" },
       { emoji: "💧", name: "Water" },
-      { emoji: "📝", name: "Color chart" }
+      { emoji: "📝", name: "Color chart" },
     ],
     steps: [
       "Start with red, blue, and yellow",
       "Mix different combinations to create new colors",
-      "Record discoveries on color chart!"
+      "Record discoveries on color chart!",
     ],
-    whyGreat: "Teaches color theory and scientific observation through artistic experimentation.",
+    whyGreat:
+      "Teaches color theory and scientific observation through artistic experimentation.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -771,7 +801,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science", "arts"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // GAMES & PUZZLES (8 activities)
@@ -779,14 +809,15 @@ const seedActivities = [
     title: "Memory Card Match Game",
     materials: [
       { emoji: "🃏", name: "Deck of cards or memory cards" },
-      { emoji: "🧠", name: "Memory skills" }
+      { emoji: "🧠", name: "Memory skills" },
     ],
     steps: [
       "Lay out 8-16 cards face down in a grid",
       "Take turns flipping two cards to find matches",
-      "Keep matches when you find pairs!"
+      "Keep matches when you find pairs!",
     ],
-    whyGreat: "Improves memory, concentration, and turn-taking skills in a classic game format.",
+    whyGreat:
+      "Improves memory, concentration, and turn-taking skills in a classic game format.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -797,20 +828,21 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["games"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Puzzle Challenge Time",
     materials: [
       { emoji: "🧩", name: "Age-appropriate puzzles" },
-      { emoji: "⏰", name: "Timer" }
+      { emoji: "⏰", name: "Timer" },
     ],
     steps: [
       "Choose a puzzle suitable for your child's age",
       "Work together to complete it",
-      "Try timing yourselves for an extra challenge!"
+      "Try timing yourselves for an extra challenge!",
     ],
-    whyGreat: "Develops problem-solving skills, patience, and fine motor coordination.",
+    whyGreat:
+      "Develops problem-solving skills, patience, and fine motor coordination.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -821,20 +853,21 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["puzzles"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Board Game Adventure",
     materials: [
       { emoji: "🎲", name: "Age-appropriate board game" },
-      { emoji: "⭐", name: "Game pieces" }
+      { emoji: "⭐", name: "Game pieces" },
     ],
     steps: [
       "Choose a game suitable for your child's age",
       "Take turns and follow the rules together",
-      "Celebrate wins and good sportsmanship!"
+      "Celebrate wins and good sportsmanship!",
     ],
-    whyGreat: "Teaches rules, strategy, patience, and social skills in a structured, fun way.",
+    whyGreat:
+      "Teaches rules, strategy, patience, and social skills in a structured, fun way.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -845,20 +878,21 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "group",
     interests: ["games"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Hide and Seek Detective",
     materials: [
       { emoji: "🔍", name: "Detective mindset" },
-      { emoji: "🏠", name: "Safe hiding spaces" }
+      { emoji: "🏠", name: "Safe hiding spaces" },
     ],
     steps: [
       "Take turns being the seeker and hider",
       "Count to 20 while the other person hides",
-      "Use clues and detective skills to find each other!"
+      "Use clues and detective skills to find each other!",
     ],
-    whyGreat: "Builds spatial awareness, counting skills, and provides exciting active play.",
+    whyGreat:
+      "Builds spatial awareness, counting skills, and provides exciting active play.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -869,20 +903,21 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["games", "adventure"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "I Spy Discovery Game",
     materials: [
       { emoji: "👀", name: "Observation skills" },
-      { emoji: "🏠", name: "Room to explore" }
+      { emoji: "🏠", name: "Room to explore" },
     ],
     steps: [
       "One person spots something and gives color/shape clues",
       "Others guess what the mystery object is",
-      "Take turns being the spy!"
+      "Take turns being the spy!",
     ],
-    whyGreat: "Develops observation skills, vocabulary, and attention to detail.",
+    whyGreat:
+      "Develops observation skills, vocabulary, and attention to detail.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -893,21 +928,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["games", "language"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Pattern Block Design",
     materials: [
       { emoji: "🔶", name: "Pattern blocks or shapes" },
       { emoji: "📄", name: "Paper for designs" },
-      { emoji: "📏", name: "Pattern cards" }
+      { emoji: "📏", name: "Pattern cards" },
     ],
     steps: [
       "Use shapes to copy pattern cards",
       "Create your own unique designs",
-      "Challenge each other with new patterns!"
+      "Challenge each other with new patterns!",
     ],
-    whyGreat: "Builds spatial reasoning, pattern recognition, and mathematical thinking.",
+    whyGreat:
+      "Builds spatial reasoning, pattern recognition, and mathematical thinking.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -918,20 +954,21 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["math", "puzzles"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Rhyming Word Games",
     materials: [
       { emoji: "📚", name: "Word list or picture cards" },
-      { emoji: "🎵", name: "Singing voice" }
+      { emoji: "🎵", name: "Singing voice" },
     ],
     steps: [
       "Start with a simple word like 'cat'",
       "Take turns finding words that rhyme",
-      "Make up silly songs with rhyming words!"
+      "Make up silly songs with rhyming words!",
     ],
-    whyGreat: "Develops phonemic awareness, vocabulary, and language skills through wordplay.",
+    whyGreat:
+      "Develops phonemic awareness, vocabulary, and language skills through wordplay.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -942,21 +979,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["language", "music"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Number Hunt Adventure",
     materials: [
       { emoji: "🔢", name: "Number cards or sticky notes" },
       { emoji: "🏠", name: "House or yard to explore" },
-      { emoji: "📝", name: "Recording sheet" }
+      { emoji: "📝", name: "Recording sheet" },
     ],
     steps: [
       "Hide numbers around the house or yard",
       "Search for numbers in order from 1-10",
-      "Practice counting and number recognition!"
+      "Practice counting and number recognition!",
     ],
-    whyGreat: "Makes math learning active while practicing number recognition and sequencing.",
+    whyGreat:
+      "Makes math learning active while practicing number recognition and sequencing.",
     ageRange: "3-6",
     minAge: 3,
     maxAge: 6,
@@ -967,7 +1005,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["math", "games"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // BUILDING & CONSTRUCTION (5 activities)
@@ -976,14 +1014,15 @@ const seedActivities = [
     materials: [
       { emoji: "🧱", name: "LEGO or building blocks" },
       { emoji: "📐", name: "Ruler" },
-      { emoji: "💡", name: "Creative challenges" }
+      { emoji: "💡", name: "Creative challenges" },
     ],
     steps: [
       "Challenge: build the tallest tower possible",
       "Try different designs and test stability",
-      "Create vehicles, animals, or dream houses!"
+      "Create vehicles, animals, or dream houses!",
     ],
-    whyGreat: "Enhances spatial reasoning, engineering thinking, and problem-solving skills.",
+    whyGreat:
+      "Enhances spatial reasoning, engineering thinking, and problem-solving skills.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -994,7 +1033,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "alone",
     interests: ["creative", "puzzles"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Blanket Fort Engineering",
@@ -1002,14 +1041,15 @@ const seedActivities = [
       { emoji: "🛏️", name: "Blankets" },
       { emoji: "🪑", name: "Chairs" },
       { emoji: "📚", name: "Heavy books" },
-      { emoji: "💡", name: "Flashlight" }
+      { emoji: "💡", name: "Flashlight" },
     ],
     steps: [
       "Use chairs and furniture as fort supports",
       "Drape blankets to create walls and roof",
-      "Add flashlights and make it cozy inside!"
+      "Add flashlights and make it cozy inside!",
     ],
-    whyGreat: "Develops spatial reasoning, engineering skills, and creates a special play space.",
+    whyGreat:
+      "Develops spatial reasoning, engineering skills, and creates a special play space.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1020,7 +1060,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["creative", "building"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Cardboard City Builder",
@@ -1028,14 +1068,15 @@ const seedActivities = [
       { emoji: "📦", name: "Cardboard boxes" },
       { emoji: "✂️", name: "Safety scissors" },
       { emoji: "🎨", name: "Markers or paint" },
-      { emoji: "📏", name: "Tape" }
+      { emoji: "📏", name: "Tape" },
     ],
     steps: [
       "Cut windows and doors in cardboard boxes",
       "Decorate to make houses, stores, or vehicles",
-      "Connect everything to build a mini city!"
+      "Connect everything to build a mini city!",
     ],
-    whyGreat: "Encourages creative construction, planning, and imaginative play with recycled materials.",
+    whyGreat:
+      "Encourages creative construction, planning, and imaginative play with recycled materials.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1046,7 +1087,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["creative", "building"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Marble Run Construction",
@@ -1054,14 +1095,15 @@ const seedActivities = [
       { emoji: "🥫", name: "Toilet paper tubes" },
       { emoji: "📏", name: "Tape" },
       { emoji: "⚽", name: "Marbles or small balls" },
-      { emoji: "📦", name: "Cardboard backing" }
+      { emoji: "📦", name: "Cardboard backing" },
     ],
     steps: [
       "Tape tubes to cardboard to create tracks",
       "Test different angles and paths",
-      "Race marbles down your custom track!"
+      "Race marbles down your custom track!",
     ],
-    whyGreat: "Teaches physics concepts like gravity and momentum through hands-on construction.",
+    whyGreat:
+      "Teaches physics concepts like gravity and momentum through hands-on construction.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1072,7 +1114,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["science", "building"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Stick and Clay Sculptures",
@@ -1080,14 +1122,15 @@ const seedActivities = [
       { emoji: "🌿", name: "Sticks and twigs" },
       { emoji: "🏺", name: "Modeling clay" },
       { emoji: "🍃", name: "Natural decorations" },
-      { emoji: "🔍", name: "Magnifying glass" }
+      { emoji: "🔍", name: "Magnifying glass" },
     ],
     steps: [
       "Collect sticks and natural materials outdoors",
       "Use clay to connect sticks into sculptures",
-      "Create animals, buildings, or abstract art!"
+      "Create animals, buildings, or abstract art!",
     ],
-    whyGreat: "Combines nature exploration with engineering and artistic expression.",
+    whyGreat:
+      "Combines nature exploration with engineering and artistic expression.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1098,7 +1141,7 @@ const seedActivities = [
     location: "outdoor",
     whoPlaying: "together",
     interests: ["nature", "arts"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // MUSIC & SOUND (5 activities)
@@ -1108,14 +1151,15 @@ const seedActivities = [
       { emoji: "🥄", name: "Kitchen utensils" },
       { emoji: "🍲", name: "Pots and pans" },
       { emoji: "📦", name: "Empty containers" },
-      { emoji: "🎵", name: "Music to play along" }
+      { emoji: "🎵", name: "Music to play along" },
     ],
     steps: [
       "Create instruments from household items",
       "Practice different rhythms and sounds",
-      "Put on a concert for family members!"
+      "Put on a concert for family members!",
     ],
-    whyGreat: "Develops rhythm, creativity, and confidence while exploring music and sound.",
+    whyGreat:
+      "Develops rhythm, creativity, and confidence while exploring music and sound.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -1126,7 +1170,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["music", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Homemade Shaker Instruments",
@@ -1134,14 +1178,15 @@ const seedActivities = [
       { emoji: "🥤", name: "Empty containers" },
       { emoji: "🌾", name: "Rice, beans, or pasta" },
       { emoji: "🎨", name: "Decorating materials" },
-      { emoji: "📏", name: "Tape" }
+      { emoji: "📏", name: "Tape" },
     ],
     steps: [
       "Fill containers with different materials for unique sounds",
       "Decorate the outside with stickers or drawings",
-      "Create rhythm patterns and shake along to music!"
+      "Create rhythm patterns and shake along to music!",
     ],
-    whyGreat: "Combines crafting with music education while teaching cause and effect.",
+    whyGreat:
+      "Combines crafting with music education while teaching cause and effect.",
     ageRange: "2-6",
     minAge: 2,
     maxAge: 6,
@@ -1152,21 +1197,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["music", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Sing-Along Story Time",
     materials: [
       { emoji: "📚", name: "Story books" },
       { emoji: "🎤", name: "Imagination microphone" },
-      { emoji: "🎵", name: "Familiar songs" }
+      { emoji: "🎵", name: "Familiar songs" },
     ],
     steps: [
       "Choose a favorite story book",
       "Make up songs about the characters",
-      "Act out the story with musical numbers!"
+      "Act out the story with musical numbers!",
     ],
-    whyGreat: "Combines reading, music, and performance to enhance language and confidence.",
+    whyGreat:
+      "Combines reading, music, and performance to enhance language and confidence.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -1177,21 +1223,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["music", "reading"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Sound Scavenger Hunt",
     materials: [
       { emoji: "👂", name: "Listening ears" },
       { emoji: "📝", name: "Sound checklist" },
-      { emoji: "📱", name: "Recording device" }
+      { emoji: "📱", name: "Recording device" },
     ],
     steps: [
       "Create a list of sounds to find around the house",
       "Listen carefully and check off each sound",
-      "Record interesting sounds to play back later!"
+      "Record interesting sounds to play back later!",
     ],
-    whyGreat: "Develops auditory discrimination and attention while exploring sound concepts.",
+    whyGreat:
+      "Develops auditory discrimination and attention while exploring sound concepts.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -1202,19 +1249,19 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["music", "science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Musical Emotions Game",
     materials: [
       { emoji: "🎵", name: "Various types of music" },
       { emoji: "😊", name: "Emotion cards or faces" },
-      { emoji: "🎭", name: "Creative expression" }
+      { emoji: "🎭", name: "Creative expression" },
     ],
     steps: [
       "Play different styles of music",
       "Guess what emotion each song makes you feel",
-      "Act out the emotions through movement!"
+      "Act out the emotions through movement!",
     ],
     whyGreat: "Connects music with emotional awareness and self-expression.",
     ageRange: "4-8",
@@ -1227,7 +1274,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["music", "emotions"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // READING & STORYTELLING (5 activities)
@@ -1236,14 +1283,15 @@ const seedActivities = [
     materials: [
       { emoji: "📚", name: "Picture books" },
       { emoji: "🎭", name: "Imagination" },
-      { emoji: "📝", name: "Paper" }
+      { emoji: "📝", name: "Paper" },
     ],
     steps: [
       "Start a story with one sentence",
       "Take turns adding one sentence each",
-      "See where your silly story adventure goes!"
+      "See where your silly story adventure goes!",
     ],
-    whyGreat: "Builds language skills, creativity, and turn-taking while having fun together.",
+    whyGreat:
+      "Builds language skills, creativity, and turn-taking while having fun together.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -1254,21 +1302,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["reading", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Picture Book Detective",
     materials: [
       { emoji: "📖", name: "Picture books" },
       { emoji: "🔍", name: "Magnifying glass" },
-      { emoji: "📝", name: "Detective notebook" }
+      { emoji: "📝", name: "Detective notebook" },
     ],
     steps: [
       "Look carefully at all the details in picture books",
       "Ask questions: What do you notice? What might happen next?",
-      "Make predictions and discuss the story!"
+      "Make predictions and discuss the story!",
     ],
-    whyGreat: "Develops observation skills, critical thinking, and reading comprehension.",
+    whyGreat:
+      "Develops observation skills, critical thinking, and reading comprehension.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -1279,21 +1328,22 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["reading"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Solo Reading Cozy Time",
     materials: [
       { emoji: "📖", name: "Favorite books" },
       { emoji: "🛋️", name: "Cozy reading spot" },
-      { emoji: "🧸", name: "Stuffed animal friend" }
+      { emoji: "🧸", name: "Stuffed animal friend" },
     ],
     steps: [
       "Choose a few favorite books or discover new ones",
       "Find a comfortable reading nook",
-      "Enjoy quiet story time at their own pace"
+      "Enjoy quiet story time at their own pace",
     ],
-    whyGreat: "Builds independence, vocabulary, and imagination while enjoying peaceful quiet time.",
+    whyGreat:
+      "Builds independence, vocabulary, and imagination while enjoying peaceful quiet time.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -1304,7 +1354,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "alone",
     interests: ["reading"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Puppet Show Theater",
@@ -1312,14 +1362,15 @@ const seedActivities = [
       { emoji: "🧦", name: "Socks for puppets" },
       { emoji: "🎨", name: "Markers and decorations" },
       { emoji: "📦", name: "Box for stage" },
-      { emoji: "📚", name: "Story ideas" }
+      { emoji: "📚", name: "Story ideas" },
     ],
     steps: [
       "Create sock puppets with unique characters",
       "Set up a puppet stage using a box",
-      "Put on shows for family and friends!"
+      "Put on shows for family and friends!",
     ],
-    whyGreat: "Combines crafting with storytelling and performance to build confidence.",
+    whyGreat:
+      "Combines crafting with storytelling and performance to build confidence.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1330,7 +1381,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["creative", "performance"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Book Character Dress-Up",
@@ -1338,14 +1389,15 @@ const seedActivities = [
       { emoji: "📚", name: "Favorite story books" },
       { emoji: "👗", name: "Dress-up clothes" },
       { emoji: "🎭", name: "Props and accessories" },
-      { emoji: "📷", name: "Camera" }
+      { emoji: "📷", name: "Camera" },
     ],
     steps: [
       "Choose favorite book characters to portray",
       "Find clothes and props to match the characters",
-      "Act out scenes from the books!"
+      "Act out scenes from the books!",
     ],
-    whyGreat: "Brings stories to life while encouraging creative expression and story comprehension.",
+    whyGreat:
+      "Brings stories to life while encouraging creative expression and story comprehension.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -1356,7 +1408,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["reading", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // COOKING & FOOD (4 activities)
@@ -1366,14 +1418,15 @@ const seedActivities = [
       { emoji: "🍪", name: "Plain cookies" },
       { emoji: "🧁", name: "Frosting" },
       { emoji: "🍬", name: "Sprinkles and candies" },
-      { emoji: "🔪", name: "Plastic knives" }
+      { emoji: "🔪", name: "Plastic knives" },
     ],
     steps: [
       "Spread frosting on cookies with plastic knives",
       "Add sprinkles, candies, and creative decorations",
-      "Make edible art and enjoy your creations!"
+      "Make edible art and enjoy your creations!",
     ],
-    whyGreat: "Develops fine motor skills and creativity while creating delicious treats together.",
+    whyGreat:
+      "Develops fine motor skills and creativity while creating delicious treats together.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
@@ -1384,7 +1437,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["cooking", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Fruit Kabob Art",
@@ -1392,14 +1445,15 @@ const seedActivities = [
       { emoji: "🍓", name: "Various colorful fruits" },
       { emoji: "🍌", name: "Wooden skewers" },
       { emoji: "🔪", name: "Safe knife for cutting" },
-      { emoji: "🍽️", name: "Plates for serving" }
+      { emoji: "🍽️", name: "Plates for serving" },
     ],
     steps: [
       "Cut fruits into fun shapes (with adult help)",
       "Create colorful patterns on skewers",
-      "Make rainbow fruit kabobs and enjoy!"
+      "Make rainbow fruit kabobs and enjoy!",
     ],
-    whyGreat: "Teaches healthy eating, patterns, and food preparation in a fun, artistic way.",
+    whyGreat:
+      "Teaches healthy eating, patterns, and food preparation in a fun, artistic way.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1410,7 +1464,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["cooking"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Sandwich Art Creations",
@@ -1418,14 +1472,15 @@ const seedActivities = [
       { emoji: "🍞", name: "Bread" },
       { emoji: "🥜", name: "Nut butter or cream cheese" },
       { emoji: "🍌", name: "Fruits for decorating" },
-      { emoji: "✂️", name: "Cookie cutters" }
+      { emoji: "✂️", name: "Cookie cutters" },
     ],
     steps: [
       "Use cookie cutters to make fun bread shapes",
       "Spread nut butter or cream cheese",
-      "Decorate with fruit pieces to make faces or designs!"
+      "Decorate with fruit pieces to make faces or designs!",
     ],
-    whyGreat: "Combines nutrition education with creativity and fine motor skill development.",
+    whyGreat:
+      "Combines nutrition education with creativity and fine motor skill development.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -1436,7 +1491,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["cooking", "creative"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Smoothie Science Lab",
@@ -1444,14 +1499,15 @@ const seedActivities = [
       { emoji: "🍓", name: "Various fruits" },
       { emoji: "🥤", name: "Blender" },
       { emoji: "🥛", name: "Yogurt or milk" },
-      { emoji: "📏", name: "Measuring cups" }
+      { emoji: "📏", name: "Measuring cups" },
     ],
     steps: [
       "Choose different fruits to experiment with",
       "Measure ingredients and predict flavors",
-      "Blend and taste your healthy creations!"
+      "Blend and taste your healthy creations!",
     ],
-    whyGreat: "Combines nutrition education with measurement skills and scientific experimentation.",
+    whyGreat:
+      "Combines nutrition education with measurement skills and scientific experimentation.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1462,7 +1518,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["cooking", "science"],
-    skillRequirements: null
+    skillRequirements: null,
   },
 
   // QUIET & CALM ACTIVITIES (3 activities)
@@ -1471,14 +1527,15 @@ const seedActivities = [
     materials: [
       { emoji: "🧘", name: "Comfortable spot" },
       { emoji: "🎵", name: "Soft music" },
-      { emoji: "🧸", name: "Favorite stuffed animal" }
+      { emoji: "🧸", name: "Favorite stuffed animal" },
     ],
     steps: [
       "Sit comfortably and practice deep breathing",
       "Imagine floating on clouds or in peaceful places",
-      "Use stuffed animals to practice calm breathing together"
+      "Use stuffed animals to practice calm breathing together",
     ],
-    whyGreat: "Teaches emotional regulation, mindfulness, and provides calming tools for life.",
+    whyGreat:
+      "Teaches emotional regulation, mindfulness, and provides calming tools for life.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1489,7 +1546,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["calm"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Calm Counting & Sorting",
@@ -1497,14 +1554,15 @@ const seedActivities = [
       { emoji: "🔢", name: "Small objects to count" },
       { emoji: "🥣", name: "Bowls for sorting" },
       { emoji: "🏷️", name: "Labels" },
-      { emoji: "📊", name: "Chart paper" }
+      { emoji: "📊", name: "Chart paper" },
     ],
     steps: [
       "Gather small objects like buttons, blocks, or toys",
       "Sort by color, size, or type",
-      "Count each group and make charts!"
+      "Count each group and make charts!",
     ],
-    whyGreat: "Builds math skills, organization, and provides satisfying, methodical activity.",
+    whyGreat:
+      "Builds math skills, organization, and provides satisfying, methodical activity.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
@@ -1515,7 +1573,7 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["math", "puzzles"],
-    skillRequirements: null
+    skillRequirements: null,
   },
   {
     title: "Gratitude Journal Art",
@@ -1523,14 +1581,15 @@ const seedActivities = [
       { emoji: "📔", name: "Notebook or journal" },
       { emoji: "✏️", name: "Colored pencils" },
       { emoji: "📷", name: "Photos or drawings" },
-      { emoji: "💝", name: "Stickers" }
+      { emoji: "💝", name: "Stickers" },
     ],
     steps: [
       "Think about things you're grateful for today",
       "Draw pictures or write about happy moments",
-      "Decorate pages with stickers and colors!"
+      "Decorate pages with stickers and colors!",
     ],
-    whyGreat: "Builds emotional awareness, gratitude practice, and creates lasting positive memories.",
+    whyGreat:
+      "Builds emotional awareness, gratitude practice, and creates lasting positive memories.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
@@ -1541,20 +1600,20 @@ const seedActivities = [
     location: "indoor",
     whoPlaying: "together",
     interests: ["emotions", "writing"],
-    skillRequirements: null
-  }
+    skillRequirements: null,
+  },
 ];
 
 export async function seedDatabase() {
   console.log("Seeding database with activities...");
-  
+
   // Check if activities already exist
   const existingActivities = await db.select().from(activities).limit(1);
   if (existingActivities.length > 0) {
     console.log("Activities already exist, skipping seed...");
     return;
   }
-  
+
   try {
     await db.insert(activities).values(seedActivities);
     console.log(`Successfully seeded ${seedActivities.length} activities`);
