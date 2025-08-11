@@ -1,7 +1,8 @@
-import { db } from "./db";
-import { activities, type Activity } from "@shared/schema";
+import { db } from "./db.js";
+import { activities } from "../shared/schema.js";
 
-const seedActivities: Omit<Activity, 'id'>[] = [
+const seedActivities = [
+  // ARTS & CRAFTS ACTIVITIES (12 activities)
   {
     title: "Paper Airplane Contest",
     materials: [
@@ -11,7 +12,7 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     ],
     steps: [
       "Fold different types of paper airplanes together",
-      "Decorate each plane with unique designs",
+      "Decorate each plane with unique designs", 
       "Test which plane flies the farthest!"
     ],
     whyGreat: "Combines creativity with science! Kids learn about aerodynamics while expressing their artistic side.",
@@ -28,47 +29,334 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     skillRequirements: null
   },
   {
-    title: "Indoor Treasure Hunt",
+    title: "Finger Paint Masterpiece",
     materials: [
-      { emoji: "📝", name: "Paper" },
-      { emoji: "🖍️", name: "Crayons" },
-      { emoji: "🏠", name: "Household items" }
+      { emoji: "🎨", name: "Washable finger paints" },
+      { emoji: "📄", name: "Large paper" },
+      { emoji: "🧽", name: "Wet wipes" }
     ],
     steps: [
-      "Draw simple picture clues leading to different rooms",
-      "Hide clues around the house",
-      "Follow the trail to find the treasure!"
+      "Set up painting station with newspaper",
+      "Let creativity flow with finger painting",
+      "Create abstract art or try handprint animals!"
     ],
-    whyGreat: "Develops problem-solving skills and keeps kids active indoors. Great for rainy days!",
+    whyGreat: "Develops fine motor skills and creativity while providing sensory exploration.",
+    ageRange: "2-6",
+    minAge: 2,
+    maxAge: 6,
+    developmentStage: "early-preschool",
+    duration: "45 min",
+    tags: ["arts", "creative", "sensory", "messy", "special"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "DIY Playdough Sculptures",
+    materials: [
+      { emoji: "🧴", name: "Flour, salt, water" },
+      { emoji: "🎨", name: "Food coloring" },
+      { emoji: "🔪", name: "Plastic tools" }
+    ],
+    steps: [
+      "Make homemade playdough together",
+      "Add different colors with food coloring",
+      "Sculpt animals, food, or imaginary creatures!"
+    ],
+    whyGreat: "Combines cooking chemistry with artistic expression and fine motor development.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "60 min",
+    tags: ["creative", "cooking", "sensory", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Collage Creation Station",
+    materials: [
+      { emoji: "📰", name: "Old magazines" },
+      { emoji: "✂️", name: "Safety scissors" },
+      { emoji: "🖊️", name: "Glue stick" },
+      { emoji: "📄", name: "Construction paper" }
+    ],
+    steps: [
+      "Cut out interesting pictures from magazines",
+      "Arrange pictures to tell a story or create art",
+      "Glue everything down and add drawings!"
+    ],
+    whyGreat: "Develops cutting skills, creativity, and storytelling while recycling materials.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "45 min",
+    tags: ["creative", "cutting", "storytelling", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Nature Art Collection",
+    materials: [
+      { emoji: "🍃", name: "Leaves and flowers" },
+      { emoji: "🪨", name: "Smooth rocks" },
+      { emoji: "🎨", name: "Washable markers" },
+      { emoji: "📄", name: "Contact paper" }
+    ],
+    steps: [
+      "Collect beautiful natural items outdoors",
+      "Create art by arranging or decorating them",
+      "Make nature suncatchers with contact paper!"
+    ],
+    whyGreat: "Connects art with nature while developing observation and arrangement skills.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
     developmentStage: "late-preschool",
-    duration: "30 min",
-    tags: ["adventure", "problem-solving", "indoor", "no-mess", "basic"],
+    duration: "60 min",
+    tags: ["nature", "creative", "outdoor", "no-mess", "basic"],
     energyLevel: "active",
-    location: "indoor",
+    location: "outdoor",
     whoPlaying: "together",
-    interests: ["adventure"],
+    interests: ["arts", "outdoor"],
     skillRequirements: null
   },
   {
-    title: "Dance Party Freeze",
+    title: "Drawing & Coloring Studio",
     materials: [
-      { emoji: "🎵", name: "Music player" },
-      { emoji: "🕺", name: "Space to dance" }
+      { emoji: "📄", name: "Paper" },
+      { emoji: "🖍️", name: "Crayons or colored pencils" },
+      { emoji: "📚", name: "Coloring books" },
+      { emoji: "📏", name: "Stencils" }
     ],
     steps: [
-      "Play upbeat music and dance together",
-      "When music stops, freeze like statues!",
-      "Try silly poses and take turns being the statue judge"
+      "Set up a quiet drawing space",
+      "Choose between free drawing or coloring books",
+      "Create masterpieces while chatting quietly"
     ],
-    whyGreat: "Burns energy, improves listening skills, and creates joyful bonding moments!",
+    whyGreat: "Develops fine motor skills, creativity, and provides peaceful, focused activity time.",
+    ageRange: "2-8",
+    minAge: 2,
+    maxAge: 8,
+    developmentStage: "early-preschool",
+    duration: "45 min",
+    tags: ["arts", "quiet", "focused", "little-mess", "basic"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts"],
+    skillRequirements: null
+  },
+  {
+    title: "Comic Strip Creator",
+    materials: [
+      { emoji: "📄", name: "Paper" },
+      { emoji: "✏️", name: "Pencils and crayons" },
+      { emoji: "📏", name: "Ruler" },
+      { emoji: "💭", name: "Creative ideas" }
+    ],
+    steps: [
+      "Draw boxes to create comic panels",
+      "Create characters and a simple story",
+      "Add speech bubbles and colorful illustrations!"
+    ],
+    whyGreat: "Combines storytelling, art, and sequential thinking in a creative format kids love.",
+    ageRange: "5-8",
+    minAge: 5,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "45 min",
+    tags: ["creative", "storytelling", "drawing", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "reading"],
+    skillRequirements: null
+  },
+  {
+    title: "Rock Painting Art",
+    materials: [
+      { emoji: "🪨", name: "Smooth rocks" },
+      { emoji: "🎨", name: "Acrylic paints" },
+      { emoji: "🖌️", name: "Small brushes" },
+      { emoji: "✨", name: "Glitter (optional)" }
+    ],
+    steps: [
+      "Clean and dry smooth rocks",
+      "Paint designs, animals, or patterns",
+      "Let dry and display your rock art!"
+    ],
+    whyGreat: "Creates lasting art pieces while practicing fine motor skills and color mixing.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "60 min",
+    tags: ["arts", "painting", "outdoor", "little-mess", "special"],
+    energyLevel: "focused",
+    location: "outdoor",
+    whoPlaying: "together",
+    interests: ["arts", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Paper Plate Masks",
+    materials: [
+      { emoji: "🍽️", name: "Paper plates" },
+      { emoji: "🎨", name: "Paints or markers" },
+      { emoji: "✂️", name: "Safety scissors" },
+      { emoji: "🧵", name: "String or elastic" }
+    ],
+    steps: [
+      "Cut eye holes in paper plates",
+      "Decorate to make animal or character faces",
+      "Attach string and wear your creations!"
+    ],
+    whyGreat: "Encourages imaginative play while developing cutting and decorating skills.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "45 min",
+    tags: ["arts", "creative", "dramatic", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Handprint Art Gallery",
+    materials: [
+      { emoji: "🎨", name: "Washable paint" },
+      { emoji: "📄", name: "Large paper" },
+      { emoji: "🖌️", name: "Brushes for details" },
+      { emoji: "🧽", name: "Cleanup supplies" }
+    ],
+    steps: [
+      "Dip hands in paint and make prints on paper",
+      "Turn handprints into animals, flowers, or trees",
+      "Add details with brushes to complete the art!"
+    ],
+    whyGreat: "Creates meaningful keepsakes while exploring color mixing and creative transformation.",
     ageRange: "2-6",
     minAge: 2,
     maxAge: 6,
     developmentStage: "early-preschool",
     duration: "30 min",
+    tags: ["arts", "keepsake", "messy", "sensory", "special"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Crayon Resist Art",
+    materials: [
+      { emoji: "🖍️", name: "White or light crayons" },
+      { emoji: "🎨", name: "Watercolor paints" },
+      { emoji: "🖌️", name: "Paintbrushes" },
+      { emoji: "📄", name: "Paper" }
+    ],
+    steps: [
+      "Draw with white crayon on white paper",
+      "Paint over the entire paper with watercolors",
+      "Watch your hidden drawings magically appear!"
+    ],
+    whyGreat: "Teaches about art techniques while creating magical reveal effects kids love.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "45 min",
+    tags: ["arts", "magic", "science", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "science"],
+    skillRequirements: null
+  },
+  {
+    title: "Texture Rubbing Art",
+    materials: [
+      { emoji: "📄", name: "Thin paper" },
+      { emoji: "🖍️", name: "Crayons" },
+      { emoji: "🍃", name: "Textured objects (leaves, coins)" },
+      { emoji: "📏", name: "Tape" }
+    ],
+    steps: [
+      "Place textured objects under paper",
+      "Rub over paper with crayons to reveal textures",
+      "Combine different textures to make art!"
+    ],
+    whyGreat: "Discovers hidden textures while practicing observation and art techniques.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["arts", "exploration", "textures", "no-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["arts", "science"],
+    skillRequirements: null
+  },
+
+  // ACTIVE & MOVEMENT ACTIVITIES (10 activities)
+  {
+    title: "Indoor Obstacle Course",
+    materials: [
+      { emoji: "🪑", name: "Chairs" },
+      { emoji: "🛏️", name: "Pillows" },
+      { emoji: "📦", name: "Boxes" },
+      { emoji: "🧸", name: "Stuffed animals" }
+    ],
+    steps: [
+      "Set up obstacles using furniture and pillows",
+      "Create challenges: crawl under, jump over, balance",
+      "Time runs and celebrate improvements!"
+    ],
+    whyGreat: "Develops gross motor skills, problem-solving, and provides great energy release.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["physical", "active", "indoor", "little-mess", "basic"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["sports", "active"],
+    skillRequirements: null
+  },
+  {
+    title: "Dance Party Freeze",
+    materials: [
+      { emoji: "🎵", name: "Music" },
+      { emoji: "📱", name: "Speaker or phone" }
+    ],
+    steps: [
+      "Play upbeat music and dance together",
+      "When music stops, everyone must freeze like statues",
+      "Make silly faces and poses while frozen!"
+    ],
+    whyGreat: "Gets energy out, improves listening skills, and provides great physical exercise in a fun way.",
+    ageRange: "2-6",
+    minAge: 2,
+    maxAge: 6,
+    developmentStage: "early-preschool",
+    duration: "15 min",
     tags: ["movement", "music", "silly", "no-mess", "none"],
     energyLevel: "silly",
     location: "indoor",
@@ -77,23 +365,72 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     skillRequirements: null
   },
   {
-    title: "Nature Scavenger Hunt",
+    title: "Balloon Keep-Up Challenge",
     materials: [
-      { emoji: "📋", name: "Checklist" },
-      { emoji: "✏️", name: "Pencil" },
-      { emoji: "🎒", name: "Collection bag" }
+      { emoji: "🎈", name: "Balloons" },
+      { emoji: "⏰", name: "Timer" }
     ],
     steps: [
-      "Create a list of outdoor items to find",
-      "Explore the backyard or park together",
-      "Check off items as you discover them"
+      "Blow up several balloons",
+      "Challenge: keep all balloons in the air",
+      "Count how long you can keep them up!"
     ],
-    whyGreat: "Encourages observation skills and outdoor exploration while learning about nature.",
+    whyGreat: "Improves hand-eye coordination, teamwork, and provides gentle active play.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "15 min",
+    tags: ["active", "coordination", "indoor", "no-mess", "basic"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["sports", "games"],
+    skillRequirements: null
+  },
+  {
+    title: "Outdoor Treasure Hunt",
+    materials: [
+      { emoji: "🗺️", name: "Paper for clues" },
+      { emoji: "🎁", name: "Small prize" },
+      { emoji: "✏️", name: "Pen" }
+    ],
+    steps: [
+      "Write simple clues that lead around the yard",
+      "Hide clues in different outdoor spots",
+      "Guide your child as they solve each clue to find the treasure!"
+    ],
+    whyGreat: "Builds problem-solving skills and reading comprehension while enjoying fresh air.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "45 min",
+    tags: ["adventure", "problem-solving", "outdoor", "no-mess", "basic"],
+    energyLevel: "active",
+    location: "outdoor",
+    whoPlaying: "together",
+    interests: ["adventure", "puzzles"],
+    skillRequirements: null
+  },
+  {
+    title: "Nature Scavenger Hunt",
+    materials: [
+      { emoji: "📝", name: "List of items to find" },
+      { emoji: "🧺", name: "Collection bag" },
+      { emoji: "📷", name: "Camera" }
+    ],
+    steps: [
+      "Create a list of natural items to find (leaves, rocks, flowers)",
+      "Explore outside together searching for each item",
+      "Discuss what you find and maybe take photos!"
+    ],
+    whyGreat: "Encourages exploration, observation skills, and connection with nature while getting fresh air.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
     developmentStage: "early-elementary",
-    duration: "60 min",
+    duration: "45 min",
     tags: ["nature", "exploration", "educational", "no-mess", "basic"],
     energyLevel: "active",
     location: "outdoor",
@@ -102,29 +439,132 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     skillRequirements: null
   },
   {
-    title: "Story Building Game",
+    title: "Simple Ball Games",
     materials: [
-      { emoji: "📚", name: "Picture books" },
-      { emoji: "🎭", name: "Imagination" }
+      { emoji: "⚽", name: "Various balls" },
+      { emoji: "🥅", name: "Target (bucket or cone)" },
+      { emoji: "📏", name: "Measuring tape" }
     ],
     steps: [
-      "Start a story with one sentence",
-      "Take turns adding one sentence each",
-      "See where your silly story adventure goes!"
+      "Practice throwing balls at targets",
+      "Try rolling, bouncing, and catching games",
+      "Make up new ball game rules together!"
     ],
-    whyGreat: "Builds language skills, creativity, and turn-taking while having fun together.",
-    ageRange: "3-7",
+    whyGreat: "Develops hand-eye coordination, gross motor skills, and provides great exercise.",
+    ageRange: "3-8",
     minAge: 3,
-    maxAge: 7,
+    maxAge: 8,
     developmentStage: "late-preschool",
-    duration: "15 min",
-    tags: ["language", "creative", "calm", "no-mess", "none"],
+    duration: "30 min",
+    tags: ["sports", "active", "outdoor", "coordination", "basic"],
+    energyLevel: "active",
+    location: "outdoor",
+    whoPlaying: "together",
+    interests: ["sports", "active"],
+    skillRequirements: null
+  },
+  {
+    title: "Yoga Adventure Stories",
+    materials: [
+      { emoji: "🧘", name: "Yoga mat or soft surface" },
+      { emoji: "📚", name: "Story book with animals" },
+      { emoji: "🎵", name: "Calm music" }
+    ],
+    steps: [
+      "Read a story and act out animal poses",
+      "Practice tree pose, downward dog, butterfly",
+      "End with quiet relaxation time"
+    ],
+    whyGreat: "Builds flexibility, body awareness, and calm focus through movement and storytelling.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "20 min",
+    tags: ["movement", "calm", "stories", "no-mess", "none"],
     energyLevel: "calm",
     location: "indoor",
     whoPlaying: "together",
-    interests: ["reading", "creative"],
+    interests: ["movement", "reading"],
     skillRequirements: null
   },
+  {
+    title: "Hopscotch Variations",
+    materials: [
+      { emoji: "🎨", name: "Sidewalk chalk" },
+      { emoji: "🪨", name: "Small rock or bean bag" },
+      { emoji: "📐", name: "Measuring space" }
+    ],
+    steps: [
+      "Draw hopscotch grid with chalk",
+      "Take turns hopping through the course",
+      "Try different variations and patterns!"
+    ],
+    whyGreat: "Develops balance, coordination, and number recognition in classic active play.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "30 min",
+    tags: ["active", "coordination", "outdoor", "numbers", "basic"],
+    energyLevel: "active",
+    location: "outdoor",
+    whoPlaying: "together",
+    interests: ["sports", "math"],
+    skillRequirements: null
+  },
+  {
+    title: "Follow the Leader Adventure",
+    materials: [
+      { emoji: "👥", name: "Space to move" },
+      { emoji: "🎵", name: "Music (optional)" }
+    ],
+    steps: [
+      "Take turns being the leader",
+      "Create silly walks, jumps, and movements",
+      "Others copy the leader's actions exactly!"
+    ],
+    whyGreat: "Develops leadership skills, body awareness, and creative movement expression.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "20 min",
+    tags: ["movement", "leadership", "creative", "no-mess", "none"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["movement", "games"],
+    skillRequirements: null
+  },
+  {
+    title: "Backyard Olympics",
+    materials: [
+      { emoji: "🏃", name: "Open space" },
+      { emoji: "⏰", name: "Timer" },
+      { emoji: "🏅", name: "Homemade medals" },
+      { emoji: "📏", name: "Measuring tape" }
+    ],
+    steps: [
+      "Set up different athletic challenges",
+      "Try jumping, running, balancing events",
+      "Award medals for participation and effort!"
+    ],
+    whyGreat: "Builds athletic skills, healthy competition, and celebrates effort over winning.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "60 min",
+    tags: ["sports", "competition", "outdoor", "athletic", "basic"],
+    energyLevel: "active",
+    location: "outdoor",
+    whoPlaying: "together",
+    interests: ["sports", "active"],
+    skillRequirements: null
+  },
+
+  // SCIENCE & LEARNING ACTIVITIES (8 activities)
   {
     title: "Kitchen Science Experiments",
     materials: [
@@ -143,7 +583,7 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     maxAge: 8,
     developmentStage: "early-elementary",
     duration: "30 min",
-    tags: ["science", "messy", "educational", "messy", "basic"],
+    tags: ["science", "messy", "educational", "little-mess", "basic"],
     energyLevel: "focused",
     location: "indoor",
     whoPlaying: "together",
@@ -151,37 +591,198 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     skillRequirements: null
   },
   {
-    title: "Puzzle Time Challenge",
+    title: "Rainbow Water Experiment",
     materials: [
-      { emoji: "🧩", name: "Age-appropriate puzzles" },
-      { emoji: "⏰", name: "Timer" }
+      { emoji: "🥛", name: "Clear glasses" },
+      { emoji: "🍯", name: "Honey" },
+      { emoji: "🧂", name: "Salt water" },
+      { emoji: "🛢️", name: "Cooking oil" },
+      { emoji: "🎨", name: "Food coloring" }
     ],
     steps: [
-      "Choose a puzzle suitable for your child's age",
-      "Work together to complete it",
-      "Celebrate completion with a victory dance!"
+      "Layer different density liquids in a glass",
+      "Add food coloring to make it colorful",
+      "Watch how they separate and discuss density!"
     ],
-    whyGreat: "Develops problem-solving skills, patience, and fine motor coordination.",
-    ageRange: "2-8",
-    minAge: 2,
+    whyGreat: "Teaches density and layering while creating a beautiful visual experiment.",
+    ageRange: "5-8",
+    minAge: 5,
     maxAge: 8,
     developmentStage: "early-elementary",
     duration: "30 min",
-    tags: ["problem-solving", "quiet", "focused", "no-mess", "basic"],
+    tags: ["science", "visual", "educational", "little-mess", "basic"],
     energyLevel: "focused",
     location: "indoor",
     whoPlaying: "together",
-    interests: ["puzzles"],
+    interests: ["science"],
     skillRequirements: null
   },
   {
-    title: "Card Memory Game",
+    title: "Plant Growing Investigation",
     materials: [
-      { emoji: "🃏", name: "Deck of cards" },
+      { emoji: "🌱", name: "Seeds (beans work great)" },
+      { emoji: "🥛", name: "Clear containers" },
+      { emoji: "💧", name: "Water" },
+      { emoji: "📝", name: "Growth chart" }
+    ],
+    steps: [
+      "Plant seeds in different conditions (light/dark, water/no water)",
+      "Make predictions about which will grow best",
+      "Track growth daily and discuss observations!"
+    ],
+    whyGreat: "Teaches scientific method, patience, and plant biology through hands-on observation.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "Multiple days",
+    tags: ["science", "nature", "educational", "no-mess", "basic"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["science", "nature"],
+    skillRequirements: null
+  },
+  {
+    title: "Magnet Discovery Lab",
+    materials: [
+      { emoji: "🧲", name: "Magnets" },
+      { emoji: "📎", name: "Various small objects" },
+      { emoji: "📝", name: "Chart paper" },
+      { emoji: "🔍", name: "Magnifying glass" }
+    ],
+    steps: [
+      "Gather objects from around the house",
+      "Test which items are magnetic",
+      "Sort and chart your discoveries!"
+    ],
+    whyGreat: "Introduces physics concepts while encouraging hypothesis testing and classification.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["science", "exploration", "educational", "no-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["science"],
+    skillRequirements: null
+  },
+  {
+    title: "Weather Scientist",
+    materials: [
+      { emoji: "🌡️", name: "Thermometer" },
+      { emoji: "📝", name: "Weather journal" },
+      { emoji: "☔", name: "Rain gauge (cup)" },
+      { emoji: "🎏", name: "Wind sock or ribbon" }
+    ],
+    steps: [
+      "Check temperature, wind, and precipitation daily",
+      "Record observations in weather journal",
+      "Make predictions about tomorrow's weather!"
+    ],
+    whyGreat: "Builds observation skills, data collection, and understanding of weather patterns.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "15 min daily",
+    tags: ["science", "observation", "data", "outdoor", "basic"],
+    energyLevel: "calm",
+    location: "outdoor",
+    whoPlaying: "together",
+    interests: ["science", "nature"],
+    skillRequirements: null
+  },
+  {
+    title: "Shadow Science Theater",
+    materials: [
+      { emoji: "🔦", name: "Flashlight" },
+      { emoji: "📄", name: "White wall or sheet" },
+      { emoji: "✋", name: "Hands and objects" },
+      { emoji: "📏", name: "Measuring tape" }
+    ],
+    steps: [
+      "Use flashlight to create shadows on wall",
+      "Experiment with distance to change shadow size",
+      "Create shadow puppet shows!"
+    ],
+    whyGreat: "Teaches light, shadow, and distance concepts through playful experimentation.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["science", "light", "creative", "no-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["science", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Float or Sink Lab",
+    materials: [
+      { emoji: "🛁", name: "Large container of water" },
+      { emoji: "📦", name: "Various objects to test" },
+      { emoji: "📝", name: "Prediction chart" },
+      { emoji: "🧽", name: "Towels for cleanup" }
+    ],
+    steps: [
+      "Collect objects from around the house",
+      "Predict which will float or sink",
+      "Test each object and record results!"
+    ],
+    whyGreat: "Introduces density concepts while practicing prediction and data recording.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["science", "water", "prediction", "messy", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["science"],
+    skillRequirements: null
+  },
+  {
+    title: "Color Mixing Laboratory",
+    materials: [
+      { emoji: "🎨", name: "Primary color paints" },
+      { emoji: "🥛", name: "Clear containers" },
+      { emoji: "💧", name: "Water" },
+      { emoji: "📝", name: "Color chart" }
+    ],
+    steps: [
+      "Start with red, blue, and yellow",
+      "Mix different combinations to create new colors",
+      "Record discoveries on color chart!"
+    ],
+    whyGreat: "Teaches color theory and scientific observation through artistic experimentation.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["science", "arts", "color", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["science", "arts"],
+    skillRequirements: null
+  },
+
+  // GAMES & PUZZLES (8 activities)
+  {
+    title: "Memory Card Match Game",
+    materials: [
+      { emoji: "🃏", name: "Deck of cards or memory cards" },
       { emoji: "🧠", name: "Memory skills" }
     ],
     steps: [
-      "Lay out 6-12 cards face down in a grid",
+      "Lay out 8-16 cards face down in a grid",
       "Take turns flipping two cards to find matches",
       "Keep matches when you find pairs!"
     ],
@@ -199,21 +800,45 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     skillRequirements: null
   },
   {
-    title: "Simple Board Game Fun",
+    title: "Puzzle Challenge Time",
     materials: [
-      { emoji: "🎲", name: "Board game" },
-      { emoji: "⭐", name: "Game pieces" }
+      { emoji: "🧩", name: "Age-appropriate puzzles" },
+      { emoji: "⏰", name: "Timer" }
     ],
     steps: [
-      "Choose an age-appropriate board game",
-      "Take turns rolling dice and moving pieces",
-      "Celebrate wins and good sportsmanship!"
+      "Choose a puzzle suitable for your child's age",
+      "Work together to complete it",
+      "Try timing yourselves for an extra challenge!"
     ],
-    whyGreat: "Teaches rules, strategy, patience, and social skills in a structured, fun way.",
+    whyGreat: "Develops problem-solving skills, patience, and fine motor coordination.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
     developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["problem-solving", "quiet", "focused", "no-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["puzzles"],
+    skillRequirements: null
+  },
+  {
+    title: "Board Game Adventure",
+    materials: [
+      { emoji: "🎲", name: "Age-appropriate board game" },
+      { emoji: "⭐", name: "Game pieces" }
+    ],
+    steps: [
+      "Choose a game suitable for your child's age",
+      "Take turns and follow the rules together",
+      "Celebrate wins and good sportsmanship!"
+    ],
+    whyGreat: "Teaches rules, strategy, patience, and social skills in a structured, fun way.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
     duration: "30 min",
     tags: ["games", "strategy", "social", "no-mess", "basic"],
     energyLevel: "focused",
@@ -223,39 +848,449 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     skillRequirements: null
   },
   {
-    title: "Messy Paint Creation",
+    title: "Hide and Seek Detective",
     materials: [
-      { emoji: "🎨", name: "Washable paints" },
-      { emoji: "📄", name: "Big paper" },
-      { emoji: "🖌️", name: "Brushes" }
+      { emoji: "🔍", name: "Detective mindset" },
+      { emoji: "🏠", name: "Safe hiding spaces" }
     ],
     steps: [
-      "Set up a protected painting area",
-      "Let creativity flow with finger painting or brushes",
-      "Display the masterpiece when dry!"
+      "Take turns being the seeker and hider",
+      "Count to 20 while the other person hides",
+      "Use clues and detective skills to find each other!"
     ],
-    whyGreat: "Encourages self-expression, creativity, and sensory exploration through art.",
+    whyGreat: "Builds spatial awareness, counting skills, and provides exciting active play.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "20 min",
+    tags: ["active", "games", "hide-seek", "no-mess", "none"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["games", "adventure"],
+    skillRequirements: null
+  },
+  {
+    title: "I Spy Discovery Game",
+    materials: [
+      { emoji: "👀", name: "Observation skills" },
+      { emoji: "🏠", name: "Room to explore" }
+    ],
+    steps: [
+      "One person spots something and gives color/shape clues",
+      "Others guess what the mystery object is",
+      "Take turns being the spy!"
+    ],
+    whyGreat: "Develops observation skills, vocabulary, and attention to detail.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "15 min",
+    tags: ["observation", "language", "quiet", "no-mess", "none"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["games", "language"],
+    skillRequirements: null
+  },
+  {
+    title: "Pattern Block Design",
+    materials: [
+      { emoji: "🔶", name: "Pattern blocks or shapes" },
+      { emoji: "📄", name: "Paper for designs" },
+      { emoji: "📏", name: "Pattern cards" }
+    ],
+    steps: [
+      "Use shapes to copy pattern cards",
+      "Create your own unique designs",
+      "Challenge each other with new patterns!"
+    ],
+    whyGreat: "Builds spatial reasoning, pattern recognition, and mathematical thinking.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "30 min",
+    tags: ["math", "patterns", "spatial", "no-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["math", "puzzles"],
+    skillRequirements: null
+  },
+  {
+    title: "Rhyming Word Games",
+    materials: [
+      { emoji: "📚", name: "Word list or picture cards" },
+      { emoji: "🎵", name: "Singing voice" }
+    ],
+    steps: [
+      "Start with a simple word like 'cat'",
+      "Take turns finding words that rhyme",
+      "Make up silly songs with rhyming words!"
+    ],
+    whyGreat: "Develops phonemic awareness, vocabulary, and language skills through wordplay.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "20 min",
+    tags: ["language", "rhyming", "music", "no-mess", "none"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["language", "music"],
+    skillRequirements: null
+  },
+  {
+    title: "Number Hunt Adventure",
+    materials: [
+      { emoji: "🔢", name: "Number cards or sticky notes" },
+      { emoji: "🏠", name: "House or yard to explore" },
+      { emoji: "📝", name: "Recording sheet" }
+    ],
+    steps: [
+      "Hide numbers around the house or yard",
+      "Search for numbers in order from 1-10",
+      "Practice counting and number recognition!"
+    ],
+    whyGreat: "Makes math learning active while practicing number recognition and sequencing.",
+    ageRange: "3-6",
+    minAge: 3,
+    maxAge: 6,
+    developmentStage: "late-preschool",
+    duration: "25 min",
+    tags: ["math", "active", "numbers", "no-mess", "basic"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["math", "games"],
+    skillRequirements: null
+  },
+
+  // BUILDING & CONSTRUCTION (5 activities)
+  {
+    title: "LEGO Engineering Challenge",
+    materials: [
+      { emoji: "🧱", name: "LEGO or building blocks" },
+      { emoji: "📐", name: "Ruler" },
+      { emoji: "💡", name: "Creative challenges" }
+    ],
+    steps: [
+      "Challenge: build the tallest tower possible",
+      "Try different designs and test stability",
+      "Create vehicles, animals, or dream houses!"
+    ],
+    whyGreat: "Enhances spatial reasoning, engineering thinking, and problem-solving skills.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "45 min",
+    tags: ["building", "creative", "focused", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "alone",
+    interests: ["creative", "puzzles"],
+    skillRequirements: null
+  },
+  {
+    title: "Blanket Fort Engineering",
+    materials: [
+      { emoji: "🛏️", name: "Blankets" },
+      { emoji: "🪑", name: "Chairs" },
+      { emoji: "📚", name: "Heavy books" },
+      { emoji: "💡", name: "Flashlight" }
+    ],
+    steps: [
+      "Use chairs and furniture as fort supports",
+      "Drape blankets to create walls and roof",
+      "Add flashlights and make it cozy inside!"
+    ],
+    whyGreat: "Develops spatial reasoning, engineering skills, and creates a special play space.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "45 min",
+    tags: ["building", "creative", "cozy", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["creative", "building"],
+    skillRequirements: null
+  },
+  {
+    title: "Cardboard City Builder",
+    materials: [
+      { emoji: "📦", name: "Cardboard boxes" },
+      { emoji: "✂️", name: "Safety scissors" },
+      { emoji: "🎨", name: "Markers or paint" },
+      { emoji: "📏", name: "Tape" }
+    ],
+    steps: [
+      "Cut windows and doors in cardboard boxes",
+      "Decorate to make houses, stores, or vehicles",
+      "Connect everything to build a mini city!"
+    ],
+    whyGreat: "Encourages creative construction, planning, and imaginative play with recycled materials.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "60 min",
+    tags: ["building", "creative", "recycling", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["creative", "building"],
+    skillRequirements: null
+  },
+  {
+    title: "Marble Run Construction",
+    materials: [
+      { emoji: "🥫", name: "Toilet paper tubes" },
+      { emoji: "📏", name: "Tape" },
+      { emoji: "⚽", name: "Marbles or small balls" },
+      { emoji: "📦", name: "Cardboard backing" }
+    ],
+    steps: [
+      "Tape tubes to cardboard to create tracks",
+      "Test different angles and paths",
+      "Race marbles down your custom track!"
+    ],
+    whyGreat: "Teaches physics concepts like gravity and momentum through hands-on construction.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "45 min",
+    tags: ["building", "physics", "engineering", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["science", "building"],
+    skillRequirements: null
+  },
+  {
+    title: "Stick and Clay Sculptures",
+    materials: [
+      { emoji: "🌿", name: "Sticks and twigs" },
+      { emoji: "🏺", name: "Modeling clay" },
+      { emoji: "🍃", name: "Natural decorations" },
+      { emoji: "🔍", name: "Magnifying glass" }
+    ],
+    steps: [
+      "Collect sticks and natural materials outdoors",
+      "Use clay to connect sticks into sculptures",
+      "Create animals, buildings, or abstract art!"
+    ],
+    whyGreat: "Combines nature exploration with engineering and artistic expression.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "60 min",
+    tags: ["nature", "building", "arts", "outdoor", "basic"],
+    energyLevel: "focused",
+    location: "outdoor",
+    whoPlaying: "together",
+    interests: ["nature", "arts"],
+    skillRequirements: null
+  },
+
+  // MUSIC & SOUND (5 activities)
+  {
+    title: "Kitchen Band Orchestra",
+    materials: [
+      { emoji: "🥄", name: "Kitchen utensils" },
+      { emoji: "🍲", name: "Pots and pans" },
+      { emoji: "📦", name: "Empty containers" },
+      { emoji: "🎵", name: "Music to play along" }
+    ],
+    steps: [
+      "Create instruments from household items",
+      "Practice different rhythms and sounds",
+      "Put on a concert for family members!"
+    ],
+    whyGreat: "Develops rhythm, creativity, and confidence while exploring music and sound.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["music", "creative", "active", "little-mess", "basic"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["music", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Homemade Shaker Instruments",
+    materials: [
+      { emoji: "🥤", name: "Empty containers" },
+      { emoji: "🌾", name: "Rice, beans, or pasta" },
+      { emoji: "🎨", name: "Decorating materials" },
+      { emoji: "📏", name: "Tape" }
+    ],
+    steps: [
+      "Fill containers with different materials for unique sounds",
+      "Decorate the outside with stickers or drawings",
+      "Create rhythm patterns and shake along to music!"
+    ],
+    whyGreat: "Combines crafting with music education while teaching cause and effect.",
     ageRange: "2-6",
     minAge: 2,
     maxAge: 6,
     developmentStage: "early-preschool",
-    duration: "45 min",
-    tags: ["arts", "creative", "sensory", "messy", "special"],
+    duration: "30 min",
+    tags: ["music", "crafts", "sound", "little-mess", "basic"],
     energyLevel: "focused",
     location: "indoor",
     whoPlaying: "together",
-    interests: ["arts", "creative"],
+    interests: ["music", "creative"],
     skillRequirements: null
   },
   {
-    title: "Solo Reading Adventure",
+    title: "Sing-Along Story Time",
+    materials: [
+      { emoji: "📚", name: "Story books" },
+      { emoji: "🎤", name: "Imagination microphone" },
+      { emoji: "🎵", name: "Familiar songs" }
+    ],
+    steps: [
+      "Choose a favorite story book",
+      "Make up songs about the characters",
+      "Act out the story with musical numbers!"
+    ],
+    whyGreat: "Combines reading, music, and performance to enhance language and confidence.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["music", "reading", "performance", "no-mess", "none"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["music", "reading"],
+    skillRequirements: null
+  },
+  {
+    title: "Sound Scavenger Hunt",
+    materials: [
+      { emoji: "👂", name: "Listening ears" },
+      { emoji: "📝", name: "Sound checklist" },
+      { emoji: "📱", name: "Recording device" }
+    ],
+    steps: [
+      "Create a list of sounds to find around the house",
+      "Listen carefully and check off each sound",
+      "Record interesting sounds to play back later!"
+    ],
+    whyGreat: "Develops auditory discrimination and attention while exploring sound concepts.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "20 min",
+    tags: ["music", "listening", "exploration", "no-mess", "basic"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["music", "science"],
+    skillRequirements: null
+  },
+  {
+    title: "Musical Emotions Game",
+    materials: [
+      { emoji: "🎵", name: "Various types of music" },
+      { emoji: "😊", name: "Emotion cards or faces" },
+      { emoji: "🎭", name: "Creative expression" }
+    ],
+    steps: [
+      "Play different styles of music",
+      "Guess what emotion each song makes you feel",
+      "Act out the emotions through movement!"
+    ],
+    whyGreat: "Connects music with emotional awareness and self-expression.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "25 min",
+    tags: ["music", "emotions", "movement", "no-mess", "none"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["music", "emotions"],
+    skillRequirements: null
+  },
+
+  // READING & STORYTELLING (5 activities)
+  {
+    title: "Story Building Adventure",
+    materials: [
+      { emoji: "📚", name: "Picture books" },
+      { emoji: "🎭", name: "Imagination" },
+      { emoji: "📝", name: "Paper" }
+    ],
+    steps: [
+      "Start a story with one sentence",
+      "Take turns adding one sentence each",
+      "See where your silly story adventure goes!"
+    ],
+    whyGreat: "Builds language skills, creativity, and turn-taking while having fun together.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "20 min",
+    tags: ["language", "creative", "storytelling", "no-mess", "none"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["reading", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Picture Book Detective",
     materials: [
       { emoji: "📖", name: "Picture books" },
-      { emoji: "🛋️", name: "Cozy spot" }
+      { emoji: "🔍", name: "Magnifying glass" },
+      { emoji: "📝", name: "Detective notebook" }
+    ],
+    steps: [
+      "Look carefully at all the details in picture books",
+      "Ask questions: What do you notice? What might happen next?",
+      "Make predictions and discuss the story!"
+    ],
+    whyGreat: "Develops observation skills, critical thinking, and reading comprehension.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["reading", "observation", "critical-thinking", "no-mess", "basic"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["reading"],
+    skillRequirements: null
+  },
+  {
+    title: "Solo Reading Cozy Time",
+    materials: [
+      { emoji: "📖", name: "Favorite books" },
+      { emoji: "🛋️", name: "Cozy reading spot" },
+      { emoji: "🧸", name: "Stuffed animal friend" }
     ],
     steps: [
       "Choose a few favorite books or discover new ones",
-      "Find a comfortable reading spot",
+      "Find a comfortable reading nook",
       "Enjoy quiet story time at their own pace"
     ],
     whyGreat: "Builds independence, vocabulary, and imagination while enjoying peaceful quiet time.",
@@ -272,77 +1307,240 @@ const seedActivities: Omit<Activity, 'id'>[] = [
     skillRequirements: null
   },
   {
-    title: "Outdoor Obstacle Course",
+    title: "Puppet Show Theater",
     materials: [
-      { emoji: "🏃", name: "Space to run" },
-      { emoji: "📦", name: "Household items for obstacles" },
-      { emoji: "⏱️", name: "Timer (optional)" }
+      { emoji: "🧦", name: "Socks for puppets" },
+      { emoji: "🎨", name: "Markers and decorations" },
+      { emoji: "📦", name: "Box for stage" },
+      { emoji: "📚", name: "Story ideas" }
     ],
     steps: [
-      "Set up obstacles using chairs, pillows, ropes",
-      "Create challenges: crawl under, jump over, balance",
-      "Time runs and celebrate improvements!"
+      "Create sock puppets with unique characters",
+      "Set up a puppet stage using a box",
+      "Put on shows for family and friends!"
     ],
-    whyGreat: "Develops gross motor skills, coordination, and provides great physical exercise.",
+    whyGreat: "Combines crafting with storytelling and performance to build confidence.",
     ageRange: "4-8",
     minAge: 4,
     maxAge: 8,
     developmentStage: "early-elementary",
-    duration: "45 min",
-    tags: ["physical", "active", "outdoor", "little-mess", "basic"],
-    energyLevel: "active",
-    location: "outdoor",
+    duration: "60 min",
+    tags: ["creative", "performance", "storytelling", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
     whoPlaying: "together",
-    interests: ["sports", "outdoor"],
+    interests: ["creative", "performance"],
     skillRequirements: null
   },
   {
-    title: "Building Block Challenge",
+    title: "Book Character Dress-Up",
     materials: [
-      { emoji: "🧱", name: "Building blocks or LEGO" },
-      { emoji: "📐", name: "Ruler (optional)" }
+      { emoji: "📚", name: "Favorite story books" },
+      { emoji: "👗", name: "Dress-up clothes" },
+      { emoji: "🎭", name: "Props and accessories" },
+      { emoji: "📷", name: "Camera" }
     ],
     steps: [
-      "Challenge: build the tallest tower possible",
-      "Try different designs and structures",
-      "Test stability by adding one more block"
+      "Choose favorite book characters to portray",
+      "Find clothes and props to match the characters",
+      "Act out scenes from the books!"
     ],
-    whyGreat: "Enhances spatial reasoning, engineering thinking, and problem-solving skills.",
+    whyGreat: "Brings stories to life while encouraging creative expression and story comprehension.",
     ageRange: "3-8",
     minAge: 3,
     maxAge: 8,
-    developmentStage: "early-elementary",
+    developmentStage: "late-preschool",
     duration: "45 min",
-    tags: ["building", "creative", "focused", "little-mess", "basic"],
+    tags: ["reading", "dramatic", "creative", "little-mess", "basic"],
+    energyLevel: "active",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["reading", "creative"],
+    skillRequirements: null
+  },
+
+  // COOKING & FOOD (4 activities)
+  {
+    title: "No-Bake Cookie Decorating",
+    materials: [
+      { emoji: "🍪", name: "Plain cookies" },
+      { emoji: "🧁", name: "Frosting" },
+      { emoji: "🍬", name: "Sprinkles and candies" },
+      { emoji: "🔪", name: "Plastic knives" }
+    ],
+    steps: [
+      "Spread frosting on cookies with plastic knives",
+      "Add sprinkles, candies, and creative decorations",
+      "Make edible art and enjoy your creations!"
+    ],
+    whyGreat: "Develops fine motor skills and creativity while creating delicious treats together.",
+    ageRange: "3-8",
+    minAge: 3,
+    maxAge: 8,
+    developmentStage: "late-preschool",
+    duration: "30 min",
+    tags: ["cooking", "creative", "edible", "little-mess", "special"],
     energyLevel: "focused",
     location: "indoor",
-    whoPlaying: "alone",
-    interests: ["creative", "puzzles"],
+    whoPlaying: "together",
+    interests: ["cooking", "creative"],
     skillRequirements: null
   },
   {
-    title: "Musical Instruments Band",
+    title: "Fruit Kabob Art",
     materials: [
-      { emoji: "🥄", name: "Kitchen utensils" },
-      { emoji: "📦", name: "Empty boxes" },
-      { emoji: "🎵", name: "Music to play along" }
+      { emoji: "🍓", name: "Various colorful fruits" },
+      { emoji: "🍌", name: "Wooden skewers" },
+      { emoji: "🔪", name: "Safe knife for cutting" },
+      { emoji: "🍽️", name: "Plates for serving" }
     ],
     steps: [
-      "Create instruments from household items",
-      "Practice different rhythms and sounds",
-      "Put on a concert for family!"
+      "Cut fruits into fun shapes (with adult help)",
+      "Create colorful patterns on skewers",
+      "Make rainbow fruit kabobs and enjoy!"
     ],
-    whyGreat: "Develops rhythm, creativity, and confidence while exploring music and sound.",
+    whyGreat: "Teaches healthy eating, patterns, and food preparation in a fun, artistic way.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "30 min",
+    tags: ["cooking", "healthy", "patterns", "little-mess", "special"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["cooking"],
+    skillRequirements: null
+  },
+  {
+    title: "Sandwich Art Creations",
+    materials: [
+      { emoji: "🍞", name: "Bread" },
+      { emoji: "🥜", name: "Nut butter or cream cheese" },
+      { emoji: "🍌", name: "Fruits for decorating" },
+      { emoji: "✂️", name: "Cookie cutters" }
+    ],
+    steps: [
+      "Use cookie cutters to make fun bread shapes",
+      "Spread nut butter or cream cheese",
+      "Decorate with fruit pieces to make faces or designs!"
+    ],
+    whyGreat: "Combines nutrition education with creativity and fine motor skill development.",
+    ageRange: "3-7",
+    minAge: 3,
+    maxAge: 7,
+    developmentStage: "late-preschool",
+    duration: "20 min",
+    tags: ["cooking", "creative", "nutrition", "little-mess", "basic"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["cooking", "creative"],
+    skillRequirements: null
+  },
+  {
+    title: "Smoothie Science Lab",
+    materials: [
+      { emoji: "🍓", name: "Various fruits" },
+      { emoji: "🥤", name: "Blender" },
+      { emoji: "🥛", name: "Yogurt or milk" },
+      { emoji: "📏", name: "Measuring cups" }
+    ],
+    steps: [
+      "Choose different fruits to experiment with",
+      "Measure ingredients and predict flavors",
+      "Blend and taste your healthy creations!"
+    ],
+    whyGreat: "Combines nutrition education with measurement skills and scientific experimentation.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "25 min",
+    tags: ["cooking", "science", "healthy", "measuring", "special"],
+    energyLevel: "focused",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["cooking", "science"],
+    skillRequirements: null
+  },
+
+  // QUIET & CALM ACTIVITIES (3 activities)
+  {
+    title: "Meditation & Breathing Games",
+    materials: [
+      { emoji: "🧘", name: "Comfortable spot" },
+      { emoji: "🎵", name: "Soft music" },
+      { emoji: "🧸", name: "Favorite stuffed animal" }
+    ],
+    steps: [
+      "Sit comfortably and practice deep breathing",
+      "Imagine floating on clouds or in peaceful places",
+      "Use stuffed animals to practice calm breathing together"
+    ],
+    whyGreat: "Teaches emotional regulation, mindfulness, and provides calming tools for life.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "15 min",
+    tags: ["mindfulness", "calm", "emotional", "no-mess", "none"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["calm"],
+    skillRequirements: null
+  },
+  {
+    title: "Calm Counting & Sorting",
+    materials: [
+      { emoji: "🔢", name: "Small objects to count" },
+      { emoji: "🥣", name: "Bowls for sorting" },
+      { emoji: "🏷️", name: "Labels" },
+      { emoji: "📊", name: "Chart paper" }
+    ],
+    steps: [
+      "Gather small objects like buttons, blocks, or toys",
+      "Sort by color, size, or type",
+      "Count each group and make charts!"
+    ],
+    whyGreat: "Builds math skills, organization, and provides satisfying, methodical activity.",
     ageRange: "3-7",
     minAge: 3,
     maxAge: 7,
     developmentStage: "late-preschool",
     duration: "30 min",
-    tags: ["music", "creative", "active", "little-mess", "basic"],
-    energyLevel: "active",
+    tags: ["math", "sorting", "quiet", "no-mess", "basic"],
+    energyLevel: "calm",
     location: "indoor",
     whoPlaying: "together",
-    interests: ["music", "creative"],
+    interests: ["math", "puzzles"],
+    skillRequirements: null
+  },
+  {
+    title: "Gratitude Journal Art",
+    materials: [
+      { emoji: "📔", name: "Notebook or journal" },
+      { emoji: "✏️", name: "Colored pencils" },
+      { emoji: "📷", name: "Photos or drawings" },
+      { emoji: "💝", name: "Stickers" }
+    ],
+    steps: [
+      "Think about things you're grateful for today",
+      "Draw pictures or write about happy moments",
+      "Decorate pages with stickers and colors!"
+    ],
+    whyGreat: "Builds emotional awareness, gratitude practice, and creates lasting positive memories.",
+    ageRange: "4-8",
+    minAge: 4,
+    maxAge: 8,
+    developmentStage: "early-elementary",
+    duration: "20 min",
+    tags: ["emotional", "gratitude", "writing", "little-mess", "basic"],
+    energyLevel: "calm",
+    location: "indoor",
+    whoPlaying: "together",
+    interests: ["emotions", "writing"],
     skillRequirements: null
   }
 ];
