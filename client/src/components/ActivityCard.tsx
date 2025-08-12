@@ -1,6 +1,6 @@
 import { Activity } from "@shared/schema";
 import { useState } from "react";
-import { Heart, RotateCcw } from "lucide-react";
+import { Heart, RotateCcw, ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ActivityCardProps {
@@ -19,11 +19,23 @@ export function ActivityCard({
   showActions = true 
 }: ActivityCardProps) {
   const [isHearted, setIsHearted] = useState(isSaved);
+  const [expandedSteps, setExpandedSteps] = useState<number[]>([]);
 
   const handleSave = () => {
     setIsHearted(!isHearted);
     onSave?.();
   };
+
+  const toggleStepExpansion = (index: number) => {
+    setExpandedSteps(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
+
+  // Use detailed steps if available, otherwise fall back to simple steps
+  const stepsToRender = activity.stepsDetailed || activity.steps.map(step => ({ step }));
 
   return (
     <div className="bg-gradient-to-br from-white to-purple-50 rounded-3xl shadow-xl border-3 border-purple-200 overflow-hidden scale-on-hover">
@@ -90,14 +102,63 @@ export function ActivityCard({
             How to play:
           </h4>
           <ol className="space-y-3">
-            {activity.steps.map((step, index) => (
-              <li key={index} className="flex items-start space-x-4">
-                <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 text-white text-sm font-bold rounded-full flex items-center justify-center sparkle">
-                  {index + 1}
-                </span>
-                <span className="text-base text-purple-700 font-medium">{step}</span>
-              </li>
-            ))}
+            {stepsToRender.map((stepData, index) => {
+              const isExpanded = expandedSteps.includes(index);
+              const hasDetails = stepData.details && stepData.details.length > 0;
+              const step = typeof stepData === 'string' ? stepData : stepData.step;
+              
+              return (
+                <li key={index} className="space-y-2">
+                  <div className="flex items-start space-x-4">
+                    <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 text-white text-sm font-bold rounded-full flex items-center justify-center sparkle">
+                      {index + 1}
+                    </span>
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between">
+                        <span className="text-base text-purple-700 font-medium">{step}</span>
+                        {hasDetails && (
+                          <button
+                            onClick={() => toggleStepExpansion(index)}
+                            className="ml-2 text-purple-500 hover:text-purple-700 transition-colors flex items-center gap-1 text-sm"
+                          >
+                            <HelpCircle className="w-4 h-4" />
+                            {isExpanded ? (
+                              <>Hide <ChevronUp className="w-3 h-3" /></>
+                            ) : (
+                              <>Show me how <ChevronDown className="w-3 h-3" /></>
+                            )}
+                          </button>
+                        )}
+                      </div>
+                      
+                      {/* Expandable details */}
+                      {isExpanded && hasDetails && (
+                        <div className="mt-3 pl-2 border-l-2 border-purple-200 space-y-2">
+                          {stepData.details?.map((detail, detailIndex) => (
+                            <p key={detailIndex} className="text-sm text-purple-600">
+                              • {detail}
+                            </p>
+                          ))}
+                          {stepData.tips && (
+                            <p className="text-sm text-purple-600 italic">
+                              💡 Tip: {stepData.tips}
+                            </p>
+                          )}
+                          {stepData.ageVariations && activity.minAge && activity.maxAge && (
+                            <div className="text-sm text-purple-600">
+                              <p className="font-semibold">Age variations:</p>
+                              {Object.entries(stepData.ageVariations).map(([age, variation]) => (
+                                <p key={age} className="ml-2">• {age}: {variation}</p>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ol>
         </div>
 

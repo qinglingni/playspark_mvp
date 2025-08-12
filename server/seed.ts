@@ -1205,28 +1205,79 @@ const seedActivities = [
     skillRequirements: null,
   },
   {
-    title: "Music Composition Basics",
+    title: "Kitchen Music Lab",
     materials: [
-      { emoji: "🎵", name: "Simple instruments" },
-      { emoji: "📝", name: "Music notation paper" },
-      { emoji: "🎹", name: "Keyboard or piano app" },
+      { emoji: "🥤", name: "5-8 glasses or jars" },
+      { emoji: "💧", name: "Water and food coloring" },
+      { emoji: "🥄", name: "Wooden spoon or pencil" },
+      { emoji: "📱", name: "Phone to record (optional)" },
     ],
     steps: [
-      "Learn basic music concepts",
-      "Create simple melodies",
-      "Record and share compositions!",
+      "Fill glasses with different water levels to make a scale",
+      "Tap glasses to play simple songs like 'Mary Had a Little Lamb'",
+      "Record your song and add a beat with kitchen items!",
     ],
-    whyGreat: "Introduces music theory and creative expression.",
+    stepsDetailed: [
+      {
+        step: "Fill glasses with different water levels to make a scale",
+        details: [
+          "Line up 5-8 glasses in a row",
+          "Fill first glass almost full, then decrease water in each glass",
+          "Add food coloring to make it visual (red for low notes, blue for high)",
+          "Test each glass by tapping - more water = lower pitch",
+          "Adjust water levels until you have a musical scale"
+        ],
+        tips: "Use identical glasses for best results. Mason jars work great!",
+        ageVariations: {
+          "5-6 years": "Use just 5 glasses and make simple high/low sounds",
+          "6-7 years": "Try 8 glasses to make a full scale, label with numbers 1-8",
+          "7-8 years": "Mark water levels with tape and write note names (C, D, E...)"
+        }
+      },
+      {
+        step: "Tap glasses to play simple songs like 'Mary Had a Little Lamb'",
+        details: [
+          "Number your glasses 1-5 (or 1-8)",
+          "For 'Mary Had a Little Lamb': tap 3-2-1-2-3-3-3, pause, 2-2-2, pause, 3-3-3",
+          "For 'Twinkle Twinkle': tap 1-1-5-5-6-6-5, 4-4-3-3-2-2-1",
+          "Start slow, then speed up as you get comfortable",
+          "Try using two spoons to play faster!"
+        ],
+        tips: "Write the numbers on paper first so kids can follow along visually",
+        ageVariations: {
+          "5-6 years": "Just play with high and low sounds, make sound patterns",
+          "6-7 years": "Follow number patterns for simple 3-note songs",
+          "7-8 years": "Try more complex songs, even create your own"
+        }
+      },
+      {
+        step: "Record your song and add a beat with kitchen items!",
+        details: [
+          "Use phone's voice recorder or video",
+          "Create rhythm section with: wooden spoons on table, shaking rice in container, tapping pots",
+          "Record glass melody first, then layer rhythm on second recording",
+          "Make it a family band - everyone gets an 'instrument'",
+          "Share your recording with grandparents!"
+        ],
+        tips: "Let kids be the 'recording engineer' - they love pressing record!",
+        ageVariations: {
+          "5-6 years": "Just record the glass sounds, clap along for rhythm",
+          "6-7 years": "Add one rhythm instrument while playing glasses",
+          "7-8 years": "Create a full song with intro, melody, and rhythm section"
+        }
+      }
+    ],
+    whyGreat: "Teaches pitch, rhythm, and cause-and-effect while making real music with everyday items.",
     ageRange: "6-7",
     minAge: 6,
     maxAge: 7,
     developmentStage: "early-elementary",
-    duration: "50 min",
-    tags: ["music", "composition", "creativity", "early-elementary"],
+    duration: "45 min",
+    tags: ["music", "science", "creative", "kitchen"],
     energyLevel: "focused",
     location: "indoor",
     whoPlaying: "together",
-    interests: ["music"],
+    interests: ["music", "science"],
     skillRequirements: null,
   },
   {

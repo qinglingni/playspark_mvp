@@ -23,6 +23,12 @@ export const activities = pgTable("activities", {
   title: text("title").notNull(),
   materials: jsonb("materials").$type<{emoji: string, name: string}[]>().notNull(),
   steps: jsonb("steps").$type<string[]>().notNull(),
+  stepsDetailed: jsonb("steps_detailed").$type<{
+    step: string,
+    details?: string[],
+    tips?: string,
+    ageVariations?: Record<string, string>
+  }[]>(), // New: detailed steps with expandable content
   whyGreat: text("why_great").notNull(),
   ageRange: text("age_range").notNull(), // Keep for backwards compatibility
   minAge: integer("min_age"), // New: minimum age in years
