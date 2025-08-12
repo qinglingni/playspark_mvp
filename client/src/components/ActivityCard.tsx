@@ -151,9 +151,9 @@ export function ActivityCard({
         {showDetails && activity.detailedInfo && (
           <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center">
             {/* Mobile: Slide up from bottom, Desktop: Center modal */}
-            <div className="bg-white w-full h-[85vh] sm:h-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-2xl overflow-hidden shadow-2xl sm:m-4">
+            <div className="bg-white w-full h-[90vh] sm:h-auto sm:max-w-2xl sm:max-h-[85vh] sm:rounded-2xl shadow-2xl sm:m-4 flex flex-col">
               {/* Header */}
-              <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+              <div className="flex-shrink-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between sm:rounded-t-2xl">
                 <h3 className="text-lg font-bold text-purple-800 flex items-center">
                   <Info className="w-5 h-5 mr-2" />
                   Details for "{activity.title}"
@@ -169,7 +169,11 @@ export function ActivityCard({
               </div>
               
               {/* Scrollable Content */}
-              <div className="overflow-y-auto flex-1 p-4 space-y-6">
+              <div className="flex-1 overflow-y-auto p-4 space-y-6"
+                   style={{ 
+                     height: 'calc(90vh - 80px)', 
+                     WebkitOverflowScrolling: 'touch' 
+                   }}>
                 {/* Detailed Steps */}
                 <div>
                   <h4 className="text-lg font-semibold text-purple-800 mb-3">Step-by-Step Guide</h4>
@@ -260,6 +264,9 @@ export function ActivityCard({
                     </div>
                   </div>
                 )}
+                
+                {/* Bottom padding for safe scrolling */}
+                <div className="pb-6"></div>
               </div>
             </div>
           </div>
