@@ -135,35 +135,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/activities/:id/enhance", async (req, res) => {
-    try {
-      const activityId = req.params.id;
-      const { childAge, specificQuestion } = req.body;
-      
-      // Get the activity from database
-      const activities = await storage.getActivities();
-      const activity = activities.find(a => a.id === activityId);
-      
-      if (!activity) {
-        return res.status(404).json({ message: "Activity not found" });
-      }
 
-      // Use Claude AI to enhance the activity information
-      const claudeModule = await import("./claude.js");
-      const enhancement = await claudeModule.generateActivityEnhancement(activity, childAge, specificQuestion);
-      
-      console.log(`🧠 Enhanced activity "${activity.title}" for age ${childAge}`);
-      
-      res.json({
-        activity: activity.title,
-        enhancement,
-        generatedAt: new Date().toISOString()
-      });
-    } catch (error) {
-      console.error('Error enhancing activity:', error);
-      res.status(500).json({ message: "Server error", error: error instanceof Error ? error.message : 'Unknown error' });
-    }
-  });
 
   app.get("/api/activities", async (req, res) => {
     try {

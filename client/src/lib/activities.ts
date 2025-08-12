@@ -45,18 +45,6 @@ export const activitiesService = {
 
   async markActivityAsUsed(savedActivityId: string, isUsed: boolean): Promise<void> {
     await apiRequest('PATCH', `/api/saved-activities/${savedActivityId}/used`, { isUsed });
-  },
-
-  async getActivityEnhancement(activityId: string, childAge: number, specificQuestion?: string): Promise<{
-    activity: string;
-    enhancement: string;
-    generatedAt: string;
-  }> {
-    const response = await apiRequest('POST', `/api/activities/${activityId}/enhance`, {
-      childAge,
-      specificQuestion
-    });
-    return response.json();
   }
 };
 

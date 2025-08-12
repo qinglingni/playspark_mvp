@@ -1,10 +1,8 @@
 import { Activity } from "@shared/schema";
 import { useState } from "react";
-import { Heart, RotateCcw, ChevronDown, ChevronUp, HelpCircle, Sparkles, X } from "lucide-react";
+import { Heart, RotateCcw, ChevronDown, ChevronUp, Info, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { activitiesService } from "@/lib/activities";
 import { Button } from "@/components/ui/button";
-import { useMutation } from "@tanstack/react-query";
 
 interface ActivityCardProps {
   activity: Activity;
@@ -12,7 +10,6 @@ interface ActivityCardProps {
   onShuffle?: () => void;
   isSaved?: boolean;
   showActions?: boolean;
-  childAge?: number;
 }
 
 export function ActivityCard({ 
@@ -20,13 +17,11 @@ export function ActivityCard({
   onSave, 
   onShuffle, 
   isSaved = false, 
-  showActions = true,
-  childAge
+  showActions = true
 }: ActivityCardProps) {
   const [isHearted, setIsHearted] = useState(isSaved);
   const [expandedSteps, setExpandedSteps] = useState<number[]>([]);
-  const [showAIHelp, setShowAIHelp] = useState(false);
-  const [aiEnhancement, setAiEnhancement] = useState<string | null>(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   const handleSave = () => {
     setIsHearted(!isHearted);
@@ -41,34 +36,11 @@ export function ActivityCard({
     );
   };
 
-  const enhancementMutation = useMutation({
-    mutationFn: async (specificQuestion?: string) => {
-      if (!childAge) throw new Error('Child age is required');
-      return activitiesService.getActivityEnhancement(activity.id, childAge, specificQuestion);
-    },
-    onSuccess: (data) => {
-      setAiEnhancement(data.enhancement);
-      setShowAIHelp(true);
-    },
-    onError: (error) => {
-      console.error('Failed to get AI enhancement:', error);
-    }
-  });
-
-  const handleGetAIHelp = () => {
-    if (aiEnhancement) {
-      setShowAIHelp(true);
-    } else {
-      enhancementMutation.mutate();
-    }
-  };
-
   // Use detailed steps if available, otherwise fall back to simple steps
-  const stepsToRender = activity.stepsDetailed || activity.steps.map((step: string) => ({ 
+  const stepsToRender = activity.detailedInfo?.detailedSteps || activity.steps.map((step: string) => ({ 
     step,
-    details: undefined,
-    tips: undefined,
-    ageVariations: undefined
+    description: "",
+    tips: []
   }));
 
   return (
@@ -136,63 +108,18 @@ export function ActivityCard({
             How to play:
           </h4>
           <ol className="space-y-3">
-            {stepsToRender.map((stepData, index) => {
-              const isExpanded = expandedSteps.includes(index);
-              const hasDetails = stepData.details && stepData.details.length > 0;
-              const step = typeof stepData === 'string' ? stepData : stepData.step;
-              
-              return (
-                <li key={index} className="space-y-2">
-                  <div className="flex items-start space-x-4">
-                    <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 text-white text-sm font-bold rounded-full flex items-center justify-center sparkle">
-                      {index + 1}
-                    </span>
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between">
-                        <span className="text-base text-purple-700 font-medium">{step}</span>
-                        {hasDetails && (
-                          <button
-                            onClick={() => toggleStepExpansion(index)}
-                            className="ml-2 text-purple-500 hover:text-purple-700 transition-colors flex items-center gap-1 text-sm"
-                          >
-                            <HelpCircle className="w-4 h-4" />
-                            {isExpanded ? (
-                              <>Hide <ChevronUp className="w-3 h-3" /></>
-                            ) : (
-                              <>Show me how <ChevronDown className="w-3 h-3" /></>
-                            )}
-                          </button>
-                        )}
-                      </div>
-                      
-                      {/* Expandable details */}
-                      {isExpanded && hasDetails && (
-                        <div className="mt-3 pl-2 border-l-2 border-purple-200 space-y-2">
-                          {stepData.details?.map((detail: string, detailIndex: number) => (
-                            <p key={detailIndex} className="text-sm text-purple-600">
-                              • {detail}
-                            </p>
-                          ))}
-                          {stepData.tips && (
-                            <p className="text-sm text-purple-600 italic">
-                              💡 Tip: {stepData.tips}
-                            </p>
-                          )}
-                          {stepData.ageVariations && activity.minAge && activity.maxAge && (
-                            <div className="text-sm text-purple-600">
-                              <p className="font-semibold">Age variations:</p>
-                              {Object.entries(stepData.ageVariations).map(([age, variation]) => (
-                                <p key={age} className="ml-2">• {age}: {String(variation)}</p>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
+            {stepsToRender.map((step, index) => (
+              <li key={index} className="space-y-2">
+                <div className="flex items-start space-x-4">
+                  <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 text-white text-sm font-bold rounded-full flex items-center justify-center sparkle">
+                    {index + 1}
+                  </span>
+                  <div className="flex-1">
+                    <span className="text-base text-purple-700 font-medium">{step.step}</span>
                   </div>
-                </li>
-              );
-            })}
+                </div>
+              </li>
+            ))}
           </ol>
         </div>
 
@@ -204,43 +131,35 @@ export function ActivityCard({
           </h4>
           <p className="text-base text-purple-700 font-medium">{activity.whyGreat}</p>
           
-          {/* AI Help Button */}
-          {childAge && (
+          {/* Details Button */}
+          {activity.detailedInfo && (
             <div className="mt-4 pt-3 border-t border-purple-200">
               <Button
-                onClick={handleGetAIHelp}
-                disabled={enhancementMutation.isPending}
+                onClick={() => setShowDetails(true)}
                 variant="outline"
                 size="sm"
                 className="w-full border-purple-300 text-purple-700 hover:bg-purple-50"
               >
-                {enhancementMutation.isPending ? (
-                  <>
-                    <Sparkles className="w-4 h-4 mr-2 animate-pulse" />
-                    Getting AI tips...
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    Get AI Help & Tips
-                  </>
-                )}
+                <Info className="w-4 h-4 mr-2" />
+                View Details
               </Button>
             </div>
           )}
         </div>
 
-        {/* AI Enhancement Modal/Overlay */}
-        {showAIHelp && aiEnhancement && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl">
+        {/* Mobile-Optimized Details Panel */}
+        {showDetails && activity.detailedInfo && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center">
+            {/* Mobile: Slide up from bottom, Desktop: Center modal */}
+            <div className="bg-white w-full h-[85vh] sm:h-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-2xl overflow-hidden shadow-2xl sm:m-4">
+              {/* Header */}
               <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-                <h3 className="text-xl font-bold text-purple-800 flex items-center">
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  AI Tips for "{activity.title}"
+                <h3 className="text-lg font-bold text-purple-800 flex items-center">
+                  <Info className="w-5 h-5 mr-2" />
+                  Details for "{activity.title}"
                 </h3>
                 <Button
-                  onClick={() => setShowAIHelp(false)}
+                  onClick={() => setShowDetails(false)}
                   variant="outline"
                   size="sm"
                   className="p-2"
@@ -248,14 +167,99 @@ export function ActivityCard({
                   <X className="w-4 h-4" />
                 </Button>
               </div>
-              <div className="p-6">
-                <div className="prose prose-purple max-w-none">
-                  {aiEnhancement.split('\n').map((paragraph, index) => (
-                    <p key={index} className="mb-3 text-gray-700 leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
+              
+              {/* Scrollable Content */}
+              <div className="overflow-y-auto flex-1 p-4 space-y-6">
+                {/* Detailed Steps */}
+                <div>
+                  <h4 className="text-lg font-semibold text-purple-800 mb-3">Step-by-Step Guide</h4>
+                  <div className="space-y-3">
+                    {activity.detailedInfo.detailedSteps.map((step, index) => (
+                      <div key={index} className="bg-purple-50 rounded-lg p-3">
+                        <div className="font-medium text-purple-900 mb-1">
+                          {index + 1}. {step.step}
+                        </div>
+                        {step.description && (
+                          <p className="text-purple-700 text-sm mb-2">{step.description}</p>
+                        )}
+                        {step.tips.length > 0 && (
+                          <div className="space-y-1">
+                            {step.tips.map((tip, tipIndex) => (
+                              <div key={tipIndex} className="text-purple-600 text-sm flex items-start">
+                                <span className="mr-1">💡</span>
+                                <span>{tip}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
+
+                {/* Learning Benefits */}
+                {activity.detailedInfo.learningBenefits.length > 0 && (
+                  <div>
+                    <h4 className="text-lg font-semibold text-purple-800 mb-3">Learning Benefits</h4>
+                    <div className="space-y-2">
+                      {activity.detailedInfo.learningBenefits.map((benefit, index) => (
+                        <div key={index} className="flex items-start text-purple-700">
+                          <span className="mr-2">🧠</span>
+                          <span>{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Safety Tips */}
+                {activity.detailedInfo.safetyTips.length > 0 && (
+                  <div>
+                    <h4 className="text-lg font-semibold text-purple-800 mb-3">Safety Tips</h4>
+                    <div className="space-y-2">
+                      {activity.detailedInfo.safetyTips.map((tip, index) => (
+                        <div key={index} className="flex items-start text-orange-700 bg-orange-50 p-2 rounded">
+                          <span className="mr-2">⚠️</span>
+                          <span>{tip}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Variations */}
+                <div>
+                  <h4 className="text-lg font-semibold text-purple-800 mb-3">Variations</h4>
+                  <div className="space-y-3">
+                    {activity.detailedInfo.variations.easier && (
+                      <div className="bg-green-50 p-3 rounded-lg">
+                        <div className="font-medium text-green-800 mb-1">🟢 Make it Easier</div>
+                        <p className="text-green-700 text-sm">{activity.detailedInfo.variations.easier}</p>
+                      </div>
+                    )}
+                    {activity.detailedInfo.variations.harder && (
+                      <div className="bg-red-50 p-3 rounded-lg">
+                        <div className="font-medium text-red-800 mb-1">🔴 Make it Harder</div>
+                        <p className="text-red-700 text-sm">{activity.detailedInfo.variations.harder}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Parent Tips */}
+                {activity.detailedInfo.parentTips.length > 0 && (
+                  <div>
+                    <h4 className="text-lg font-semibold text-purple-800 mb-3">Parent Tips</h4>
+                    <div className="space-y-2">
+                      {activity.detailedInfo.parentTips.map((tip, index) => (
+                        <div key={index} className="flex items-start text-blue-700 bg-blue-50 p-2 rounded">
+                          <span className="mr-2">👨‍👩‍👧‍👦</span>
+                          <span>{tip}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
