@@ -149,23 +149,33 @@ export function ActivityCard({
 
         {/* Mobile-Optimized Details Panel */}
         {showDetails && activity.detailedInfo && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center">
+          <div 
+            className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center"
+            onClick={(e) => {
+              // Close when clicking on backdrop
+              if (e.target === e.currentTarget) {
+                setShowDetails(false);
+              }
+            }}
+          >
             {/* Mobile: Slide up from bottom, Desktop: Center modal */}
-            <div className="bg-white w-full h-[90vh] sm:h-auto sm:max-w-2xl sm:max-h-[85vh] sm:rounded-2xl shadow-2xl sm:m-4 flex flex-col">
+            <div 
+              className="bg-white w-full h-[90vh] sm:h-auto sm:max-w-2xl sm:max-h-[85vh] sm:rounded-2xl shadow-2xl sm:m-4 flex flex-col"
+              onClick={(e) => e.stopPropagation()} // Prevent backdrop click when clicking inside modal
+            >
               {/* Header */}
               <div className="flex-shrink-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between sm:rounded-t-2xl">
                 <h3 className="text-lg font-bold text-purple-800 flex items-center">
                   <Info className="w-5 h-5 mr-2" />
                   Details for "{activity.title}"
                 </h3>
-                <Button
+                <button
                   onClick={() => setShowDetails(false)}
-                  variant="outline"
-                  size="sm"
-                  className="p-2"
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  type="button"
                 >
-                  <X className="w-4 h-4" />
-                </Button>
+                  <X className="w-5 h-5" />
+                </button>
               </div>
               
               {/* Scrollable Content */}
