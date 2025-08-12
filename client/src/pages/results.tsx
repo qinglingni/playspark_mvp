@@ -200,6 +200,7 @@ export default function Results() {
               onSave={() => handleSaveActivity(activity.id)}
               onShuffle={() => handleShuffleCard(index)}
               isSaved={savedActivities?.some(saved => saved.activityId === activity.id)}
+              childAge={profile ? calculateAge(profile.birthMonth, profile.birthYear) : undefined}
             />
           ))
         )}

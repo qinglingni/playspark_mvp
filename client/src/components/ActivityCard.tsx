@@ -1,7 +1,10 @@
 import { Activity } from "@shared/schema";
 import { useState } from "react";
-import { Heart, RotateCcw, ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
+import { Heart, RotateCcw, ChevronDown, ChevronUp, HelpCircle, Sparkles, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { activitiesService } from "@/lib/activities";
+import { Button } from "@/components/ui/button";
+import { useMutation } from "@tanstack/react-query";
 
 interface ActivityCardProps {
   activity: Activity;
@@ -9,6 +12,7 @@ interface ActivityCardProps {
   onShuffle?: () => void;
   isSaved?: boolean;
   showActions?: boolean;
+  childAge?: number;
 }
 
 export function ActivityCard({ 
@@ -16,10 +20,13 @@ export function ActivityCard({
   onSave, 
   onShuffle, 
   isSaved = false, 
-  showActions = true 
+  showActions = true,
+  childAge
 }: ActivityCardProps) {
   const [isHearted, setIsHearted] = useState(isSaved);
   const [expandedSteps, setExpandedSteps] = useState<number[]>([]);
+  const [showAIHelp, setShowAIHelp] = useState(false);
+  const [aiEnhancement, setAiEnhancement] = useState<string | null>(null);
 
   const handleSave = () => {
     setIsHearted(!isHearted);
@@ -34,8 +41,35 @@ export function ActivityCard({
     );
   };
 
+  const enhancementMutation = useMutation({
+    mutationFn: async (specificQuestion?: string) => {
+      if (!childAge) throw new Error('Child age is required');
+      return activitiesService.getActivityEnhancement(activity.id, childAge, specificQuestion);
+    },
+    onSuccess: (data) => {
+      setAiEnhancement(data.enhancement);
+      setShowAIHelp(true);
+    },
+    onError: (error) => {
+      console.error('Failed to get AI enhancement:', error);
+    }
+  });
+
+  const handleGetAIHelp = () => {
+    if (aiEnhancement) {
+      setShowAIHelp(true);
+    } else {
+      enhancementMutation.mutate();
+    }
+  };
+
   // Use detailed steps if available, otherwise fall back to simple steps
-  const stepsToRender = activity.stepsDetailed || activity.steps.map(step => ({ step }));
+  const stepsToRender = activity.stepsDetailed || activity.steps.map((step: string) => ({ 
+    step,
+    details: undefined,
+    tips: undefined,
+    ageVariations: undefined
+  }));
 
   return (
     <div className="bg-gradient-to-br from-white to-purple-50 rounded-3xl shadow-xl border-3 border-purple-200 overflow-hidden scale-on-hover">
@@ -134,7 +168,7 @@ export function ActivityCard({
                       {/* Expandable details */}
                       {isExpanded && hasDetails && (
                         <div className="mt-3 pl-2 border-l-2 border-purple-200 space-y-2">
-                          {stepData.details?.map((detail, detailIndex) => (
+                          {stepData.details?.map((detail: string, detailIndex: number) => (
                             <p key={detailIndex} className="text-sm text-purple-600">
                               • {detail}
                             </p>
@@ -148,7 +182,7 @@ export function ActivityCard({
                             <div className="text-sm text-purple-600">
                               <p className="font-semibold">Age variations:</p>
                               {Object.entries(stepData.ageVariations).map(([age, variation]) => (
-                                <p key={age} className="ml-2">• {age}: {variation}</p>
+                                <p key={age} className="ml-2">• {age}: {String(variation)}</p>
                               ))}
                             </div>
                           )}
@@ -169,7 +203,63 @@ export function ActivityCard({
             Why it's awesome:
           </h4>
           <p className="text-base text-purple-700 font-medium">{activity.whyGreat}</p>
+          
+          {/* AI Help Button */}
+          {childAge && (
+            <div className="mt-4 pt-3 border-t border-purple-200">
+              <Button
+                onClick={handleGetAIHelp}
+                disabled={enhancementMutation.isPending}
+                variant="outline"
+                size="sm"
+                className="w-full border-purple-300 text-purple-700 hover:bg-purple-50"
+              >
+                {enhancementMutation.isPending ? (
+                  <>
+                    <Sparkles className="w-4 h-4 mr-2 animate-pulse" />
+                    Getting AI tips...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    Get AI Help & Tips
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </div>
+
+        {/* AI Enhancement Modal/Overlay */}
+        {showAIHelp && aiEnhancement && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl">
+              <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+                <h3 className="text-xl font-bold text-purple-800 flex items-center">
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  AI Tips for "{activity.title}"
+                </h3>
+                <Button
+                  onClick={() => setShowAIHelp(false)}
+                  variant="outline"
+                  size="sm"
+                  className="p-2"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+              <div className="p-6">
+                <div className="prose prose-purple max-w-none">
+                  {aiEnhancement.split('\n').map((paragraph, index) => (
+                    <p key={index} className="mb-3 text-gray-700 leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

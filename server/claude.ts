@@ -1,4 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { type Activity } from '../shared/schema.js';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -85,4 +86,48 @@ Make activities engaging, safe, and developmentally appropriate. Focus on activi
     console.error('Error generating activities with Claude:', error);
     throw error;
   }
+}
+
+export async function generateActivityEnhancement(activity: Activity, childAge: number, specificQuestion?: string) {
+  if (!anthropic) {
+    throw new Error('Claude AI is not configured. Please check ANTHROPIC_API_KEY environment variable.');
+  }
+
+  const prompt = `You are an expert child development specialist and activity designer. Please provide enhanced, detailed information about this activity for a ${childAge}-year-old child.
+
+ACTIVITY: ${activity.title}
+CURRENT DESCRIPTION: ${activity.whyGreat}
+MATERIALS: ${activity.materials.map(m => m.name).join(', ')}
+BASIC STEPS: ${activity.steps.join(' → ')}
+
+${specificQuestion ? `SPECIFIC QUESTION: ${specificQuestion}` : ''}
+
+Please provide a comprehensive enhancement that includes:
+
+1. **Detailed Step-by-Step Guide**: Break down each step with specific tips for a ${childAge}-year-old
+2. **Learning Benefits**: What skills this develops (motor, cognitive, social, emotional)
+3. **Age-Specific Adaptations**: How to adjust for this exact age
+4. **Common Challenges**: What might go wrong and how to handle it
+5. **Extension Ideas**: Ways to make it more challenging or keep the fun going
+6. **Safety Considerations**: Any safety tips specific to this age
+7. **Parent Coaching Tips**: How parents can support without taking over
+
+${specificQuestion ? `Please pay special attention to answering: "${specificQuestion}"` : ''}
+
+Format your response as clear, practical advice that a parent can immediately use. Use encouraging, supportive language that builds confidence in both parent and child.`;
+
+  const response = await anthropic.messages.create({
+    model: "claude-3-5-sonnet-20241022",
+    max_tokens: 1500,
+    temperature: 0.7,
+    messages: [
+      {
+        role: "user",
+        content: prompt
+      }
+    ]
+  });
+
+  const enhancement = response.content[0].type === 'text' ? response.content[0].text : '';
+  return enhancement;
 }
