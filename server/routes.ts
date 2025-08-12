@@ -20,6 +20,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/profile", async (req, res) => {
     try {
       const profileData = insertKidProfileSchema.parse(req.body);
+      
+      // Check for existing profile with same data to prevent duplicates
+      const existingProfile = await storage.getKidProfile();
+      if (existingProfile && 
+          existingProfile.birthMonth === profileData.birthMonth &&
+          existingProfile.birthYear === profileData.birthYear &&
+          existingProfile.name === profileData.name) {
+        // Return existing profile instead of creating duplicate
+        return res.json(existingProfile);
+      }
+      
       const profile = await storage.createKidProfile(profileData);
       res.json(profile);
     } catch (error) {

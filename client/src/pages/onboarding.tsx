@@ -53,6 +53,11 @@ export default function Onboarding() {
   };
 
   const handleSubmit = () => {
+    // Prevent multiple submissions
+    if (createProfileMutation.isPending) {
+      return;
+    }
+
     if (!formData.birthMonth || !formData.birthYear) {
       toast({
         title: "Missing Information",
