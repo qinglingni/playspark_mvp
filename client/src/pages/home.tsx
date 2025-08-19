@@ -213,16 +213,16 @@ export default function HomePage() {
           </label>
           <div className="grid grid-cols-3 gap-3">
             <FilterButton
-              isSelected={filters.messLevel === "no-mess"}
-              onClick={() => updateFilter('messLevel', 'no-mess')}
+              isSelected={filters.messLevel === "nomess"}
+              onClick={() => updateFilter('messLevel', 'nomess')}
               className="p-4 scale-on-hover"
             >
               <div className="text-2xl mb-1">✨</div>
               <span className="text-sm font-bold">No Mess</span>
             </FilterButton>
             <FilterButton
-              isSelected={filters.messLevel === "little-mess"}
-              onClick={() => updateFilter('messLevel', 'little-mess')}
+              isSelected={filters.messLevel === "littlemess"}
+              onClick={() => updateFilter('messLevel', 'littlemess')}
               className="p-4 scale-on-hover"
             >
               <div className="text-2xl mb-1">🧻</div>

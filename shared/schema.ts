@@ -47,6 +47,7 @@ export const activities = pgTable("activities", {
   energyLevel: text("energy_level"),
   location: text("location"),
   whoPlaying: text("who_playing"),
+  messLevel: text("mess_level"),
   interests: jsonb("interests").$type<string[]>().default([]),
   skillRequirements: jsonb("skill_requirements").$type<{
     motor?: "basic" | "developing" | "advanced",
@@ -96,7 +97,7 @@ export const filterSchema = z.object({
   timeAvailable: z.enum(["15", "30", "60"]).optional(),
   energyLevel: z.enum(["calm", "focused", "active", "silly"]).optional(),
   location: z.enum(["indoor", "outdoor"]).optional(),
-  messLevel: z.enum(["no-mess", "little-mess", "messy"]).optional(),
+  messLevel: z.enum(["nomess", "littlemess", "messy"]).optional(),
   materialsNeeded: z.enum(["none", "basic", "special"]).optional(),
   allowRepeats: z.boolean().default(true),
 });

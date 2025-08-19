@@ -132,10 +132,9 @@ class DatabaseStorage implements IStorage {
         return false;
       }
       
-      // Filter by mess level (activity tags contain mess level) - make optional
-      if (filters.messLevel) {
-        // For now, skip mess level filtering since our activities don't have these tags yet
-        // TODO: Add mess level tags to activities in future
+      // Filter by mess level
+      if (filters.messLevel && activity.messLevel && activity.messLevel !== filters.messLevel) {
+        return false;
       }
       
       // Filter by materials needed - make more flexible

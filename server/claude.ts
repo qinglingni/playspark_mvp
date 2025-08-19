@@ -10,6 +10,7 @@ interface ActivityRequest {
   energyLevel: string;
   location: string;
   whoPlaying: string;
+  messyLevel?: string;
   interests: string[];
   count: number;
 }
@@ -19,7 +20,8 @@ export async function generateActivitiesWithClaude(request: ActivityRequest) {
 
 - Energy level: ${request.energyLevel}
 - Location: ${request.location}
-- Who's playing: ${request.whoPlaying}
+- Who's playing: ${request.whoPlaying}${request.messyLevel ? `
+- Mess level: ${request.messyLevel}` : ''}
 - Interests: ${request.interests.join(', ')}
 
 For each activity, provide:
@@ -53,6 +55,7 @@ Format as valid JSON array with this exact structure:
     "energyLevel": "${request.energyLevel}",
     "location": "${request.location}",
     "whoPlaying": "${request.whoPlaying}",
+    "messLevel": "${request.messyLevel || 'nomess'}",
     "interests": ${JSON.stringify(request.interests)},
     "skillRequirements": null
   }
